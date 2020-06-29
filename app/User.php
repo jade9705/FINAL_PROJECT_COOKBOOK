@@ -36,4 +36,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function to_follow()
+    {
+        return $this->belongsToMany('App\User', 'followers', 'current_user_id', 'user_id');
+    }
+
+    public function user_followers()
+    {
+        return $this->belongsToMany('App\User', 'followers', 'user_id', 'current_user_id');
+    }
+
+    public function recipes()
+    {
+        return $this->belongsToMany('App\Recipe');
+    }
 }
