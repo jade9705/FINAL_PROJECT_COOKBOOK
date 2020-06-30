@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
             $table->text('text');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('recipe_id');
-            $table->Integer('rating');
+            $table->Integer('rating')->nullable();
             $table->timestamps();
         });
     }

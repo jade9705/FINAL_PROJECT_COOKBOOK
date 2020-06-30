@@ -17,8 +17,8 @@ class CreateRecipeUserTable extends Migration
             $table->id();
             $table->unsignedBigInteger('recipe_id');
             $table->unsignedBigInteger('user_id');
-            $table->boolean('is_favourited');
-            $table->boolean('is_tried');
+            $table->boolean('is_favourited')->nullable();
+            $table->boolean('is_tried')->nullable();
             $table->timestamps();
         });
     }
