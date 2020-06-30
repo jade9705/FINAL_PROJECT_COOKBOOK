@@ -7,6 +7,6 @@
     <title>Cookbook</title>
 </head>
 <body>
-    <h1>vit and jade </h1>
+    @yield('content')
 </body>
 </html>
