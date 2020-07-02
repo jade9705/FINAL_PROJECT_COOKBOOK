@@ -44,7 +44,7 @@ class RecipeController extends Controller
 
         $recipe->ingredients()->attach($ingredient->id, ['amount' => $request->input('amount')]);
 
-        return redirect('/recipe' . $recipe->id );
+        return redirect('/recipe/' . $recipe->id );
 
         
     }
@@ -52,12 +52,12 @@ class RecipeController extends Controller
 
     public function show($id)
     {
-        //
+        
     }
 
     public function edit($id)
     {
-        //
+        
     }
 
   
