@@ -1,0 +1,40 @@
+h1 {
+    color:red;
+}
+img {   
+        width:10vw;
+        height:10vh;
+       
+}
+
+header {
+    display: flex;
+    background-color: $secondary;
+    color: $fourthcolor;
+    nav {
+        display: flex;
+        width:100%;
+        justify-content: space-around;
+        a{
+          font-size: 2em;
+          font-weight: bold;
+          align-items: center; 
+          line-height: 3;
+          &:hover {
+              text-decoration: none;
+              background-color: $primary;
+          }
+        }
+    }
+}
+
+footer {
+    display: flex;
+    padding:1rem;
+    background-color: $secondary;
+    color: $fourthcolor;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    width:100%;
+}
