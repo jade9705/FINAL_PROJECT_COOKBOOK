@@ -16,3 +16,4 @@ Route::post('/recipes', 'RecipeController@store');
 
 // route for first homesearch.blade.php page 
 Route::get('/', 'HomeSearchController@index');
+// vit comment
