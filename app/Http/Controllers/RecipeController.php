@@ -24,10 +24,13 @@ class RecipeController extends Controller
   
     public function store(Request $request)
     {
-        
+
+        $newFileName = md5(time()) . '.' . $request->file('image_url')->extension();
+        $request->file('image_url')->move(public_path('images/uploads'), $newFileName);
+
         $recipe = new Recipe;
         $recipe->title = $request->input('title');
-        $recipe->image_url = $request->input('image_url');
+        $recipe->image_url = $newFileName;
         $recipe->description = $request->input('description');
         $recipe->is_published = $request->input('published');
         $recipe->save();
@@ -48,7 +51,6 @@ class RecipeController extends Controller
 
         
     }
-
 
     public function show($id)
     {
