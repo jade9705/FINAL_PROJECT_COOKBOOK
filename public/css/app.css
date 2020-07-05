@@ -10068,6 +10068,10 @@ footer {
   align-items: center;
   justify-content: space-between;
 }
+.recipeBox:hover {
+  box-shadow: none;
+  border: 2px solid #353535;
+}
 .recipeBox__img {
   border-radius: 0.7rem;
   width: 100%;
