@@ -1,13 +1,23 @@
 import React from 'react'
 
-const RecipeBox = ({recipe, key}) => {
+const RecipeBox = ({recipe}) => {
+  let content = null;
+
+  if(recipe){
+    content = (
+      <div className="recipeBox" >
+        <img className="recipeBox__img" src={recipe.image_url} alt={recipe.title} />
+        <div className="recipeBox__rating"></div>
+        <p className="recipeBox__title">{recipe.title}</p>
+        <div className="recipeBox__description">{recipe.description}</div>
+      </div>
+    )
+  }
+
   return (
-    <div className="recipeBox"  key={key}>
-      <div className="recipeBox__img"></div>
-      <div className="recipeBox__rating"></div> 
-      <p className="recipeBox__name">Name of recipe</p>
-      <div className="recipeBox__description">this is some description...</div>
-    </div>
+    <>
+    {content}
+    </>
   )
 }
 

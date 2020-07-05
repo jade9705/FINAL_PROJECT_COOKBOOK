@@ -1,0 +1,24 @@
+.searchBar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  & label{
+    width: 70%;
+  }
+  &__input {
+    width: 100%;
+    height: 3rem;
+    border-radius: 0.7rem;
+    border: none;
+    outline: none;
+    box-shadow: 10px 10px 16px -7px rgba(69,69,69,0.5);
+
+    
+    text-align: center;
+    font-size: 1.5rem;
+    color: #F8FAFC;
+
+    background-color: $secondary;
+  }
+}

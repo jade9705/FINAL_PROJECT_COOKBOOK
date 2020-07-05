@@ -1,38 +1,34 @@
 import React from 'react'
 import RecipeBox from "../recipeBox/RecipeBox.jsx";
 
-const TopRecipes = ({TopRecipe}) => {
+const TopRecipes = ({topRecipe}) => {
 
+  // console.log('hi', topRecipe);
   let content = null;
-  if(TopRecipe && TopRecipe.length > 0){
+  if(topRecipe){
     content = (
       <>
-        <h3>What would you like to eat?</h3>
         {
-          TopRecipe.map((recipe, index) => {
-            {/* here should be recipeBox component */}
-            <RecipeBox
-              recipe={recipe}
-              key={index}
-            />
+          topRecipe.map((recipe, index) => {
+            return <RecipeBox
+                      recipe={recipe}
+                      key={index}
+                  />
           })
         }
       </>
     )
-  } if (TopRecipe == null ) {
+  } else if (topRecipe == null ) {
       content = null
   } else {
     content = (
-      <h3>Sorry, no results...</h3>
+      <h3>Sorry, no results TopRecipes.jsx...</h3>
     )
   }
 
-
   return (
-    <div className="resultContainer">
-      <h1>ahoj tady result</h1>
+    <div className="topRecipesContainer">
       {content}
-      <RecipeBox />
     </div>
   )
 }

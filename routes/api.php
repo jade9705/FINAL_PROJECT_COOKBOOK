@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// api endpoint for top rated recipes 
+Route::get('/toprecipes', 'Api\ApiTopRecipesController@index');
+// api endpoint for searched recipes
+Route::post('/search/recipes', 'Api\ApiSearchRecipesController@index');
