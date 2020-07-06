@@ -24,6 +24,17 @@ class RecipeController extends Controller
   
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'image_url' => 'required',
+            'description' => 'required|max:255',
+            'ingredient' => 'required',
+            'step' => 'required'
+        ], [
+            'required' => 'This input field is required, bitch.',
+            'text.max' => 'That is too much text!'
+        ]);
+
 
         $newFileName = md5(time()) . '.' . $request->file('image_url')->extension();
         $request->file('image_url')->move(public_path('images/uploads'), $newFileName);
@@ -35,17 +46,23 @@ class RecipeController extends Controller
         $recipe->is_published = $request->input('published');
         $recipe->save();
 
+        foreach( $request->input('ingredient') as $k => $i){
         $ingredient = new Ingredient;
-        $ingredient->name = $request->input('ingredient');
+        $ingredient->name = $i;
         $ingredient->save();
 
-        $step = new Step;
-        $step->instruction = $request->input('step1');
-        $step->sequence = 1;
-        $step->recipe_id = $recipe->id;
-        $step->save();
+        $recipe->ingredients()->attach($ingredient->id, ['amount' => $request->input('amount')[$k]]);
+         };
 
-        $recipe->ingredients()->attach($ingredient->id, ['amount' => $request->input('amount')]);
+        foreach($request->input('step') as $p){
+            $step = new Step;
+            $step->instruction = $p;
+            $step->sequence = 1;
+            $step->recipe_id = $recipe->id;
+            $step->save();
+
+        };
+       
 
         return redirect('/recipe/' . $recipe->id );
 
@@ -54,11 +71,8 @@ class RecipeController extends Controller
 
     public function show($id)
     {
-        $recipe = Recipe::all()->get();
-        $ingredients = Ingredients::all()->get;
-        $steps = Steps::all()->get();
-        //$user = Users::all()->get(); users isnt set up yet
-        return $recipes;
+        return view('recipe.recipe');
+
     }
 
     public function edit($id)

@@ -22,3 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/toprecipes', 'Api\ApiTopRecipesController@index');
 // api endpoint for searched recipes
 Route::post('/search/recipes', 'Api\ApiSearchRecipesController@index');
+
+
+Route::get('/recipe/{id}', 'Api\ApiRecipeController@show');
