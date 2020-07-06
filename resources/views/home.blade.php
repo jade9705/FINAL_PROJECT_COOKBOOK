@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+
+{{-- I AM NOT USING THIS BLADE ---> i REDIRECT TO THE HOMESEARCH BLADE --}}
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
