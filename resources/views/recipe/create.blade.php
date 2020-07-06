@@ -19,21 +19,21 @@
 
 
     <label for="title">TITLE</label>
-    <input type="text" className="input" name="title" id="title" value="" placeholder="Name your recipe">
+    <input type="text" class="input" name="title" id="title" value="" placeholder="Name your recipe">
     @if($errors->has('title'))
         {{ $errors->first('title')}}
     @endif
     <br>
 
     <label for="image_url">IMAGE</label>
-    <input className="input" type="file" name="image_url">
+    <input class="input" type="file" name="image_url">
     @if($errors->has('image_url'))
      {{ $errors->first('image_url')}}
     @endif
     <br>
 
     <label for="description">Description</label>
-    <textarea className="input" id="description" name="description" rows="4" cols="50"></textarea>
+    <textarea class="input" id="description" name="description" rows="4" cols="50"></textarea>
     @if($errors->has('description'))
      {{ $errors->first('description')}}
     @endif
@@ -44,9 +44,9 @@
     <div id="ingredients-amount">
     <label for="ingredient">INGREDIENTS</label>
 
-    <div className="two-inputs">
-    <input className="input" type="text" name="ingredient[]" id="ingredient" value="">
-    <input className="input" type="text" name="amount[]" id="amount" value="" placeholder="amount">
+    <div class="two-inputs">
+    <input class="input" type="text" name="ingredient[]" id="ingredient" value="">
+    <input class="input" type="text" name="amount[]" id="amount" value="" placeholder="amount">
     </div>
 
     <button id="btn">+</button>
@@ -64,7 +64,7 @@
     <div id="add-step">
     <label for="step1">STEPS</label>
     <button id="stepbtn">+</button>
-    <textarea className="input" id="step[]" name="step[]" rows="2" cols="50"></textarea>
+    <textarea class="input" id="step[]" name="step[]" rows="2" cols="50"></textarea>
     </div>
     @if($errors->has('step'))
     {{ $errors->first('step')}}
