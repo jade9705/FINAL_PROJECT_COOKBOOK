@@ -1,0 +1,23 @@
+.homeSearch{
+  // border: 2px solid black;
+
+  width: 70%;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+
+  &__header1{
+    margin: 2rem;
+    font-size: 3rem;
+    font-weight: 700;
+    color:$primary;  
+  }
+  
+  &__header2{
+    margin: 2rem;
+    color: $secondary;
+  }
+}

@@ -1,0 +1,22 @@
+.resultContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin: 2rem 0;
+
+  &__header {
+    margin: 0 0 2rem 0;
+    color: $secondary;
+  }
+
+  &__recipeBoxContainer {
+    // border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+    width: 100%;
+  }
+
+}

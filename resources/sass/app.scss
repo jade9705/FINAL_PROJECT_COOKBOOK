@@ -9,3 +9,16 @@
 
 @import 'layout.scss';
 @import 'create.scss';
+
+// import styling for each componnets from homeserach component (homesearchm, searchbar, toprrecipes, recipeBox)
+@import './components/homeSearch/homeSearch.scss';
+@import './components/homeSearch/topRecipes/topRecipes.scss';
+@import './components/homeSearch/recipeBox/recipeBox.scss';
+@import './components/homeSearch/searchBar/searchBar.scss';
+@import './components/homeSearch/searchBar/searchedRecipesResult.scss';
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
