@@ -54,7 +54,11 @@ class RecipeController extends Controller
 
     public function show($id)
     {
-        
+        $recipe = Recipe::all()->get();
+        $ingredients = Ingredients::all()->get;
+        $steps = Steps::all()->get();
+        //$user = Users::all()->get(); users isnt set up yet
+        return $recipes;
     }
 
     public function edit($id)
