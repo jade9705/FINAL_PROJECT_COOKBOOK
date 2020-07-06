@@ -28,8 +28,9 @@ class RecipeController extends Controller
             'title' => 'required|max:255',
             'image_url' => 'required',
             'description' => 'required|max:255',
-            'ingredient' => 'required',
-            'step' => 'required'
+            
+            'ingredient' => 'required|array|min:1',
+            'step' => 'required|array|min:1'
         ], [
             'required' => 'This input field is required, bitch.',
             'text.max' => 'That is too much text!'
