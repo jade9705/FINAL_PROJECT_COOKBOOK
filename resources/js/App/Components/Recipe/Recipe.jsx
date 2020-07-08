@@ -33,26 +33,26 @@ export default function Recipe() {
     
     return (
 
-        <>
-            <div className="recipe">
-                <h1 className="recipe__name">{recipe.title}</h1>
-                <img src={`/images/uploads/${recipe.image_url}`} alt="some picture of food" className="recipe__img" />
-                <p className="recipe__description">{recipe.description}</p>
-                <label className="ingredients">Ingredients</label>
-                <ul>
-                  { recipe.ingredients.map((ingredient, index) => {
-                            return <li key={index}>{ingredient.name} {ingredient.amount}</li>})}
-                </ul>
-                <label className="method">Method  </label>
-                <ol>
-                { recipe.steps.map((step, index) => {
-                            return <li key={index}>{step.instruction}</li>})}
-                       
-                    </ol> 
-                   
-            </div>
-           
-        </>
+      <>
+        <div className="recipe">
+            <h1 className="recipe__name">{recipe.title}</h1>
+            <img src={`/images/uploads/${recipe.image_url}`} alt="some picture of food" className="recipe__img" />
+            <p className="recipe__description">{recipe.description}</p>
+            <label className="ingredients">Ingredients</label>
+            <ul>
+              { recipe.ingredients.map((ingredient, index) => {
+                return <li key={index}>{ingredient.name} {ingredient.amount}</li>})}
+            </ul>
+            <label className="method">Method  </label>
+            <ol>
+              { recipe.steps.map((step, index) => {
+                 return <li key={index}>{step.instruction}</li>})}
+                    
+            </ol> 
+                
+        </div>
+          
+      </>
         
     )
 

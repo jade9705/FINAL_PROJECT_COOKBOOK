@@ -29,5 +29,10 @@ Route::get('/recipe/{id}', 'RecipeController@show')->name('show.recipe');
 Route::get('/create', 'RecipeController@create');
 // Route::post('/recipes', 'RecipeController@store');
 
+//for reviews:
+    
+Route::post('/recipe/{recipe_id}/comment', 'RecipeController@comment')->name('recipe.comment');
+// Route::get('/recipe/recipe{_id}/comments/{comment_id}', 'CommentController@show');
+
 // route for first homesearch.blade.php page 
 Route::get('/', 'HomeSearchController@index');
