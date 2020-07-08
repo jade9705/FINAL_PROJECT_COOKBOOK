@@ -3,13 +3,21 @@
     justify-content: space-between;
     align-items: center;
     
-    height: 4.5rem;
+    height: 10vh;
     background-color: $secondary;
     
     &__logoContainer {
         height: 3.5rem;
         width: 3.5rem;
         margin-left: 5vw;
+    }
+
+    &__logo {
+        fill: $fithcolor;
+
+        &:hover {
+            fill: $fourthcolor;
+        }
     }
 
     &__nav {
@@ -34,7 +42,7 @@
     align-items: center;
     justify-content: space-around;
 
-    height: 4.5rem;
+    height: 10vh;
     background-color: $secondary;
 
     &__soclogo-container {

@@ -74,6 +74,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('api')
             ->middleware('api')
+            // ->middleware('web') this changed demaged the search apicontroller
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
     }

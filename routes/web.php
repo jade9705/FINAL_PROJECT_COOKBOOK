@@ -19,6 +19,11 @@ Auth::routes();
 // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/home', 'HomeController@index')->name('home');
+// route for first homesearch.blade.php page 
+Route::get('/', 'HomeSearchController@index')->name('index.homeSearch');
+
+
+
 
 // creating new recipe
 Route::get('/create', 'RecipeController@create')->name('create.recipe');
@@ -29,5 +34,9 @@ Route::get('/recipe/{id}', 'RecipeController@show')->name('show.recipe');
 Route::get('/create', 'RecipeController@create');
 // Route::post('/recipes', 'RecipeController@store');
 
-// route for first homesearch.blade.php page 
-Route::get('/', 'HomeSearchController@index');
+
+
+Route::get('/profile/{id}', 'UserController@show')->name('show.user')->middleware('auth');
+
+// bit tricky to get login user to react component
+Route::get('/users/current', 'UserController@current')->name('current.user')->middleware('auth');

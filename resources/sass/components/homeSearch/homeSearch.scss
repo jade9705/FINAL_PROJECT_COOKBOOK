@@ -2,6 +2,7 @@
   // border: 2px solid black;
 
   width: 70%;
+  min-height: 100vh;
   margin: auto;
 
   display: flex;
@@ -10,14 +11,14 @@
   align-items: center;
 
   &__header1{
-    margin: 3rem;
+    margin: 6vh;
     font-size: 4rem;
     font-weight: 900;
     color:$primary;  
   }
   
   &__header2{
-    margin: 2rem;
+    margin: 5vh;
     color: $secondary;
   }
 }

@@ -9992,13 +9992,19 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 4.5rem;
+  height: 10vh;
   background-color: #353535;
 }
 .header__logoContainer {
   height: 3.5rem;
   width: 3.5rem;
   margin-left: 5vw;
+}
+.header__logo {
+  fill: #F8FAFC;
+}
+.header__logo:hover {
+  fill: #abe9a5;
 }
 .header__nav {
   margin-right: 5vw;
@@ -10018,7 +10024,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 4.5rem;
+  height: 10vh;
   background-color: #353535;
 }
 .footer__soclogo-container {
@@ -10043,6 +10049,7 @@ h3 {
 
 .homeSearch {
   width: 70%;
+  min-height: 100vh;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -10050,13 +10057,13 @@ h3 {
   align-items: center;
 }
 .homeSearch__header1 {
-  margin: 3rem;
+  margin: 6vh;
   font-size: 4rem;
   font-weight: 900;
   color: #0f6429;
 }
 .homeSearch__header2 {
-  margin: 2rem;
+  margin: 5vh;
   color: #353535;
 }
 
@@ -10073,6 +10080,7 @@ h3 {
   box-shadow: 10px 10px 16px -7px rgba(69, 69, 69, 0.5);
   width: 15rem;
   height: 20rem;
+  margin: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10138,6 +10146,32 @@ h3 {
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
+}
+
+.card-logo {
+  fill: #353535;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: start;
+  align-items: baseline;
+}
+.card-header p {
+  margin: 0;
+  margin-left: 1rem;
+}
+
+.container {
+  height: 30vh;
+  margin-top: 15vh;
+  margin-bottom: 35vh;
+}
+
+.shado {
+  box-shadow: 10px 10px 16px -7px rgba(69, 69, 69, 0.5);
 }
 
 * {

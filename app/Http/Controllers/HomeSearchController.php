@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+// you can use auth model for examlple-> Auth::user()
+use Illuminate\Support\Facades\Auth;
+
 class HomeSearchController extends Controller
 {
     /**
