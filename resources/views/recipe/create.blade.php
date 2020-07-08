@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+<div class="entire-form">
 <h1>CREATE</h1>
 <form id="form" className="create-recipe-form" method="post" enctype="multipart/form-data" action="/recipes">
    
@@ -19,21 +19,23 @@
 
 
     <label for="title">TITLE</label>
-    <input type="text" className="input" name="title" id="title" value="" placeholder="Name your recipe">
+    <input type="text" class="input" name="title" id="title" value="" placeholder="Name your recipe">
     @if($errors->has('title'))
         {{ $errors->first('title')}}
     @endif
     <br>
 
+    <input type="hidden" name='user_id' value={{$user_id}} />
+
     <label for="image_url">IMAGE</label>
-    <input className="input" type="file" name="image_url">
+    <input class="input" type="file" name="image_url">
     @if($errors->has('image_url'))
      {{ $errors->first('image_url')}}
     @endif
     <br>
 
     <label for="description">Description</label>
-    <textarea className="input" id="description" name="description" rows="4" cols="50"></textarea>
+    <textarea class="input" id="description" name="description" rows="4" cols="50"></textarea>
     @if($errors->has('description'))
      {{ $errors->first('description')}}
     @endif
@@ -42,14 +44,14 @@
 
 
     <div id="ingredients-amount">
-    <label for="ingredient">INGREDIENTS</label>
+    <label for="ingredient">INGREDIENTS <button id="btn">+</button></label>
 
-    <div className="two-inputs">
-    <input className="input" type="text" name="ingredient[]" id="ingredient" value="">
-    <input className="input" type="text" name="amount[]" id="amount" value="" placeholder="amount">
+    <div class="two-inputs">
+    <input class="input" type="text" name="ingredient[]" id="ingredient" value="">
+    <input class="input" type="text" name="amount[]" id="amount" value="" placeholder="amount">
     </div>
 
-    <button id="btn">+</button>
+    
     </div>
     @if($errors->has('ingredient'))
     {{ $errors->first('ingredient')}}
@@ -62,8 +64,8 @@
 
 
     <div id="add-step">
-    <label for="step1">STEPS</label>
-    <button id="stepbtn">+</button>
+    <label for="step1">STEPS <button id="stepbtn">+</button></label>
+    
     <textarea className="input" id="step[]" name="step[]" rows="2" cols="50"></textarea>
     </div>
     @if($errors->has('step'))
@@ -77,6 +79,7 @@
 
 
 </form>
+</div>
 <script>
 //javascript to deal with adding more inputs on the form
 addMore = (e) => {
@@ -107,4 +110,5 @@ addMore = (e) => {
 
    
 </script>
+
 @endsection

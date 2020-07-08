@@ -10040,13 +10040,6 @@ h3 {
   color: #F8FAFC;
 }
 
-#form label {
-  width: 20%;
-}
-#form .input {
-  width: 30%;
-}
-
 .homeSearch {
   width: 70%;
   min-height: 100vh;
@@ -10148,30 +10141,52 @@ h3 {
   width: 100%;
 }
 
-.card-logo {
-  fill: #353535;
-  height: 1.5rem;
-  width: 1.5rem;
+.entire-form {
+  color: red;
+}
+.entire-form button .btn {
+  border-radius: 50%;
 }
 
-.card-header {
+#form label {
+  width: 20%;
+}
+#form .input {
+  width: 30%;
   display: flex;
-  justify-content: start;
-  align-items: baseline;
-}
-.card-header p {
-  margin: 0;
-  margin-left: 1rem;
 }
 
-.container {
-  height: 30vh;
-  margin-top: 15vh;
-  margin-bottom: 35vh;
+.rating {
+  text-align: center;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.shado {
-  box-shadow: 10px 10px 16px -7px rgba(69, 69, 69, 0.5);
+.rating__value {
+  color: lightgray;
+  line-height: 6rem;
+  font-size: 6rem;
+  font-weight: 900;
+}
+
+.rating__stars {
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.rating__star {
+  width: 2rem;
+  height: 2rem;
+  background-image: url("../images/rating/star-white.svg");
+  background-size: contain;
+  cursor: pointer;
+}
+
+.rating__star--on {
+  background-image: url("../images/rating/star-yellow.svg");
 }
 
 * {

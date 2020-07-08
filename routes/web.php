@@ -40,3 +40,8 @@ Route::get('/profile/{id}', 'UserController@show')->name('show.user')->middlewar
 
 // bit tricky to get login user to react component
 Route::get('/users/current', 'UserController@current')->name('current.user')->middleware('auth');
+//for reviews:
+    
+Route::post('/recipe/{recipe_id}/comment', 'RecipeController@comment')->name('recipe.comment');
+// Route::get('/recipe/recipe{_id}/comments/{comment_id}', 'CommentController@show');
+
