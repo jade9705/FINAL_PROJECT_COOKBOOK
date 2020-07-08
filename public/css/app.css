@@ -10189,6 +10189,32 @@ h3 {
   background-image: url("../images/rating/star-yellow.svg");
 }
 
+.card-logo {
+  fill: #353535;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: start;
+  align-items: baseline;
+}
+.card-header p {
+  margin: 0;
+  margin-left: 1rem;
+}
+
+.container {
+  height: 30vh;
+  margin-top: 15vh;
+  margin-bottom: 35vh;
+}
+
+.shado {
+  box-shadow: 10px 10px 16px -7px rgba(69, 69, 69, 0.5);
+}
+
 * {
   margin: 0;
   padding: 0;
