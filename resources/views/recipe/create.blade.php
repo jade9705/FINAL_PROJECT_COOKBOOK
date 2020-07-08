@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+<div class="entire-form">
 <h1>CREATE</h1>
 <form id="form" className="create-recipe-form" method="post" enctype="multipart/form-data" action="/recipes">
    
@@ -25,6 +25,8 @@
     @endif
     <br>
 
+    <input type="hidden" name='user_id' value={{$user_id}} />
+
     <label for="image_url">IMAGE</label>
     <input class="input" type="file" name="image_url">
     @if($errors->has('image_url'))
@@ -42,14 +44,14 @@
 
 
     <div id="ingredients-amount">
-    <label for="ingredient">INGREDIENTS</label>
+    <label for="ingredient">INGREDIENTS <button id="btn">+</button></label>
 
     <div class="two-inputs">
     <input class="input" type="text" name="ingredient[]" id="ingredient" value="">
     <input class="input" type="text" name="amount[]" id="amount" value="" placeholder="amount">
     </div>
 
-    <button id="btn">+</button>
+    
     </div>
     @if($errors->has('ingredient'))
     {{ $errors->first('ingredient')}}
@@ -62,9 +64,9 @@
 
 
     <div id="add-step">
-    <label for="step1">STEPS</label>
-    <button id="stepbtn">+</button>
-    <textarea class="input" id="step[]" name="step[]" rows="2" cols="50"></textarea>
+    <label for="step1">STEPS <button id="stepbtn">+</button></label>
+    
+    <textarea className="input" id="step[]" name="step[]" rows="2" cols="50"></textarea>
     </div>
     @if($errors->has('step'))
     {{ $errors->first('step')}}
@@ -77,6 +79,7 @@
 
 
 </form>
+</div>
 <script>
 //javascript to deal with adding more inputs on the form
 addMore = (e) => {
@@ -107,4 +110,5 @@ addMore = (e) => {
 
    
 </script>
+
 @endsection

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Recipe;
 use App\Ingredient;
 use App\Step;
+use App\Comment;
+use App\User;
 
 class RecipeController extends Controller
 {
@@ -18,10 +20,13 @@ class RecipeController extends Controller
   
     public function create()
     {
-        return view('recipe.create');
+
+       
+        $user_id = auth()->id();
+       
+        return view('recipe.create', compact('user_id'));
     }
 
-  
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -35,8 +40,6 @@ class RecipeController extends Controller
             'required' => 'This input field is required, bitch.',
             'text.max' => 'That is too much text!'
         ]);
-
-
         $newFileName = md5(time()) . '.' . $request->file('image_url')->extension();
         $request->file('image_url')->move(public_path('images/uploads'), $newFileName);
 
@@ -61,35 +64,46 @@ class RecipeController extends Controller
             $step->sequence = 1;
             $step->recipe_id = $recipe->id;
             $step->save();
-
         };
-       
+
+        $user_id = auth()->id();
+
+        $user = User::findOrFail($user_id);
+        $user->recipes()->attach($recipe->id);
 
         return redirect('/recipe/' . $recipe->id );
-
-        
     }
 
     public function show($id)
     {
-        return view('recipe.recipe');
+        $recipe_id = $id;
+        $user_id = auth()->id();
+        $recipe = Recipe::findOrFail($recipe_id);
+        return view('recipe.recipe', compact('recipe_id', 'user_id', 'recipe'));
 
     }
 
-    public function edit($id)
+    public function comment(Request $request)
     {
-        
+        //dd($request);
+
+        $comment = new Comment;
+
+        // fill object with data
+        $recipe = $request->input('recipe_id');
+        $comment->recipe_id = $request->input('recipe_id');
+        $comment->user_id = $request->input('user_id');
+        $comment->text = $request->input('text');
+        $comment->rating = $request->input('rating');
+
+        // save the object
+        $comment->save();
+
+        // flash success message
+        session()->flash('success_message', 'Review was saved. Thank you!');
+
+        // redirect
+        return redirect()->action('RecipeController@show', [$recipe]);
     }
 
-  
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-  
-    public function destroy($id)
-    {
-        //
-    }
 }
