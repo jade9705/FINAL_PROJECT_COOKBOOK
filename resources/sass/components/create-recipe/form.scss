@@ -1,19 +1,10 @@
 .entire-form {
-    color: red;
+    color:$primary;
+    //background-color: $thirdcolor;
+    margin: 10vh 15vw;
+    padding: 2em;
     button {
     .btn {
         border-radius: 50%;
     }}
 }
-#form {
-   
-    label {
-        width: 20%;
-    }
-    .input{
-        width: 30%;
-        display: flex;
-    }
-     }
-
-    
