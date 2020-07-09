@@ -29,6 +29,8 @@ class RecipeController extends Controller
 
     public function store(Request $request)
     {
+        $user_id = auth()->id();
+
         $this->validate($request, [
             'title' => 'required|max:255',
             'image_url' => 'required',
@@ -48,6 +50,7 @@ class RecipeController extends Controller
         $recipe->image_url = $newFileName;
         $recipe->description = $request->input('description');
         $recipe->is_published = $request->input('published');
+        $recipe->user_id = $user_id;
         $recipe->save();
 
         foreach( $request->input('ingredient') as $k => $i){
@@ -66,7 +69,7 @@ class RecipeController extends Controller
             $step->save();
         };
 
-        $user_id = auth()->id();
+        
 
         $user = User::findOrFail($user_id);
         $user->recipes()->attach($recipe->id);
@@ -78,14 +81,26 @@ class RecipeController extends Controller
     {
         $recipe_id = $id;
         $user_id = auth()->id();
+        //author
         $recipe = Recipe::findOrFail($recipe_id);
+        //$recipe->users()->attach($user_id);
+
+
         return view('recipe.recipe', compact('recipe_id', 'user_id', 'recipe'));
 
     }
 
     public function comment(Request $request)
     {
-        //dd($request);
+
+        $first_name = auth()->user()->first_name;
+
+        $this->validate($request, [
+            'text' => 'required|max:255',
+        ], [
+            'required' => 'This input field is required, bitch.',
+            'text.max' => 'That is too much text!'
+        ]);
 
         $comment = new Comment;
 
@@ -103,7 +118,7 @@ class RecipeController extends Controller
         session()->flash('success_message', 'Review was saved. Thank you!');
 
         // redirect
-        return redirect()->action('RecipeController@show', [$recipe]);
+        return redirect()->action('RecipeController@show', [$recipe, $first_name]);
     }
 
 }

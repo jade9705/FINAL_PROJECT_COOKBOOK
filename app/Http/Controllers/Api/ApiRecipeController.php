@@ -10,7 +10,7 @@ class ApiRecipeController extends Controller
 {
     public function show($id)
     {
-        $recipe = Recipe::with("ingredients")->with("steps")->findOrFail($id);
+        $recipe = Recipe::with(["ingredients", "steps", "users"])->findOrFail($id);
         return $recipe;
     }
 }

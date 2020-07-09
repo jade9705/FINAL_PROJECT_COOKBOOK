@@ -13,5 +13,18 @@
     @yield('content')
     
     @include('partials.footer')
+    <script>
+
+        setTimeout(()=> {
+            const alerts = document.querySelectorAll('.alert');
+
+            var i;
+            for (i = 0; i < alerts.length; i++) {
+                alerts[i].remove();
+            } 
+
+        }, 5000)
+
+    </script>
 </body>
 </html>

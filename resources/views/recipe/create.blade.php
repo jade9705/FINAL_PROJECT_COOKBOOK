@@ -21,7 +21,9 @@
     <label for="title">TITLE</label>
     <input type="text" class="input" name="title" id="title" value="" placeholder="Name your recipe">
     @if($errors->has('title'))
+    <div class="alert">
         {{ $errors->first('title')}}
+    </div>
     @endif
     <br>
 
@@ -30,14 +32,18 @@
     <label for="image_url">IMAGE</label>
     <input class="input" type="file" name="image_url">
     @if($errors->has('image_url'))
+    <div class="alert">
      {{ $errors->first('image_url')}}
+    </div>
     @endif
     <br>
 
     <label for="description">Description</label>
     <textarea class="input" id="description" name="description" rows="4" cols="50"></textarea>
     @if($errors->has('description'))
+    <div class="alert">
      {{ $errors->first('description')}}
+    </div>
     @endif
     <br>
 
@@ -54,10 +60,14 @@
     
     </div>
     @if($errors->has('ingredient'))
+    <div class="alert">
     {{ $errors->first('ingredient')}}
+</div>
 @endif
 @if($errors->has('amount'))
+<div class="alert">
 {{ $errors->first('amount')}}
+</div>
 @endif
     <br>
 
@@ -69,7 +79,9 @@
     <textarea className="input" id="step[]" name="step[]" rows="2" cols="50"></textarea>
     </div>
     @if($errors->has('step'))
+    <div class="alert">
     {{ $errors->first('step')}}
+</div>
 @endif
     <br>
 
