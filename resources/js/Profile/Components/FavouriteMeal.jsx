@@ -32,7 +32,7 @@ const FavouriteMeal = ({user}) => {
       <div className='favouriteMeal__recipeContainer'>
         {content}
       </div>
-      <div className='favouriteMeal__bottom'>
+      <div className='favouriteMeal__buttons'>
         <a href="">view all</a>
       </div>
     </div>

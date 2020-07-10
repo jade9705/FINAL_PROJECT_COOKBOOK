@@ -1,5 +1,6 @@
 @import './profileSideBar/profileSideBar.scss';
-
+@import './profileCookBook/ProfileCookBook.scss';
+@import './favouriteMeal/FavouriteMeal.scss';
 
 .profilePage {
   margin-left: 5vw;
@@ -9,7 +10,7 @@
   justify-content: space-between;
 
   &__leftSide {
-    width: 40vw;
-    border: 2px solid green;
+    width: 45vw;
+    // border: 2px solid green;
   }
 }

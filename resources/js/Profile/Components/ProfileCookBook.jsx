@@ -39,7 +39,7 @@ const ProfileCookBook = ({user}) => {
       <div className='profileCookBook__recipeContainer'>
         {content}
       </div>
-      <div className='profileCookBook__bottoms'>
+      <div className='profileCookBook__buttons'>
         <a href="">view all</a>
         <a href="">add new</a>
       </div>

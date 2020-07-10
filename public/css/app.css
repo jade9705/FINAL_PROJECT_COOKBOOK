@@ -10314,6 +10314,61 @@ h3 {
   align-items: center;
 }
 
+.profileCookBook__header {
+  text-align: center;
+  margin: 3rem 0 1rem 0;
+  color: #0f6429;
+  font-weight: 900;
+}
+.profileCookBook__recipeContainer {
+  display: flex;
+  justify-content: center;
+}
+.profileCookBook__buttons {
+  display: flex;
+  justify-content: space-around;
+}
+.profileCookBook__buttons a {
+  text-decoration: none;
+  border: 2px solid #353535;
+  border-radius: 1rem;
+  padding: 0 1rem 0 1rem;
+  background-color: #F8FAFC;
+  color: #353535;
+  outline: none;
+}
+.profileCookBook__buttons a:hover {
+  color: #abe9a5;
+}
+
+.favouriteMeal__header {
+  text-align: center;
+  margin: 3rem 0 1rem 0;
+  color: #0f6429;
+  font-weight: 900;
+}
+.favouriteMeal__recipeContainer {
+  display: flex;
+  justify-content: center;
+}
+.favouriteMeal__buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 3rem;
+}
+.favouriteMeal__buttons a {
+  text-decoration: none;
+  border: 2px solid #353535;
+  border-radius: 1rem;
+  padding: 0 1rem 0 1rem;
+  background-color: #F8FAFC;
+  color: #353535;
+  outline: none;
+}
+.favouriteMeal__buttons a:hover {
+  color: #abe9a5;
+}
+
 .profilePage {
   margin-left: 5vw;
   margin-right: 5vw;
@@ -10321,8 +10376,7 @@ h3 {
   justify-content: space-between;
 }
 .profilePage__leftSide {
-  width: 40vw;
-  border: 2px solid green;
+  width: 45vw;
 }
 
 * {
