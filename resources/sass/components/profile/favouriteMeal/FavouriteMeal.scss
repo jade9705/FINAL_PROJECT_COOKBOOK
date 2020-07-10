@@ -1,0 +1,40 @@
+.favouriteMeal {
+  // border: 2px solid black;
+
+  &__header {
+    text-align: center;
+    margin: 3rem 0 1rem 0;
+    color: $primary;
+    font-weight: 900;
+  }
+
+  &__recipeContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 3rem;
+    // border: 2px solid black;
+
+    a {
+      text-decoration: none;
+      border: 2px solid $secondary;
+      border-radius: 1rem;
+      padding: 0 1rem 0 1rem;
+      // margin-bottom: 1rem;
+  
+      background-color: $fithcolor;
+      color: $secondary;
+      outline: none;
+  
+      &:hover {
+        color: $fourthcolor;
+      }
+    }
+  }
+
+
+}

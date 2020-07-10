@@ -34070,7 +34070,7 @@ var FavouriteMeal = function FavouriteMeal(_ref) {
   }, "Favourite recipes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "favouriteMeal__recipeContainer"
   }, content), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    className: "favouriteMeal__bottom"
+    className: "favouriteMeal__buttons"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
     href: ""
   }, "view all")));
@@ -34235,7 +34235,7 @@ var ProfileCookBook = function ProfileCookBook(_ref) {
   }, user.first_name, "'s CookBook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "profileCookBook__recipeContainer"
   }, content), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    className: "profileCookBook__bottoms"
+    className: "profileCookBook__buttons"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
     href: ""
   }, "view all"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
