@@ -8,7 +8,7 @@ class Recipe extends Model
 {
     public function ingredients()
     {
-        return $this->belongsToMany('App\Ingredient');
+        return $this->belongsToMany('App\Ingredient')->withPivot(['amount']);
     }
 
     public function comments()
@@ -25,5 +25,8 @@ class Recipe extends Model
     {
         return $this->belongsToMany('App\User');
     }
-
+    public function author()
+    {
+        return $this->belongsToMany('App\User');
+    }
 }
