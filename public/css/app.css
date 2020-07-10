@@ -10148,18 +10148,12 @@ h3 {
 }
 
 .entire-form {
-  color: red;
+  color: #0f6429;
+  margin: 10vh 15vw;
+  padding: 2em;
 }
 .entire-form button .btn {
   border-radius: 50%;
-}
-
-#form label {
-  width: 20%;
-}
-#form .input {
-  width: 30%;
-  display: flex;
 }
 
 .rating {

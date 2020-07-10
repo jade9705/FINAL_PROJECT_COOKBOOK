@@ -17,39 +17,47 @@
 
     @endif
 
-
-    <label for="title">TITLE</label>
-    <input type="text" class="input" name="title" id="title" value="" placeholder="Name your recipe">
+    <div class="form-group">
+    <label for="fornGroupTitle">TITLE</label>
+    <input type="text" class="form-control"ass="input" name="title" id="formGroupTitle" value="" placeholder="Name your recipe">
     @if($errors->has('title'))
         {{ $errors->first('title')}}
     @endif
+    </div>
     <br>
 
     <input type="hidden" name='user_id' value={{$user_id}} />
 
-    <label for="image_url">IMAGE</label>
-    <input class="input" type="file" name="image_url">
+    <div class="form-group">
+    <label for="formGroupImage_url">IMAGE</label>
+    <input class="form-control" type="file" id="formGroupImage_url" name="image_url">
     @if($errors->has('image_url'))
      {{ $errors->first('image_url')}}
     @endif
+    </div>
     <br>
-
-    <label for="description">Description</label>
-    <textarea class="input" id="description" name="description" rows="4" cols="50"></textarea>
+    <div class="form-group">
+    <label for="formGroupDescription">Description</label>
+    <textarea class="form-control" id="formGroupDescription" name="description" rows="4" cols="50"></textarea>
     @if($errors->has('description'))
      {{ $errors->first('description')}}
     @endif
+    </div>
     <br>
 
 
-
+   
     <div id="ingredients-amount">
-    <label for="ingredient">INGREDIENTS <button id="btn">+</button></label>
+    <label for="formGroupIngredients">INGREDIENTS <button id="btn" type="button" class="btn btn-success">+</button></label>
 
-    <div class="two-inputs">
-    <input class="input" type="text" name="ingredient[]" id="ingredient" value="">
-    <input class="input" type="text" name="amount[]" id="amount" value="" placeholder="amount">
-    </div>
+    <div class="row">
+        <div class="col">
+    <input class="form-control" type="text" name="ingredient[]" id="ingredient" value="" placeholder="ingredient">
+</div>
+<div class="col">
+    <input class="form-control" type="text" name="amount[]" id="amount" value="" placeholder="amount">
+</div>
+</div>
 
     
     </div>
@@ -62,22 +70,24 @@
     <br>
 
 
-
+    <div class="form-group">
     <div id="add-step">
-    <label for="step1">STEPS <button id="stepbtn">+</button></label>
+    <label for="formGroupSteps">STEPS <button id="stepbtn" type="button" class="btn btn-success">+</button></label>
     
-    <textarea className="input" id="step[]" name="step[]" rows="2" cols="50"></textarea>
+    <textarea class="form-control" id="step[]" name="step[]" rows="2" cols="50"></textarea>
     </div>
+</div>
+
     @if($errors->has('step'))
     {{ $errors->first('step')}}
-@endif
+    @endif
+    <div class="form-group">
     <br>
 
     
 
-    <input type="submit" value="1" name="published">
-
-
+    <button type="submit" value="1" name="published" type="button" class="btn btn-success">Save</button>
+    </div>
 </form>
 </div>
 <script>
@@ -87,8 +97,15 @@ addMore = (e) => {
         let blob = document.getElementById('ingredients-amount');
         let newInputs = document.createElement('div');
         newInputs.innerHTML = `
-         <input className="input" type="text" name="ingredient[]" id="ingredient" value=""> 
-        <input className="input" type="text" name="amount[]" id="amount" value="" placeholder="amount" > `;
+            <div class="row">
+            <div class="col">
+                <input class="form-control" type="text" name="ingredient[]" id="ingredient" value="" placeholder="ingredient">
+            </div>
+            <div class="col">
+                <input class="form-control" type="text" name="amount[]" id="amount" value="" placeholder="amount">
+            </div>
+            </div>
+            `;
         blob.appendChild(newInputs)
     }
 
@@ -101,7 +118,9 @@ addMore = (e) => {
         let bloop = document.getElementById('add-step');
         let newInputSteps = document.createElement('div');
         newInputSteps.innerHTML = `
-        <textarea className="input" id="step" name="step[]" rows="2" cols="50"></textarea> `;
+        <div class="form-group">
+        <textarea class="form-control" id="step" name="step[]" rows="2" cols="50"></textarea>
+        </div> `;
         bloop.appendChild(newInputSteps)
     }
 
