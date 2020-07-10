@@ -41,7 +41,7 @@ export default function Recipe() {
             <label className="ingredients">Ingredients</label>
             <ul>
               { recipe.ingredients.map((ingredient, index) => {
-                return <li key={index}>{ingredient.name} {ingredient.amount}</li>})}
+                return <li key={index}>{ingredient.name} {ingredient.pivot.amount}</li>})}
             </ul>
             <label className="method">Method  </label>
             <ol>

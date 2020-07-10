@@ -33730,7 +33730,7 @@ function Recipe() {
   }, "Ingredients"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", null, recipe.ingredients.map(function (ingredient, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
       key: index
-    }, ingredient.name, " ", ingredient.amount);
+    }, ingredient.name, " ", ingredient.pivot.amount);
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
     className: "method"
   }, "Method  "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ol", null, recipe.steps.map(function (step, index) {

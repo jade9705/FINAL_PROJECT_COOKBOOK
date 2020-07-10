@@ -14,7 +14,7 @@
  
       @csrf
 
-      <h2>What do you think, {{ auth()->user()->name}}?</h2>
+      <h2>What do you think, {{ auth()->user()->first_name}}?</h2>
 
       {{-- success message --}}
       @if (Session::has('success_message'))
