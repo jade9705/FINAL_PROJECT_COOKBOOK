@@ -4,6 +4,7 @@ import React, {useState, useEffect} from 'react'
 
 export default function Recipe() {
     const [recipe, setRecipe] = useState(null);
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
 
@@ -25,6 +26,7 @@ export default function Recipe() {
         const recipe = await response.json();  
         setRecipe(recipe); 
         console.log(recipe);
+        
       }
 
      if(!recipe) {
@@ -36,6 +38,9 @@ export default function Recipe() {
       <>
         <div className="recipe">
             <h1 className="recipe__name">{recipe.title}</h1>
+            <p>by {recipe.users.map((user, index) => {
+              return <a href="" className="recipeAuthor" key={index} ><strong>{user.first_name}</strong> <strong>{user.surname}</strong></a>
+            })}</p>
             <img src={`/images/uploads/${recipe.image_url}`} alt="some picture of food" className="recipe__img" />
             <p className="recipe__description">{recipe.description}</p>
             <label className="ingredients">Ingredients</label>

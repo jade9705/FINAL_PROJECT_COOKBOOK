@@ -21,7 +21,9 @@
     <label for="fornGroupTitle">TITLE</label>
     <input type="text" class="form-control"ass="input" name="title" id="formGroupTitle" value="" placeholder="Name your recipe">
     @if($errors->has('title'))
+    <div class="alert">
         {{ $errors->first('title')}}
+    </div>
     @endif
     </div>
     <br>
@@ -32,7 +34,9 @@
     <label for="formGroupImage_url">IMAGE</label>
     <input class="form-control" type="file" id="formGroupImage_url" name="image_url">
     @if($errors->has('image_url'))
+    <div class="alert">
      {{ $errors->first('image_url')}}
+    </div>
     @endif
     </div>
     <br>
@@ -40,7 +44,9 @@
     <label for="formGroupDescription">Description</label>
     <textarea class="form-control" id="formGroupDescription" name="description" rows="4" cols="50"></textarea>
     @if($errors->has('description'))
+    <div class="alert">
      {{ $errors->first('description')}}
+    </div>
     @endif
     </div>
     <br>
@@ -62,10 +68,14 @@
     
     </div>
     @if($errors->has('ingredient'))
+    <div class="alert">
     {{ $errors->first('ingredient')}}
+</div>
 @endif
 @if($errors->has('amount'))
+<div class="alert">
 {{ $errors->first('amount')}}
+</div>
 @endif
     <br>
 
@@ -79,9 +89,12 @@
 </div>
 
     @if($errors->has('step'))
+    <div class="alert">
     {{ $errors->first('step')}}
     @endif
     <div class="form-group">
+</div>
+@endif
     <br>
 
     
