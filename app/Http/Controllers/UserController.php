@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 // you can use auth model for examlple-> Auth::user()
 use Illuminate\Support\Facades\Auth;
+// import croppa to change uploaded images
+use Croppa;
 
 class UserController extends Controller
 {
@@ -69,9 +72,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $newFileName = md5(time()) . '.' . $request->file('file')->extension();
+        $request->file('file')->move(public_path('/images/uploads/user'), $newFileName);
+
+        $user = User::findOrFail($request->input('user_id'));
+        $user->image_url = $newFileName;
+        $user->bio = $request->input('bio');
+        $user->save();
+
+        // try with the croppa but not successful
+        // Croppa::render(Croppa::url('/images/uploads/' . $newFileName, 600, 600, ['resize']));
+
+        return ['user' => $user];
     }
 
     /**

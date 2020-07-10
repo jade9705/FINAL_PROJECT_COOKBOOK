@@ -24,6 +24,8 @@ Route::get('/toprecipes', 'Api\ApiTopRecipesController@index');
 Route::post('/search/recipes', 'Api\ApiSearchRecipesController@index');
 // apiendpoint for newest recipe in profile page
 Route::post('/search/newestrecipes', 'Api\ApiSearchRecipesController@newest');
+// api endpoint for liked recipe (in this moment like smth is not possible for that it is get method) change it to post method and find first two liked recipe
+Route::get('/search/newestliked', 'Api\ApiSearchRecipesController@newestliked');
 
 
 Route::get('/recipe/{id}', 'Api\ApiRecipeController@show');

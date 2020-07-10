@@ -3,15 +3,12 @@ import UserBox from "./UserBox.jsx";
 import FollowersBox from "./FollowersBox";
 import ActivityBox from "./ActivityBox";
 
-const ProfileSideBar = () => {
+const ProfileSideBar = ({user}) => {
   return (
-    <div className="ProfileSideBar">
-      <h2>Cooker Profile</h2>
-      <UserBox />
+    <div className="profileSideBar">
+      <UserBox user={user} />
       <FollowersBox />
       <ActivityBox />
-
-
     </div>
   )
 }

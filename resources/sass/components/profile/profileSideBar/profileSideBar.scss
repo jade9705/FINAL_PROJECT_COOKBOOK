@@ -1,0 +1,12 @@
+@import './userBox/userBox.scss';
+
+.profileSideBar {
+  width: 30vw;
+  margin-right: 1rem;
+  border-left: 5px dotted $secondary;
+  border-right: 5px dotted $secondary;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

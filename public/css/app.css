@@ -10080,7 +10080,13 @@ h3 {
   justify-content: space-between;
 }
 .recipeBox:hover {
-  box-shadow: 0px 0px 5px 3px rgba(69, 69, 69, 0.95);
+  box-shadow: 0px 0px 5px 3px rgba(69, 69, 69, 0.6);
+}
+.recipeBox__link {
+  text-decoration: none;
+}
+.recipeBox__link:hover {
+  text-decoration: none;
 }
 .recipeBox__img {
   border-radius: 0.7rem;
@@ -10187,6 +10193,142 @@ h3 {
 
 .rating__star--on {
   background-image: url("../images/rating/star-yellow.svg");
+}
+
+.card-logo {
+  fill: #353535;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: start;
+  align-items: baseline;
+}
+.card-header p {
+  margin: 0;
+  margin-left: 1rem;
+}
+
+.container {
+  height: 30vh;
+  margin-top: 15vh;
+  margin-bottom: 35vh;
+}
+
+.shado {
+  box-shadow: 10px 10px 16px -7px rgba(69, 69, 69, 0.5);
+}
+
+.medaillon__img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 10px 16px -7px rgba(69, 69, 69, 0.5);
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+.bio {
+  margin: 3rem 0 1rem 0;
+  width: 70%;
+  border-radius: 0.6rem;
+  background-color: #353535;
+  color: #F8FAFC;
+  opacity: 0.95;
+}
+.bio__header {
+  text-align: center;
+  margin: 0.5rem;
+  width: 100%;
+}
+.bio__content {
+  margin: 0.5rem;
+}
+
+.userBox {
+  width: 100%;
+}
+.userBox form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userBox__upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+}
+.userBox__upload input {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+.userBox__name {
+  text-align: center;
+  margin: 3rem 0 3rem 0;
+  color: #0f6429;
+  font-weight: 900;
+}
+.userBox__input {
+  text-decoration: none;
+  border: 2px solid #353535;
+  border-radius: 1rem;
+  padding: 0 1rem 0 1rem;
+  margin-bottom: 1rem;
+  background-color: #F8FAFC;
+  color: #353535;
+  outline: none;
+}
+.userBox__input:hover {
+  color: #abe9a5;
+}
+.userBox__textarea {
+  border: 2px solid #353535;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 70%;
+  background-color: #F8FAFC;
+  color: #353535;
+  outline: none;
+}
+.userBox__save-container {
+  margin-top: 1rem;
+  width: 15rem;
+  display: flex;
+  justify-content: space-between;
+}
+.userBox__medaillon {
+  width: 30vh;
+  min-width: 200px;
+  max-width: 300px;
+  height: 30vh;
+  min-height: 200px;
+  max-height: 300px;
+}
+
+.profileSideBar {
+  width: 30vw;
+  margin-right: 1rem;
+  border-left: 5px dotted #353535;
+  border-right: 5px dotted #353535;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profilePage {
+  margin-left: 5vw;
+  margin-right: 5vw;
+  display: flex;
+  justify-content: space-between;
+}
+.profilePage__leftSide {
+  width: 40vw;
+  border: 2px solid green;
 }
 
 * {

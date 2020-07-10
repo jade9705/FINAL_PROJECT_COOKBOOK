@@ -22,6 +22,9 @@
 // import auth -> login, create etc.
 @import './auth/auth.scss';
 
+//import styling for each components from profile component
+@import './components/profile/Profile.scss';
+
 *{
   margin: 0;
   padding: 0;

@@ -38,6 +38,9 @@ Route::get('/create', 'RecipeController@create');
 
 Route::get('/profile/{id}', 'UserController@show')->name('show.user')->middleware('auth');
 
+// upload img and edit user profile
+Route::post('/profile/update', 'UserController@update')->name('update.user')->middleware('auth');
+
 // bit tricky to get login user to react component
 Route::get('/users/current', 'UserController@current')->name('current.user')->middleware('auth');
 //for reviews:

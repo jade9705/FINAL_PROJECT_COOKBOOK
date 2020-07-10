@@ -22,7 +22,16 @@ class ApiSearchRecipesController extends Controller
     {
         $user_id = $request->user_id;
         $user = User::find($user_id);
-        $newestRecipes = $user->recipes->all();
-        return $newestRecipes;
+        if ($user_id) {
+            $newestRecipes = $user->recipes()->orderBy('updated_at')->limit(2)->get();
+            return $newestRecipes;
+        }
+        return [];
+    }
+
+    public function newestliked()
+    {
+        $recipes = Recipe::orderBy('description')->limit(2)->get();
+        return $recipes;
     }
 }

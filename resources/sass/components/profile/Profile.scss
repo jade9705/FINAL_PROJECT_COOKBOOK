@@ -1,0 +1,15 @@
+@import './profileSideBar/profileSideBar.scss';
+
+
+.profilePage {
+  margin-left: 5vw;
+  margin-right: 5vw;
+
+  display: flex;
+  justify-content: space-between;
+
+  &__leftSide {
+    width: 40vw;
+    border: 2px solid green;
+  }
+}

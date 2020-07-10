@@ -15,20 +15,17 @@ export default class Profile extends Component {
   catchUser = async () => {
     const response = await fetch('/users/current'); //apiendpoint of current user
     const user = await response.json();
-    console.log('ahoj', user);
-    this.setState({
-      user: user,
-    });
+    this.setState({ user: user });
   }
 
   render() {
     return (
       <div className="profilePage">
-        <div className="leftSide">
+        <div className="profilePage__leftSide">
           <ProfileCookBook user={this.state.user}/>
-          <FavouriteMeal />
+          <FavouriteMeal user={this.state.user}/>
         </div>
-        <ProfileSideBar />
+        <ProfileSideBar user={this.state.user}/>
       </div>
     )
   }
