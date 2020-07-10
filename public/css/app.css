@@ -10189,6 +10189,23 @@ h3 {
   background-image: url("../images/rating/star-yellow.svg");
 }
 
+.recipe-container {
+  border: 2px black solid;
+  display: flex;
+}
+
+.hideThis {
+  display: none;
+}
+
+ul {
+  list-style: none;
+}
+
+#starRender {
+  display: flex;
+}
+
 .card-logo {
   fill: #353535;
   height: 1.5rem;
