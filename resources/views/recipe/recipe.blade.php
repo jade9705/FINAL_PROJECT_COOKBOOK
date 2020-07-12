@@ -7,7 +7,9 @@
 
   <script src="{{ mix('js/app.js') }}"></script>
 
-
+@if(!auth()->check())
+<div>Please create an account to leave comments</div>
+@else
 @if(auth()->user()->id !== $recipe->user_id)
 
 
@@ -27,9 +29,9 @@
     @if (count($errors) > 0)
       <div class="alert alert-danger">
         <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
         </ul>
       </div>
     @endif
@@ -102,6 +104,8 @@
     </div>
 @endif
   </form>
+  @endif 
+
 
   {{-- @else 
     
@@ -109,36 +113,41 @@
   @endif --}}
   <div class="review">
 
-    <h2>Comments...</h2>
-      <ul> 
-        {{ $sumOfRatings = 0  }}
+  <h2>Comments...</h2>
+    <ul> 
+     <div class="hideThis"> {{ $sumOfRatings = 0  }} </div>
 
-          @foreach ($recipe->comments as $comment)
-          <li> {{$comment->user->first_name}} {{$comment->user->surname}} </li>
+        @foreach ($recipe->comments as $comment)
+       <img src="/images/uploads/user/{{$comment->user->image_url}}" />
+        <div class="recipe-container">
+          <div class="hideThis"> {{$number = (int)$comment->rating}}</div>
 
-          <li class="review">
-            {{ $comment->text }}
+            <li> <a href=""><strong> {{$comment->user->first_name}} {{$comment->user->surname}}</strong></a> </li>
+
+            <div class="ratingRender"> {{ $comment->rating }}/5</div>
+            @for($i = 0; $i < $number; $i ++)
+              <div id="starRender" class="rating__star rating__star--on"></div>
+            @endfor
+
+
+            <li class="review">
+              {{ $comment->text }}
               <br>      
-              <div class="ratingRender">Rating: {{ $comment->rating }}/5</div>
-              {{$number = (int)$comment->rating}}
-              
-              @for($i = 0; $i < $number; $i ++)
-                <div class="rating__star rating__star--on"></div>
-              @endfor
 
-               <div class="hideThis" >{{ $sumOfRatings += (int)$comment->rating}} </div>
-                {{-- to delete reviews--}}
-                  {{-- @can('delete_reviews') --}}
+              <div class="hideThis" >{{ $sumOfRatings += (int)$comment->rating}} </div>
+              @if(auth()->check())
+              
+                @if(auth()->user()->id === $comment->user->id)
                     <form action="{{route('comment.delete', [$recipe->id, $comment->id])}}" method="post">
                   @csrf
-                          @method('delete')
-                          <input type="submit" value="delete">
-                  {{-- @endcan --}}
-
-
+                    @method('delete')
+                    <input type="submit" value="delete">
+                @endif
+                @endif
               </li>
-          @endforeach
-      </ul> 
+          </div>
+        @endforeach
+    </ul> 
 
       {{-- take each number from the ratings and add them, then divide by the amount of ratings(length), pnly when there is at least one rating --}}
       @if($sumOfRatings != 0)
@@ -148,8 +157,8 @@
      
       <h2>average rating </h2>
       @for($i = 0; $i < $average; $i ++)
-                 <div class="rating__star rating__star--on"></div>
-                 @endfor
+        <div class="rating__star rating__star--on"></div>
+      @endfor
       <p>{{ $average }} </p>
       @endif
   </div>
