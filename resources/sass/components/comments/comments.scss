@@ -1,18 +1,41 @@
 
-    .recipe-container {
-        border: 2px black solid;
-        display: flex;
-        
-    }
-    .hideThis {
-        display:none;
-    }
-
-  ul {
-    list-style: none;
-  }
-
-    #starRender{
-        display:flex
-    }
-
+.recipe-container {
+ padding: 1rem;
+  display: flex;
+  width:50%;
+  border-bottom: 1px solid black;
+}
+.hideThis {
+  display:none;
+}
+ul {
+  list-style: none;
+}
+.ratingRender {
+  display:flex;
+  padding: 1em;
+}
+#starRender{
+    display:flex;
+}
+.nameAndText {
+  flex-direction: column;
+}
+.stars {
+  display:flex;
+}
+.userName {
+  font-size: 1.5em;
+}
+.userImage {
+  width:7.5vw;
+  height:15vh;
+  border-radius: 50%;
+}
+.imageAndStar {
+  flex-direction: column;
+}
+.review {
+  font-size: 1.2em;
+  padding: 0.8em;
+}

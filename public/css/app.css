@@ -10190,8 +10190,10 @@ h3 {
 }
 
 .recipe-container {
-  border: 2px black solid;
+  padding: 1rem;
   display: flex;
+  width: 50%;
+  border-bottom: 1px solid black;
 }
 
 .hideThis {
@@ -10202,8 +10204,84 @@ ul {
   list-style: none;
 }
 
+.ratingRender {
+  display: flex;
+  padding: 1em;
+}
+
 #starRender {
   display: flex;
+}
+
+.nameAndText {
+  flex-direction: column;
+}
+
+.stars {
+  display: flex;
+}
+
+.userName {
+  font-size: 1.5em;
+}
+
+.userImage {
+  width: 7.5vw;
+  height: 15vh;
+  border-radius: 50%;
+}
+
+.imageAndStar {
+  flex-direction: column;
+}
+
+.review {
+  font-size: 1.2em;
+  padding: 0.8em;
+}
+
+.recipe {
+  padding: 2em;
+  display: flex;
+  justify-content: space-evenly;
+}
+.recipe__name {
+  font-size: 4em;
+}
+.recipe__container1 {
+  display: flex;
+  flex-direction: column;
+}
+.recipe__container2 {
+  display: flex;
+  flex-direction: column;
+}
+.recipe img {
+  max-height: 50vh;
+}
+.recipe__description {
+  padding: 1rem;
+  font-size: 1.2em;
+  max-width: 40vw;
+}
+.recipe__ingredients {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.recipe__ingredients li {
+  font-weight: normal;
+}
+.recipe__method {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.recipe__methodlist {
+  font-size: 1.2em;
+  padding: 0.5em;
+}
+.recipe__medallion {
+  width: 20px;
+  height: 20px;
 }
 
 .card-logo {

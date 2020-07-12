@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import Medaillon from '../../../Profile/Components/Medaillon.jsx';
 
 
 
@@ -29,6 +30,9 @@ export default function Recipe() {
         
       }
 
+      // const authorUrl = recipe.id;
+      // console.log(authorUrl)
+
      if(!recipe) {
          return <p>loading</p>
      }
@@ -37,23 +41,35 @@ export default function Recipe() {
 
       <>
         <div className="recipe">
-            <h1 className="recipe__name">{recipe.title}</h1>
-            <p>by {recipe.users.map((user, index) => {
-              return <a href="" className="recipeAuthor" key={index} ><strong>{user.first_name}</strong> <strong>{user.surname}</strong></a>
-            })}</p>
-            <img src={`/images/uploads/${recipe.image_url}`} alt="some picture of food" className="recipe__img" />
-            <p className="recipe__description">{recipe.description}</p>
-            <label className="ingredients">Ingredients</label>
+          <div className="recipe__container1">
+            <div className="recipe__imagey">
+        <img src={`/images/uploads/${recipe.image_url}`} alt="some picture of food"  />
+        </div>
+        <p className="recipe__description">{recipe.description}</p>
+            <label className="recipe__ingredients">Ingredients</label>
             <ul>
               { recipe.ingredients.map((ingredient, index) => {
-                return <li key={index}>{ingredient.name} {ingredient.pivot.amount}</li>})}
+                return <li key={index}> {ingredient.pivot.amount}  {ingredient.name} </li>})}
             </ul>
-            <label className="method">Method  </label>
+            </div>
+            <div className="recipe__container2">
+              <div className="recipe__medallion">
+                <Medaillon user={recipe.users[0]} />
+                </div>
+            <h1 className="recipe__name">{recipe.title}</h1>
+
+            <p>by {recipe.users.map((user, index) => {
+              return <a href={`/profile/${recipe.user_id}`} className="recipeAuthor" key={index} ><strong>{user.first_name}</strong> <strong>{user.surname}</strong></a>
+            })}</p>
+          
+            
+            <label className="recipe__method">Method  </label>
             <ol>
               { recipe.steps.map((step, index) => {
-                 return <li key={index}>{step.instruction}</li>})}
+                 return <li className="recipe__methodlist"key={index}>{step.instruction}</li>})}
                     
             </ol> 
+            </div>
                 
         </div>
           

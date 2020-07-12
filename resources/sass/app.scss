@@ -20,6 +20,8 @@
 @import './components/create-recipe/form.scss';
 @import'./components/starrating/stars.scss';
 @import 'components/comments/comments.scss';
+//importing for recipe show page
+@import './components/recipe/recipe.scss';
 
 // import auth -> login, create etc.
 @import './auth/auth.scss';

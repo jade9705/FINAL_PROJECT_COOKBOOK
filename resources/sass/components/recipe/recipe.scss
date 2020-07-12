@@ -1,0 +1,47 @@
+.recipe {
+    padding: 2em;
+    display:flex;
+    justify-content: space-evenly;
+    &__name {
+        font-size: 4em;
+    }
+    &__container1 {
+        display: flex;
+        flex-direction: column;
+        
+       
+    }
+    &__container2 {
+        display: flex;
+        flex-direction: column;
+        
+    }
+    img {
+           
+        max-height: 50vh;
+    }
+    &__description {
+        padding: 1rem;
+        font-size: 1.2em;
+        max-width: 40vw;
+    }
+    &__ingredients {
+        font-size: 1.2em;
+        font-weight: bold;
+        li {
+            font-weight: normal;
+        }
+    }
+    &__method {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    &__methodlist  {
+        font-size: 1.2em;
+        padding: 0.5em;
+    }
+    &__medallion {
+        width: 20px;
+        height: 20px;
+    }
+}

@@ -117,19 +117,22 @@
     <ul> 
      <div class="hideThis"> {{ $sumOfRatings = 0  }} </div>
 
-        @foreach ($recipe->comments as $comment)
-       <img src="/images/uploads/user/{{$comment->user->image_url}}" />
+      @foreach ($recipe->comments as $comment)
         <div class="recipe-container">
           <div class="hideThis"> {{$number = (int)$comment->rating}}</div>
-
-            <li> <a href=""><strong> {{$comment->user->first_name}} {{$comment->user->surname}}</strong></a> </li>
-
-            <div class="ratingRender"> {{ $comment->rating }}/5</div>
-            @for($i = 0; $i < $number; $i ++)
+          
+          <img src="/images/uploads/user/{{$comment->user->image_url}}" class="userImage"/>
+          
+          
+          
+          <div class="nameAndText">
+            <li class="userName"> <a href="/profile/{id}"><strong> {{$comment->user->first_name}} {{$comment->user->surname}}</strong></a> </li>
+            <div class="stars">
+              @for($i = 0; $i < $number; $i ++)
               <div id="starRender" class="rating__star rating__star--on"></div>
             @endfor
-
-
+            
+              </div>
             <li class="review">
               {{ $comment->text }}
               <br>      
@@ -145,6 +148,13 @@
                 @endif
                 @endif
               </li>
+            </div>
+
+            
+         
+            <div class="ratingRender"> {{ $comment->rating }}/5</div>
+
+           
           </div>
         @endforeach
     </ul> 
