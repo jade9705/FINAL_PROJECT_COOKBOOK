@@ -35,14 +35,13 @@ Route::get('/create', 'RecipeController@create');
 // Route::post('/recipes', 'RecipeController@store');
 
 
-
+//go to the profile.blade.php and call profile.jsxx component with the post(users/getprofile)
 Route::get('/profile/{id}', 'UserController@show')->name('show.user')->middleware('auth');
+Route::post('/users/getprofile', 'UserController@getProfile')->name('getProfile.user')->middleware('auth');
 
 // upload img and edit user profile
 Route::post('/profile/update', 'UserController@update')->name('update.user')->middleware('auth');
 
-// bit tricky to get login user to react component
-Route::get('/users/current', 'UserController@current')->name('current.user')->middleware('auth');
 //for reviews:
     
 Route::post('/recipe/{recipe_id}/comment', 'RecipeController@comment')->name('recipe.comment');

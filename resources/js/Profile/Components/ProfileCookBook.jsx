@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import RecipeBox from "../../App/Components/recipeBox/RecipeBox.jsx";
 
-const ProfileCookBook = ({user}) => {
+const ProfileCookBook = ({user, logged_user_id}) => {
   const [recipes, setRecipes] = useState([]);
   const [clickedAllrecipes, setClickedAllrecipes] = useState(false);
 
@@ -35,6 +35,8 @@ const ProfileCookBook = ({user}) => {
     setClickedAllrecipes(true);
   }
 
+
+  //RECIPEBOX CONTENT -> WATING TO NOT NULL RECIPES
   let content = null;
   if(recipes){
     content = (
@@ -47,6 +49,7 @@ const ProfileCookBook = ({user}) => {
     )
   }
 
+
   return (
     <div className='profileCookBook'>
       <h2 className='profileCookBook__header'>{user.first_name}'s CookBook</h2>
@@ -54,8 +57,9 @@ const ProfileCookBook = ({user}) => {
         {
           clickedAllrecipes ? <a href="" onClick={ fetchNewestRecipes } >view newest</a> : <a href="" onClick={ fetchAllUserRecipes } >view all</a>
         }
-        
-        <a href="http://localhost:3000/create">add new</a>
+        {
+          logged_user_id == user.id ? <a href="http://localhost:3000/create">add new</a> : null
+        }
       </div>
       <div className='profileCookBook__recipeContainer'>
         {content}

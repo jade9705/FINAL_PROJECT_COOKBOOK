@@ -5,7 +5,6 @@ import Recipe from './App/Components/Recipe/Recipe.jsx';
 import Profile from './Profile/Profile.jsx';
 
 
-
 //homepage and searchbar
 if(document.getElementById('app')){
     ReactDOM.render(<App />, document.getElementById('app'));

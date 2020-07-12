@@ -51,7 +51,20 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return \view('user.profile');
+        $profile_id = $id;
+        return \view('user.profile', \compact('profile_id'));
+    }
+
+    public function getProfile(Request $request)
+    {
+        $logged_user_id = Auth::id();
+        $user = User::findOrFail($request->input('profile_id'));
+        
+        
+        return [
+            'user' => $user,
+            'logged_user_id' => $logged_user_id
+        ];
     }
 
     /**

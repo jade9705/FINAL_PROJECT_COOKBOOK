@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Medaillon from "./Medaillon.jsx";
 import Bio from "./Bio.jsx";
 
-const UserBox = ({user}) => {
+const UserBox = ({user, logged_user_id}) => {
   const [hidden, setHidden] = useState('none');
   const [selectedFile, setSelectedFile] = useState(null);
   const [bio, setBio] = useState('');
@@ -96,12 +96,16 @@ const UserBox = ({user}) => {
       <textarea className="userBox__textarea" style={{ display: `${hidden}` }} onChange= { handleBioChange } id="bio" rows="3" cols="50" value={bio}></textarea>
 
       {
-        hidden === 'none'
+        ((hidden === 'none') && (logged_user_id == user.id))
         ?
           (
-            <>
             <input className="userBox__input" type="button" value="Edit profile" onClick={setToEditMode} />
-            </>
+          )
+        :
+          hidden === 'none'
+        ?
+          (
+            <input className="userBox__input" type="button" value="Follow this good chef!" />
           )
         :
           (

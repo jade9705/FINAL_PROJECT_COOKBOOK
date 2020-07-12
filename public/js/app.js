@@ -34179,7 +34179,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var ProfileCookBook = function ProfileCookBook(_ref) {
-  var user = _ref.user;
+  var user = _ref.user,
+      logged_user_id = _ref.logged_user_id;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -34272,7 +34273,8 @@ var ProfileCookBook = function ProfileCookBook(_ref) {
     return function fetchAllUserRecipes(_x2) {
       return _ref3.apply(this, arguments);
     };
-  }();
+  }(); //RECIPEBOX CONTENT -> WATING TO NOT NULL RECIPES
+
 
   var content = null;
 
@@ -34297,9 +34299,9 @@ var ProfileCookBook = function ProfileCookBook(_ref) {
   }, "view newest") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
     href: "",
     onClick: fetchAllUserRecipes
-  }, "view all"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+  }, "view all"), logged_user_id == user.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
     href: "http://localhost:3000/create"
-  }, "add new")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+  }, "add new") : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "profileCookBook__recipeContainer"
   }, content));
 };
@@ -34328,11 +34330,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ProfileSideBar = function ProfileSideBar(_ref) {
-  var user = _ref.user;
+  var user = _ref.user,
+      logged_user_id = _ref.logged_user_id;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "profileSideBar"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UserBox_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    user: user
+    user: user,
+    logged_user_id: logged_user_id
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FollowersBox__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ActivityBox__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
@@ -34378,7 +34382,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var UserBox = function UserBox(_ref) {
-  var user = _ref.user;
+  var user = _ref.user,
+      logged_user_id = _ref.logged_user_id;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])('none'),
       _useState2 = _slicedToArray(_useState, 2),
@@ -34514,12 +34519,16 @@ var UserBox = function UserBox(_ref) {
     rows: "3",
     cols: "50",
     value: bio
-  }), hidden === 'none' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+  }), hidden === 'none' && logged_user_id == user.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
     className: "userBox__input",
     type: "button",
     value: "Edit profile",
     onClick: setToEditMode
-  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+  }) : hidden === 'none' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+    className: "userBox__input",
+    type: "button",
+    value: "Follow this good chef!"
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "userBox__save-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
     className: "userBox__input",
@@ -34606,7 +34615,8 @@ var Profile = /*#__PURE__*/function (_Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      user: {}
+      user: {},
+      logged_user_id: null
     });
 
     _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
@@ -34614,13 +34624,23 @@ var Profile = /*#__PURE__*/function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "catchUser", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var response, user;
+      var response, data;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return fetch('/users/current');
+              return fetch('/users/getprofile', {
+                method: 'POST',
+                body: JSON.stringify({
+                  profile_id: profile_id
+                }),
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+              });
 
             case 2:
               response = _context.sent;
@@ -34628,13 +34648,15 @@ var Profile = /*#__PURE__*/function (_Component) {
               return response.json();
 
             case 5:
-              user = _context.sent;
+              data = _context.sent;
+              console.log('potom co sto chytil', data);
 
               _this.setState({
-                user: user
+                user: data.user,
+                logged_user_id: data.logged_user_id
               });
 
-            case 7:
+            case 8:
             case "end":
               return _context.stop();
           }
@@ -34648,16 +34670,20 @@ var Profile = /*#__PURE__*/function (_Component) {
   _createClass(Profile, [{
     key: "render",
     value: function render() {
+      console.log(profile_id);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "profilePage"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "profilePage__leftSide"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_ProfileCookBook_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        user: this.state.user
+        user: this.state.user,
+        logged_user_id: this.state.logged_user_id
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_FavouriteMeal_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        user: this.state.user
+        user: this.state.user,
+        logged_user_id: this.state.logged_user_id
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Components_ProfileSideBar_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        user: this.state.user
+        user: this.state.user,
+        logged_user_id: this.state.logged_user_id
       }));
     }
   }]);
