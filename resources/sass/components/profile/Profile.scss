@@ -3,14 +3,15 @@
 @import './favouriteMeal/FavouriteMeal.scss';
 
 .profilePage {
-  margin-left: 5vw;
-  margin-right: 5vw;
+  margin-left: 4vw;
+  margin-right: 4vw;
 
   display: flex;
   justify-content: space-between;
 
   &__leftSide {
-    width: 45vw;
+    width: 60vw;
+    margin-right: 4vw;
     // border: 2px solid green;
   }
 }

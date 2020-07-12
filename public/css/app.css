@@ -10417,17 +10417,19 @@ ul {
 }
 .profileCookBook__recipeContainer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 .profileCookBook__buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 .profileCookBook__buttons a {
   text-decoration: none;
   border: 2px solid #353535;
   border-radius: 1rem;
   padding: 0 1rem 0 1rem;
+  margin: 0 2rem 0 2rem;
   background-color: #F8FAFC;
   color: #353535;
   outline: none;
@@ -10465,13 +10467,14 @@ ul {
 }
 
 .profilePage {
-  margin-left: 5vw;
-  margin-right: 5vw;
+  margin-left: 4vw;
+  margin-right: 4vw;
   display: flex;
   justify-content: space-between;
 }
 .profilePage__leftSide {
-  width: 45vw;
+  width: 60vw;
+  margin-right: 4vw;
 }
 
 * {

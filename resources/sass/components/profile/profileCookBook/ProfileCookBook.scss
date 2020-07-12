@@ -2,6 +2,8 @@
   // border: 2px solid black;
 
   &__header {
+  // border: 2px solid black;
+
     text-align: center;
     margin: 3rem 0 1rem 0;
     color: $primary;
@@ -9,13 +11,18 @@
   }
 
   &__recipeContainer {
+  // border: 2px solid black;
+
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
   }
 
   &__buttons {
+  // border: 2px solid black;
+
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     // border: 2px solid black;
 
     a {
@@ -23,7 +30,7 @@
       border: 2px solid $secondary;
       border-radius: 1rem;
       padding: 0 1rem 0 1rem;
-      // margin-bottom: 1rem;
+      margin: 0 2rem 0 2rem;
   
       background-color: $fithcolor;
       color: $secondary;

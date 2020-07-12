@@ -29,11 +29,11 @@ const FavouriteMeal = ({user}) => {
   return (
     <div className='favouriteMeal'>
       <h2 className='favouriteMeal__header'>Favourite recipes</h2>
-      <div className='favouriteMeal__recipeContainer'>
-        {content}
-      </div>
       <div className='favouriteMeal__buttons'>
         <a href="">view all</a>
+      </div>
+      <div className='favouriteMeal__recipeContainer'>
+        {content}
       </div>
     </div>
   )

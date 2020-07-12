@@ -34082,12 +34082,12 @@ var FavouriteMeal = function FavouriteMeal(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", {
     className: "favouriteMeal__header"
   }, "Favourite recipes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    className: "favouriteMeal__recipeContainer"
-  }, content), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "favouriteMeal__buttons"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
     href: ""
-  }, "view all")));
+  }, "view all")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "favouriteMeal__recipeContainer"
+  }, content));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (FavouriteMeal);
@@ -34130,7 +34130,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var Medaillon = function Medaillon(_ref) {
   var user = _ref.user;
-  console.log(user);
+  // console.log(user);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "medaillon__img",
     style: {
@@ -34183,21 +34183,27 @@ var ProfileCookBook = function ProfileCookBook(_ref) {
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
-      newestRecipes = _useState2[0],
-      setNewestRecipes = _useState2[1];
+      recipes = _useState2[0],
+      setRecipes = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      clickedAllrecipes = _useState4[0],
+      setClickedAllrecipes = _useState4[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     fetchNewestRecipes();
   }, [user]);
 
   var fetchNewestRecipes = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(event) {
       var response, newestRecipes;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              event ? event.preventDefault() : null;
+              _context.next = 3;
               return fetch('/api/search/newestrecipes', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -34209,16 +34215,17 @@ var ProfileCookBook = function ProfileCookBook(_ref) {
                 }
               });
 
-            case 2:
+            case 3:
               response = _context.sent;
-              _context.next = 5;
+              _context.next = 6;
               return response.json();
 
-            case 5:
+            case 6:
               newestRecipes = _context.sent;
-              setNewestRecipes(newestRecipes);
+              setRecipes(newestRecipes);
+              setClickedAllrecipes(false);
 
-            case 7:
+            case 9:
             case "end":
               return _context.stop();
           }
@@ -34226,15 +34233,51 @@ var ProfileCookBook = function ProfileCookBook(_ref) {
       }, _callee);
     }));
 
-    return function fetchNewestRecipes() {
+    return function fetchNewestRecipes(_x) {
       return _ref2.apply(this, arguments);
+    };
+  }();
+
+  var fetchAllUserRecipes = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(event) {
+      var response, allUsersRecipes;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              event.preventDefault();
+              console.log("/api/cookbook/".concat(user.id));
+              _context2.next = 4;
+              return fetch("/api/cookbook/".concat(user.id));
+
+            case 4:
+              response = _context2.sent;
+              _context2.next = 7;
+              return response.json();
+
+            case 7:
+              allUsersRecipes = _context2.sent;
+              console.log(allUsersRecipes);
+              setRecipes(allUsersRecipes);
+              setClickedAllrecipes(true);
+
+            case 11:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function fetchAllUserRecipes(_x2) {
+      return _ref3.apply(this, arguments);
     };
   }();
 
   var content = null;
 
-  if (newestRecipes) {
-    content = newestRecipes.map(function (recipe, index) {
+  if (recipes) {
+    content = recipes.map(function (recipe, index) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_App_Components_recipeBox_RecipeBox_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         recipe: recipe,
         key: index
@@ -34247,14 +34290,18 @@ var ProfileCookBook = function ProfileCookBook(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", {
     className: "profileCookBook__header"
   }, user.first_name, "'s CookBook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    className: "profileCookBook__recipeContainer"
-  }, content), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "profileCookBook__buttons"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-    href: ""
+  }, clickedAllrecipes ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+    href: "",
+    onClick: fetchNewestRecipes
+  }, "view newest") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+    href: "",
+    onClick: fetchAllUserRecipes
   }, "view all"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-    href: ""
-  }, "add new")));
+    href: "http://localhost:3000/create"
+  }, "add new")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "profileCookBook__recipeContainer"
+  }, content));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ProfileCookBook);
@@ -34348,15 +34395,22 @@ var UserBox = function UserBox(_ref) {
       bio = _useState6[0],
       setBio = _useState6[1];
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
       _useState8 = _slicedToArray(_useState7, 2),
       editeduser = _useState8[0],
-      setEditeduser = _useState8[1];
+      setEditeduser = _useState8[1]; // console.log('props user', user);
+  // console.log('state user', editeduser);
 
-  console.log('props user', user);
-  console.log('state user', editeduser);
+
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     setEditeduser(user);
+  }, [user]);
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    if (user.bio == null) {
+      setBio('Write something nice about you!');
+    } else {
+      setBio(user.bio);
+    }
   }, [user]);
 
   var setToEditMode = function setToEditMode(event) {
@@ -34408,10 +34462,10 @@ var UserBox = function UserBox(_ref) {
 
               case 5:
                 data = _context.sent;
-                console.log(data);
+                // console.log(data);
                 setEditeduser(data.user);
 
-              case 8:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -34426,13 +34480,13 @@ var UserBox = function UserBox(_ref) {
 
     fetchData();
     setHidden('none');
-  };
+  }; // console.log('ahoj pred rendrem', bio);
 
-  console.log('ahoj pred rendrem');
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "userBox"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
-    enctype: "multipart/form-data",
+    encType: "multipart/form-data",
     onSubmit: handleOnSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", {
     className: "userBox__name"
@@ -34458,8 +34512,9 @@ var UserBox = function UserBox(_ref) {
     onChange: handleBioChange,
     id: "bio",
     rows: "3",
-    cols: "50"
-  }, "Write here something nice about you."), hidden === 'none' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+    cols: "50",
+    value: bio
+  }), hidden === 'none' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
     className: "userBox__input",
     type: "button",
     value: "Edit profile",
@@ -34670,8 +34725,8 @@ if (document.getElementById('profile')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\web\bootcamp\projects\FINAL_PROJECT_COOKBOOK\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\web\bootcamp\projects\FINAL_PROJECT_COOKBOOK\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Web\codingbootcamp\Projects\FINAL_PROJECT_COOKBOOK\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Web\codingbootcamp\Projects\FINAL_PROJECT_COOKBOOK\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

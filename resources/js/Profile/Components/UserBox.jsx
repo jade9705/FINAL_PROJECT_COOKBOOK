@@ -6,13 +6,21 @@ const UserBox = ({user}) => {
   const [hidden, setHidden] = useState('none');
   const [selectedFile, setSelectedFile] = useState(null);
   const [bio, setBio] = useState('');
-  const [editeduser, setEditeduser] = useState(null)
-  console.log('props user', user);
-  console.log('state user', editeduser);
+  const [editeduser, setEditeduser] = useState({})
+  // console.log('props user', user);
+  // console.log('state user', editeduser);
 
   useEffect(() => {
     setEditeduser(user);
   }, [user])
+
+  useEffect(() => {
+    if (user.bio == null) {
+      setBio('Write something nice about you!')
+    } else {
+      setBio(user.bio)
+    }
+    }, [user])
 
   const setToEditMode = (event) => {
     event.preventDefault();
@@ -50,7 +58,7 @@ const UserBox = ({user}) => {
       })
       const data = await response.json();
 
-      console.log(data);
+      // console.log(data);
 
       setEditeduser(data.user);
     }
@@ -59,11 +67,11 @@ const UserBox = ({user}) => {
     setHidden('none');
   }
 
-  console.log('ahoj pred rendrem');
+  // console.log('ahoj pred rendrem', bio);
   return (
     <div className="userBox">
 
-      <form  enctype="multipart/form-data" onSubmit={ handleOnSubmit } >
+      <form  encType="multipart/form-data" onSubmit={ handleOnSubmit } >
        
       <h2 className="userBox__name">Cooker {user.first_name} {user.surname}</h2>
       <div className="userBox__medaillon">
@@ -85,8 +93,7 @@ const UserBox = ({user}) => {
       }
 
       <Bio user={editeduser}/>
-      <textarea className="userBox__textarea" style={{ display: `${hidden}` }} onChange= { handleBioChange } id="bio" rows="3" cols="50">Write here something nice about you.</textarea>
-
+      <textarea className="userBox__textarea" style={{ display: `${hidden}` }} onChange= { handleBioChange } id="bio" rows="3" cols="50" value={bio}></textarea>
 
       {
         hidden === 'none'
