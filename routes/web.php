@@ -47,5 +47,5 @@ Route::get('/users/current', 'UserController@current')->name('current.user')->mi
     
 Route::post('/recipe/{recipe_id}/comment', 'RecipeController@comment')->name('recipe.comment');
 // Route::get('/recipe/recipe{_id}/comments/{comment_id}', 'CommentController@show');
-Route::delete('/recipe/{recipe_id}/comment/{comment_id}',            'CommentController@deleteComment')->name('comment.delete');
+Route::delete('/recipe/{recipe_id}/comment/{comment_id}', 'CommentController@deleteComment')->name('comment.delete');
 

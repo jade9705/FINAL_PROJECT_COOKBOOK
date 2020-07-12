@@ -74,18 +74,36 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        $newFileName = md5(time()) . '.' . $request->file('file')->extension();
-        $request->file('file')->move(public_path('/images/uploads/user'), $newFileName);
-
         $user = User::findOrFail($request->input('user_id'));
-        $user->image_url = $newFileName;
-        $user->bio = $request->input('bio');
+
+        if($request->file('file')){
+
+            // dd(public_path() . '/images/uploads/user/' . $user->image_url);
+
+            if(file_exists(public_path() . '/images/uploads/user/' . $user->image_url)) {
+                $path = public_path() . '/images/uploads/user/' . $user->image_url;
+                unlink($path);
+            }
+
+            $newFileName = md5(time()) . '.' . $request->file('file')->extension();
+            $request->file('file')->move(public_path('/images/uploads/user'), $newFileName);    
+            $user->image_url = $newFileName;
+        }
+
+        if ($request->input('bio')) {
+            $user->bio = $request->input('bio');
+        }
+        
         $user->save();
+
+        
+        return ['user' => $user];
+
+
+
 
         // try with the croppa but not successful
         // Croppa::render(Croppa::url('/images/uploads/' . $newFileName, 600, 600, ['resize']));
-
-        return ['user' => $user];
     }
 
     /**

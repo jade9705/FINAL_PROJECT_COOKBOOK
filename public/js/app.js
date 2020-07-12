@@ -34116,7 +34116,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var Medaillon = function Medaillon(_ref) {
   var user = _ref.user;
-  console.log(user);
+  // console.log(user);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "medaillon__img",
     style: {
@@ -34239,7 +34239,7 @@ var ProfileCookBook = function ProfileCookBook(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
     href: ""
   }, "view all"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-    href: ""
+    href: "http://localhost:3000/create"
   }, "add new")));
 };
 
@@ -34334,15 +34334,22 @@ var UserBox = function UserBox(_ref) {
       bio = _useState6[0],
       setBio = _useState6[1];
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
       _useState8 = _slicedToArray(_useState7, 2),
       editeduser = _useState8[0],
-      setEditeduser = _useState8[1];
+      setEditeduser = _useState8[1]; // console.log('props user', user);
+  // console.log('state user', editeduser);
 
-  console.log('props user', user);
-  console.log('state user', editeduser);
+
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     setEditeduser(user);
+  }, [user]);
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    if (user.bio == null) {
+      setBio('Write something nice about you!');
+    } else {
+      setBio(user.bio);
+    }
   }, [user]);
 
   var setToEditMode = function setToEditMode(event) {
@@ -34394,10 +34401,10 @@ var UserBox = function UserBox(_ref) {
 
               case 5:
                 data = _context.sent;
-                console.log(data);
+                // console.log(data);
                 setEditeduser(data.user);
 
-              case 8:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -34412,13 +34419,13 @@ var UserBox = function UserBox(_ref) {
 
     fetchData();
     setHidden('none');
-  };
+  }; // console.log('ahoj pred rendrem', bio);
 
-  console.log('ahoj pred rendrem');
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "userBox"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
-    enctype: "multipart/form-data",
+    encType: "multipart/form-data",
     onSubmit: handleOnSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", {
     className: "userBox__name"
@@ -34444,8 +34451,9 @@ var UserBox = function UserBox(_ref) {
     onChange: handleBioChange,
     id: "bio",
     rows: "3",
-    cols: "50"
-  }, "Write here something nice about you."), hidden === 'none' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+    cols: "50",
+    value: bio
+  }), hidden === 'none' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
     className: "userBox__input",
     type: "button",
     value: "Edit profile",

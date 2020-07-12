@@ -41,7 +41,7 @@ const ProfileCookBook = ({user}) => {
       </div>
       <div className='profileCookBook__buttons'>
         <a href="">view all</a>
-        <a href="">add new</a>
+        <a href="http://localhost:3000/create">add new</a>
       </div>
     </div>
   )
