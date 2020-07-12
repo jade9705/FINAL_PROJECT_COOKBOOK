@@ -2,13 +2,15 @@ import React, {useEffect, useState} from 'react'
 import RecipeBox from "../../App/Components/recipeBox/RecipeBox.jsx";
 
 const ProfileCookBook = ({user}) => {
-  const [newestRecipes, setNewestRecipes] = useState([])
+  const [recipes, setRecipes] = useState([]);
+  const [clickedAllrecipes, setClickedAllrecipes] = useState(false);
 
   useEffect(() => {
     fetchNewestRecipes()
   },[user])
 
-  const fetchNewestRecipes = async () => {
+  const fetchNewestRecipes = async (event) => {
+    event ? event.preventDefault() : null;
     const response = await fetch('/api/search/newestrecipes', {
         method: 'POST',
         body: JSON.stringify({ user_id: user.id }),
@@ -18,13 +20,25 @@ const ProfileCookBook = ({user}) => {
         }
       });
     const newestRecipes = await response.json();
-    setNewestRecipes(newestRecipes);
+    setRecipes(newestRecipes);
+    setClickedAllrecipes(false);
+  }
+
+  const fetchAllUserRecipes = async (event) => {
+    event.preventDefault();
+    console.log(`/api/cookbook/${user.id}`);
+    const response = await fetch(`/api/cookbook/${user.id}`);
+    const allUsersRecipes = await response.json();
+    console.log(allUsersRecipes);
+
+    setRecipes(allUsersRecipes);
+    setClickedAllrecipes(true);
   }
 
   let content = null;
-  if(newestRecipes){
+  if(recipes){
     content = (
-      newestRecipes.map((recipe, index) => {
+      recipes.map((recipe, index) => {
         return <RecipeBox
                   recipe={recipe}
                   key={index}
@@ -36,12 +50,15 @@ const ProfileCookBook = ({user}) => {
   return (
     <div className='profileCookBook'>
       <h2 className='profileCookBook__header'>{user.first_name}'s CookBook</h2>
+      <div className='profileCookBook__buttons'>
+        {
+          clickedAllrecipes ? <a href="" onClick={ fetchNewestRecipes } >view newest</a> : <a href="" onClick={ fetchAllUserRecipes } >view all</a>
+        }
+        
+        <a href="http://localhost:3000/create">add new</a>
+      </div>
       <div className='profileCookBook__recipeContainer'>
         {content}
-      </div>
-      <div className='profileCookBook__buttons'>
-        <a href="">view all</a>
-        <a href="http://localhost:3000/create">add new</a>
       </div>
     </div>
   )
