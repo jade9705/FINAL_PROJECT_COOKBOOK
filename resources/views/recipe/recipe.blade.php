@@ -5,7 +5,7 @@
 
   <div id="recipe"></div>
 @if(auth()->user()->id === $recipe->user_id)
-  <button class="btn btn-success">edit</button>
+<a href="/recipe/{{$recipe->id}}/edit"><button class="btn btn-success">edit</button></a>
   @endif
   <script src="{{ mix('js/app.js') }}"></script>
 

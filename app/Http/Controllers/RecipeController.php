@@ -151,7 +151,6 @@ class RecipeController extends Controller
             if($recipe->ingredients->count() > $k) {
                 $recipe->ingredients[$k]->name = $i;
                 $recipe->ingredients[$k]->save();
-
                 $recipe->ingredients()->updateExistingPivot($recipe->ingredients[$k]->id, ['amount' => $request->input('amount')[$k]]);
             } else {
                 $ingredient = new Ingredient;
@@ -161,8 +160,6 @@ class RecipeController extends Controller
                 $recipe->ingredients()->attach($ingredient->id, ['amount' => $request->input('amount')[$k]]);
             }
         };
-
-        
 
         foreach($request->input('step') as $i => $p)
         {

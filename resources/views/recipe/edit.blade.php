@@ -89,7 +89,7 @@
     
     <textarea class="form-control" id="step[]" name="step[]" rows="2" cols="50" >{{$step->instruction}}</textarea>
     </div>
-</div>
+
 
     @if($errors->has('step'))
     <div class="alert">
@@ -97,7 +97,7 @@
     @endif
     <div class="form-group">
 </div>
-
+</div>
     <br>
 @endforeach
     
