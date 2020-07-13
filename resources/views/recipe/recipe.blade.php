@@ -1,23 +1,27 @@
 @extends('layouts.layout')
 
 @section('content')
+<div class="averageRatingTop">
+  
+@for($i = 0; $i < $average; $i ++)
+<div class="rating__star rating__star--on"></div>
+@endfor
 
+</div>
 
   <div id="recipe"></div>
-@if(auth()->user()->id === $recipe->user_id)
-<a href="/recipe/{{$recipe->id}}/edit"><button class="btn btn-success">edit</button></a>
+  @if(auth()->user()->id === $recipe->user_id)
+    <a href="/recipe/{{$recipe->id}}/edit"><button class="btn btn-success">edit</button></a>
   @endif
+
   <script src="{{ mix('js/app.js') }}"></script>
 
-@if(!auth()->check())
-<div>Please create an account to leave comments</div>
-@else
-@if(auth()->user()->id !== $recipe->user_id)
-
-
-  {{-- @if (auth()->check()) --}}
+  @if(!auth()->check())
+    <div>Please create an account to leave comments</div>
+  @else
+  @if(auth()->user()->id !== $recipe->user_id)
+<div class="allComments">
   <form action='/recipe/{recipe_id}/comment' method="post" class="comment-form">
- 
     @csrf
 
     <h2>What do you think, {{ auth()->user()->first_name}}?</h2>
@@ -68,8 +72,6 @@
       @endif
     </div>
 
-  
-
 
   {{-- javascript for star rating--}}
   <script>
@@ -117,7 +119,7 @@
 
   <h2>Comments...</h2>
     <ul> 
-     <div class="hideThis"> {{ $sumOfRatings = 0  }} </div>
+     {{-- <div class="hideThis"> {{ $sumOfRatings = 0  }} </div> --}}
 
       @foreach ($recipe->comments as $comment)
         <div class="recipe-container">
@@ -139,7 +141,7 @@
               {{ $comment->text }}
               <br>      
 
-              <div class="hideThis" >{{ $sumOfRatings += (int)$comment->rating}} </div>
+              {{-- <div class="hideThis" >{{ $sumOfRatings += (int)$comment->rating}} </div> --}}
               @if(auth()->check())
               
                 @if(auth()->user()->id === $comment->user->id)
@@ -162,16 +164,14 @@
     </ul> 
 
       {{-- take each number from the ratings and add them, then divide by the amount of ratings(length), pnly when there is at least one rating --}}
-      @if($sumOfRatings != 0)
+      {{-- @if($sumOfRatings != 0)
 
       {{ $average = $sumOfRatings / count($recipe->comments)  }}
 
-     
+      --}}
       <h2>average rating </h2>
-      @for($i = 0; $i < $average; $i ++)
-        <div class="rating__star rating__star--on"></div>
-      @endfor
-      <p>{{ $average }} </p>
-      @endif
+     
+      {{-- @endif --}}
   </div>
+</div>
 @endsection

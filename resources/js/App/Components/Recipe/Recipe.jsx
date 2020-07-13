@@ -34,7 +34,13 @@ export default function Recipe() {
       // console.log(authorUrl)
 
      if(!recipe) {
-         return <p>loading</p>
+         return (
+           <div classNmae="d-flex justify-content-center">
+              <div class="spinner-border text-success" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+          </div>
+         )
      }
     
     return (
@@ -53,11 +59,13 @@ export default function Recipe() {
             </ul>
             </div>
             <div className="recipe__container2">
-              <div className="recipe__medallion">
-                <Medaillon user={recipe.users[0]} />
+              <div className="recipe__flexbox">
+            <div className="recipe__medallion">
+            <a href={`/profile/${recipe.user_id}`} className="recipeAuthor"><Medaillon user={recipe.users[0]} /></a>
                 </div>
-            <h1 className="recipe__name">{recipe.title}</h1>
-
+            <h1 className="recipe__name">  {recipe.title}</h1>
+            </div>
+                
             <p>by <a href={`/profile/${recipe.user_id}`} className="recipeAuthor"><strong>{recipe.users[0].first_name} {recipe.users[0].surname}</strong></a></p>
                         
             <label className="recipe__method">Method  </label>
