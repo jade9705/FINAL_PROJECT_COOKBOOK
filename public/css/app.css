@@ -10240,6 +10240,10 @@ ul {
   padding: 0.8em;
 }
 
+.allComments {
+  padding: 2em 5em;
+}
+
 .recipe {
   padding: 2em;
   display: flex;
@@ -10280,8 +10284,22 @@ ul {
   padding: 0.5em;
 }
 .recipe__medallion {
-  width: 20px;
-  height: 20px;
+  width: 50px;
+  height: 50px;
+}
+.recipe__flexbox {
+  display: flex;
+  align-items: center;
+}
+
+.averageRatingTop {
+  display: flex;
+  padding: 1em;
+  justify-content: center;
+}
+.averageRatingTop .rating__star {
+  width: 3rem;
+  height: 3rem;
 }
 
 .card-logo {

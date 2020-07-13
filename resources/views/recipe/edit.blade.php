@@ -104,8 +104,7 @@
 
     <button type="submit" value="1" name="published" type="button" class="btn btn-success">Save</button>
     </div>
-</form>
-</div>
+
 <script>
 //javascript to deal with adding more inputs on the form
 addMore = (e) => {
@@ -145,5 +144,7 @@ addMore = (e) => {
 
    
 </script>
+</form>
+</div>
 
 @endsection

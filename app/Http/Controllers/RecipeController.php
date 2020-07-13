@@ -80,11 +80,17 @@ class RecipeController extends Controller
         $recipe_id = $id;
         $user_id = auth()->id();
         //author
+        //next part is making the average star rating
         $recipe = Recipe::findOrFail($recipe_id);
-        //$recipe->users()->attach($user_id);
+        $comments = Comment::where('recipe_id', $recipe_id)->get();
+        $sumOfRatings = 0;
+        
+        foreach($comments as $comment) {
+            $sumOfRatings += (int)$comment->rating;
+        }
 
-
-        return view('recipe.recipe', compact('recipe_id', 'user_id', 'recipe'));
+        $average = $sumOfRatings / count($recipe->comments);
+        return view('recipe.recipe', compact('recipe_id', 'user_id', 'recipe', 'average'));
 
     }
 
