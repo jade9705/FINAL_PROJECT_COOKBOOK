@@ -1,0 +1,21 @@
+
+.ratingContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin-top: 0.2rem;
+  margin-left: 0.2rem;
+
+  &__star {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url('http://localhost:3000/images/rating/star-white.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &--on {
+    background-image: url('http://localhost:3000/images/rating/star-yellow.svg');
+    }
+  }
+
+}

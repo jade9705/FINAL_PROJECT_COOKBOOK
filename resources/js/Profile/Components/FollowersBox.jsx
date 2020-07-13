@@ -36,8 +36,8 @@ const FollowersBox = ({user}) => {
         {to_follow_arr.map((user, key) => {
           return (
             <>
-              <div className="followContainer__medaillonBox">
-              <a href={`/profile/${user.id}`}>
+              <div key={key} className="followContainer__medaillonBox">
+              <a key={key} href={`/profile/${user.id}`}>
                 <Medaillon 
                 key={key}
                 user={user}

@@ -33,6 +33,8 @@ Route::get('/recipe/{id}', 'RecipeController@show')->name('show.recipe');
 //for updating the already existing recipe
 Route::get('/recipe/{recipe_id}/edit', 'RecipeController@edit')->name('edit.recipe');
 Route::post('/recipe/{recipe_id}', 'RecipeController@update')->name('update.recipe');
+//fetch recipe averange rating for AverangeRAting component in RecipeBox
+Route::post('/average', 'RecipeController@average')->name('average.recipe');
 
 //Route::get('/create', 'RecipeController@create');
 // Route::post('/recipes', 'RecipeController@store');
@@ -44,8 +46,9 @@ Route::post('/users/getprofile', 'UserController@getProfile')->name('getProfile.
 
 // upload img and edit user profile
 Route::post('/profile/update', 'UserController@update')->name('update.user')->middleware('auth');
-//attach or detach relation ship between users
+//attach relation ship between users
 Route::post('/profile/update/follow', 'UserController@follow')->name('follow.user')->middleware('auth');
+//detach relation ship between users
 Route::post('/profile/update/unfollow', 'UserController@unfollow')->name('unfollow.user')->middleware('auth');
 //request profile_id response arr of useres that this profile is following
 Route::post('/profile/update/tofollow', 'UserController@tofollow')->name('tofollow.user')->middleware('auth');
