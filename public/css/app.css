@@ -10326,7 +10326,7 @@ ul {
   border-radius: 0.6rem;
   background-color: #353535;
   color: #F8FAFC;
-  opacity: 0.95;
+  opacity: 0.9;
 }
 .bio__header {
   text-align: center;
@@ -10479,6 +10479,43 @@ ul {
   background-color: #353535;
 }
 
+.followContainer {
+  margin: 3rem 0 1rem 0;
+  width: 70%;
+  border-radius: 0.6rem;
+  background-color: #353535;
+  color: #F8FAFC;
+  opacity: 0.9;
+}
+.followContainer__header {
+  text-align: center;
+  margin: 0.5rem;
+  width: 100%;
+}
+.followContainer__medaillonContainer {
+  display: flex;
+  justify-content: space-around;
+  height: 80px;
+  margin: 0.5rem;
+}
+.followContainer__medaillonBox {
+  width: 70px;
+  height: 70px;
+}
+.followContainer__medaillonBox--all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  border: 2px solid #abe9a5;
+  color: #abe9a5;
+  font-weight: 900;
+}
+.followContainer__medaillonBox:hover {
+  width: 75px;
+  height: 75px;
+}
+
 .profilePage {
   margin-left: 4vw;
   margin-right: 4vw;
@@ -10494,6 +10531,10 @@ ul {
 .follow_style {
   border: 2px solid #abe9a5;
   box-shadow: 10px 10px 16px -7px #abe9a5;
+}
+
+.to_follow {
+  border: 2px solid #abe9a5;
 }
 
 * {

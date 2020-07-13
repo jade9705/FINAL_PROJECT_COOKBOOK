@@ -34,9 +34,6 @@ export default class Profile extends Component {
   }
 
   render() {
-
-    console.log(profile_id);
-
     return (
       <div className="profilePage">
         <div className="profilePage__leftSide">

@@ -15,6 +15,7 @@ const UserBox = ({user, logged_user_id}) => {
   useEffect(() => {
     setEditeduser(user);
     
+    console.log('user_follower', user.user_followers )
     if (user.user_followers) {
       setArr_of_friends(user.user_followers);
     }
@@ -131,7 +132,7 @@ const UserBox = ({user, logged_user_id}) => {
     setHidden('none');
   }
 
-  console.log('ahoj pred rendrem', follow_style);
+  // console.log('ahoj pred rendrem', follow_style);
 
 
 
@@ -140,7 +141,7 @@ const UserBox = ({user, logged_user_id}) => {
 
       <form  encType="multipart/form-data" onSubmit={ handleOnSubmit } >
 
-      <h2 className="userBox__name">Cooker {user.first_name} {user.surname}</h2>
+      <h2 className="userBox__name">Chef {user.first_name} {user.surname}</h2>
       <div className="userBox__medaillon" >
       {/* use this divfor set the size of medaillon */}
       <Medaillon user={editeduser} follow_style={follow_style} />

@@ -58,7 +58,8 @@ class UserController extends Controller
     public function getProfile(Request $request)
     {
         $logged_user_id = Auth::id();
-        $user = User::with('user_followers')->findOrFail($request->input('profile_id'));
+        $user = User::with('user_followers')
+            ->findOrFail($request->input('profile_id'));
         
         
         return [
@@ -140,7 +141,7 @@ class UserController extends Controller
         return $arr_of_friends;
         
     }
-    
+
     public function unfollow(Request $request)
     {
         //find users in the game 
@@ -151,6 +152,20 @@ class UserController extends Controller
         //send to the profile page updatee version of friends
         $arr_of_friends = User::findOrFail($profile_id)->user_followers;
         return $arr_of_friends;
+        
+    }
+
+    public function tofollow(Request $request)
+    {
+        //find users in the game 
+        $profile_id = $request->input('profile_id');
+        //send to the profile page updatee version of friends
+        $to_follow_arr = User::findOrFail($profile_id)
+            ->to_follow()
+            ->orderBy('id')
+            ->limit(2)
+            ->get();
+        return $to_follow_arr;
         
     }
 
