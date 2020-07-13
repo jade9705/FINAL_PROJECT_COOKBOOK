@@ -30,8 +30,11 @@ Route::get('/create', 'RecipeController@create')->name('create.recipe');
 Route::post('/recipes', 'RecipeController@store')->name('store.recipe');
 //rendering the single recipe, will render some view
 Route::get('/recipe/{id}', 'RecipeController@show')->name('show.recipe');
+//for updating the already existing recipe
+Route::get('/recipe/{recipe_id}/edit', 'RecipeController@edit')->name('edit.recipe');
+Route::post('/recipe/{recipe_id}', 'RecipeController@update')->name('update.recipe');
 
-Route::get('/create', 'RecipeController@create');
+//Route::get('/create', 'RecipeController@create');
 // Route::post('/recipes', 'RecipeController@store');
 
 

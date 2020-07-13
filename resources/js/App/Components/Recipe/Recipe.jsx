@@ -58,18 +58,15 @@ export default function Recipe() {
                 </div>
             <h1 className="recipe__name">{recipe.title}</h1>
 
-            <p>by {recipe.users.map((user, index) => {
-              return <a href={`/profile/${recipe.user_id}`} className="recipeAuthor" key={index} ><strong>{user.first_name}</strong> <strong>{user.surname}</strong></a>
-            })}</p>
-          
-            
+            <p>by <a href={`/profile/${recipe.user_id}`} className="recipeAuthor"><strong>{recipe.users[0].first_name} {recipe.users[0].surname}</strong></a></p>
+                        
             <label className="recipe__method">Method  </label>
             <ol>
               { recipe.steps.map((step, index) => {
                  return <li className="recipe__methodlist"key={index}>{step.instruction}</li>})}
                     
             </ol> 
-            </div>
+         </div>
                 
         </div>
           
