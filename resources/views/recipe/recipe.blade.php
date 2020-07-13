@@ -4,7 +4,9 @@
 
 
   <div id="recipe"></div>
-
+@if(auth()->user()->id === $recipe->user_id)
+  <button class="btn btn-success">edit</button>
+  @endif
   <script src="{{ mix('js/app.js') }}"></script>
 
 @if(!auth()->check())
