@@ -24,6 +24,8 @@ class ApiSearchRecipesController extends Controller
         $user = User::find($user_id);
         if ($user_id) {
             $newestRecipes = $user->recipes()->orderBy('updated_at', 'desc')->limit(3)->get();
+            // $newestRecipes = $user->recipes;
+            // dd($newestRecipes);
             return $newestRecipes;
         }
         return [];

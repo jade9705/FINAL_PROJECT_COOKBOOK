@@ -90,7 +90,7 @@
         const valueELm = document.querySelector('.rating__value');
         valueELm.textContent = index + 1;
         turnOnStars(index + 1);
-// this adds the value of the selected stars to the hidden input for the rating, which updates the database to that value
+        // this adds the value of the selected stars to the hidden input for the rating, which updates the database to that value
         const starsNumber =  document.querySelector('.ratingNumber');
         starsNumber.value = Number(document.querySelector('.rating__value').textContent)
       });

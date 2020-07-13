@@ -176,8 +176,8 @@ class RecipeController extends Controller
             }
         };
 
-        $user = User::findOrFail($user_id);
-        $user->recipes()->attach($recipe->id);
+        // $user = User::findOrFail($user_id);
+        // $user->recipes()->attach($recipe->id);
        // $recipe->users()->attach($user->name);
 
         return redirect('/recipe/' . $recipe->id );

@@ -21,6 +21,7 @@ class ApiRecipeController extends Controller
             ->recipes()
             ->orderBy('updated_at', 'desc')
             ->get();
+        // dd($recipe);
         return $recipes;
     }
 }
