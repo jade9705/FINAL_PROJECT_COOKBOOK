@@ -126,7 +126,7 @@
           
           
           <div class="nameAndText">
-            <li class="userName"> <a href="/profile/{id}"><strong> {{$comment->user->first_name}} {{$comment->user->surname}}</strong></a> </li>
+            <li class="userName"> <a href="/profile/{{$user_id}}"><strong> {{$comment->user->first_name}} {{$comment->user->surname}}</strong></a> </li>
             <div class="stars">
               @for($i = 0; $i < $number; $i ++)
               <div id="starRender" class="rating__star rating__star--on"></div>
