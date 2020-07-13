@@ -34126,10 +34126,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Medaillon = function Medaillon(_ref) {
-  var user = _ref.user;
+  var user = _ref.user,
+      follow_style = _ref.follow_style;
   // console.log(user);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "medaillon__img",
+    className: "medaillon__img ".concat(follow_style),
     style: {
       backgroundImage: "url(\"http://localhost:3000/images/uploads/user/".concat(user.image_url, "\")")
     }
@@ -34400,45 +34401,45 @@ var UserBox = function UserBox(_ref) {
   var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
       _useState8 = _slicedToArray(_useState7, 2),
       editeduser = _useState8[0],
-      setEditeduser = _useState8[1]; // console.log('props user', user);
+      setEditeduser = _useState8[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
+      _useState10 = _slicedToArray(_useState9, 2),
+      arr_of_friends = _useState10[0],
+      setArr_of_friends = _useState10[1];
+
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(''),
+      _useState12 = _slicedToArray(_useState11, 2),
+      follow_style = _useState12[0],
+      setFollow_style = _useState12[1]; // console.log('props user', user);
   // console.log('state user', editeduser);
 
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     setEditeduser(user);
+
+    if (user.user_followers) {
+      setArr_of_friends(user.user_followers);
+    }
+
+    if (user.bio) {
+      setBio(user.bio);
+    } else {
+      setBio('Write something nice about you!');
+    }
   }, [user]);
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    if (user.bio == null) {
-      setBio('Write something nice about you!');
+    if (arr_of_friends.find(function (friend) {
+      return friend.id == logged_user_id;
+    })) {
+      setFollow_style('follow_style');
     } else {
-      setBio(user.bio);
+      setFollow_style('');
     }
-  }, [user]);
+  }, [arr_of_friends]); //to follo someone
 
-  var setToEditMode = function setToEditMode(event) {
-    event.preventDefault();
-
-    if (hidden === 'none') {
-      setHidden('');
-    } else {
-      setHidden('none');
-    }
-  };
-
-  var handleFileChange = function handleFileChange(event) {
-    setSelectedFile(event.target.files[0]);
-  };
-
-  var handleBioChange = function handleBioChange(event) {
-    setBio(event.target.value);
-  };
-
-  var handleOnSubmit = function handleOnSubmit(event) {
-    event.preventDefault();
-    var formData = new FormData();
-    formData.append('file', selectedFile);
-    formData.append('bio', bio);
-    formData.append('user_id', user.id);
+  var folow = function folow() {
+    console.log('follow');
 
     var fetchData = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -34448,11 +34449,14 @@ var UserBox = function UserBox(_ref) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return fetch('/profile/update', {
+                return fetch('/profile/update/follow', {
                   method: 'POST',
-                  body: formData,
+                  body: JSON.stringify({
+                    profile_id: user.id
+                  }),
                   headers: {
                     'Accept': 'application/json',
+                    'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                   }
                 });
@@ -34464,10 +34468,10 @@ var UserBox = function UserBox(_ref) {
 
               case 5:
                 data = _context.sent;
-                // console.log(data);
-                setEditeduser(data.user);
+                console.log(data);
+                setArr_of_friends(data);
 
-              case 7:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -34481,10 +34485,131 @@ var UserBox = function UserBox(_ref) {
     }();
 
     fetchData();
+  };
+
+  var unfolow = function unfolow() {
+    console.log('unffollow');
+
+    var fetchData = /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var response, data;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return fetch('/profile/update/unfollow', {
+                  method: 'POST',
+                  body: JSON.stringify({
+                    profile_id: user.id
+                  }),
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                  }
+                });
+
+              case 2:
+                response = _context2.sent;
+                _context2.next = 5;
+                return response.json();
+
+              case 5:
+                data = _context2.sent;
+                console.log(data);
+                setArr_of_friends(data);
+
+              case 8:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function fetchData() {
+        return _ref3.apply(this, arguments);
+      };
+    }();
+
+    fetchData();
+  }; //switched from normal mode to editing mode and vice versa
+
+
+  var setToEditMode = function setToEditMode(event) {
+    event.preventDefault();
+
+    if (hidden === 'none') {
+      setHidden('');
+    } else {
+      setHidden('none');
+    }
+  }; //save to state new file
+
+
+  var handleFileChange = function handleFileChange(event) {
+    setSelectedFile(event.target.files[0]);
+  }; //save to state new change of bio status
+
+
+  var handleBioChange = function handleBioChange(event) {
+    setBio(event.target.value);
+  }; //on submit send request and fetch response a save it to the state editeduser
+
+
+  var handleOnSubmit = function handleOnSubmit(event) {
+    event.preventDefault();
+    var formData = new FormData();
+    formData.append('file', selectedFile);
+    formData.append('bio', bio);
+    formData.append('user_id', user.id);
+
+    var fetchData = /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var response, data;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return fetch('/profile/update', {
+                  method: 'POST',
+                  body: formData,
+                  headers: {
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                  }
+                });
+
+              case 2:
+                response = _context3.sent;
+                _context3.next = 5;
+                return response.json();
+
+              case 5:
+                data = _context3.sent;
+                // console.log(data);
+                setEditeduser(data.user);
+
+              case 7:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }));
+
+      return function fetchData() {
+        return _ref4.apply(this, arguments);
+      };
+    }();
+
+    fetchData();
     setHidden('none');
-  }; // console.log('ahoj pred rendrem', bio);
+  };
 
-
+  console.log('ahoj pred rendrem', follow_style);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "userBox"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
@@ -34495,11 +34620,12 @@ var UserBox = function UserBox(_ref) {
   }, "Cooker ", user.first_name, " ", user.surname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "userBox__medaillon"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Medaillon_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    user: editeduser
+    user: editeduser,
+    follow_style: follow_style
   })), hidden === 'none' ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
     className: "userBox__upload",
     htmlFor: "image_url"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "UPLOAD NEW IMAGE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+  }, "UPLOAD NEW IMAGE", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
     type: "file",
     onChange: handleFileChange,
     name: "image_url",
@@ -34516,16 +34642,36 @@ var UserBox = function UserBox(_ref) {
     rows: "3",
     cols: "50",
     value: bio
-  }), hidden === 'none' && logged_user_id == user.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+  }), hidden === 'none' && logged_user_id == user.id ?
+  /*#__PURE__*/
+  //click to edit profile
+  react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
     className: "userBox__input",
     type: "button",
     value: "Edit profile",
     onClick: setToEditMode
-  }) : hidden === 'none' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+  }) : hidden === 'none' && arr_of_friends.find(function (friend) {
+    return friend.id == logged_user_id;
+  }) ?
+  /*#__PURE__*/
+  //click to UNfollow user
+  react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+    className: "userBox__input ".concat(follow_style),
+    type: "button",
+    value: "Unfollow this bumpkin",
+    onClick: unfolow
+  }) : hidden === 'none' ?
+  /*#__PURE__*/
+  //click to follow user
+  react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
     className: "userBox__input",
     type: "button",
-    value: "Follow this good chef!"
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    value: "Follow this good chef!",
+    onClick: folow
+  }) :
+  /*#__PURE__*/
+  //save or return from editing mode
+  react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "userBox__save-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
     className: "userBox__input",

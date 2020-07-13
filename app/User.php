@@ -39,6 +39,7 @@ class User extends Authenticatable
 
     public function to_follow()
     {
+       //'current_user_id' is 'logged_user_id' and 'user_id' is 'profile_id'
         return $this->belongsToMany('App\User', 'followers', 'current_user_id', 'user_id');
     }
 
