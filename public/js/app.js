@@ -34078,10 +34078,11 @@ var RecipeBox = function RecipeBox(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
     className: "recipeBox__link",
     href: "/recipe/".concat(recipe.id)
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "recipeBox__img",
-    src: "http://localhost:3000/images/uploads/".concat(recipe.image_url),
-    alt: recipe.title
+    style: {
+      backgroundImage: "url(\"http://localhost:3000/images/uploads/".concat(recipe.image_url, "\")")
+    }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_AverangeRating_AverageRating_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
     averageRating: averageRating
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {

@@ -37,7 +37,8 @@ const RecipeBox = ({recipe}) => {
       (
         <div className="recipeBox" >
           <a  className="recipeBox__link" href={`/recipe/${recipe.id}`}>
-            <img className="recipeBox__img" src={`http://localhost:3000/images/uploads/${recipe.image_url}`} alt={recipe.title} />
+            {/* <img className="recipeBox__img" src={`http://localhost:3000/images/uploads/${recipe.image_url}`} alt={recipe.title} /> */}
+            <div className="recipeBox__img" style={{backgroundImage: `url("http://localhost:3000/images/uploads/${recipe.image_url}")`}}></div>
             <AverangeRating averageRating={averageRating}/>
             <p className="recipeBox__title">{recipe.title}</p>
             <div className="recipeBox__description">{recipe.description}</div>
