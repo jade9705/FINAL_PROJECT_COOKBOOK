@@ -44,11 +44,13 @@ Route::post('/users/getprofile', 'UserController@getProfile')->name('getProfile.
 
 // upload img and edit user profile
 Route::post('/profile/update', 'UserController@update')->name('update.user')->middleware('auth');
+//attach or detach relation ship between users
 Route::post('/profile/update/follow', 'UserController@follow')->name('follow.user')->middleware('auth');
 Route::post('/profile/update/unfollow', 'UserController@unfollow')->name('unfollow.user')->middleware('auth');
+//request profile_id response arr of useres that this profile is following
+Route::post('/profile/update/tofollow', 'UserController@tofollow')->name('tofollow.user')->middleware('auth');
 
 //for reviews:
-    
 Route::post('/recipe/{recipe_id}/comment', 'RecipeController@comment')->name('recipe.comment');
 // Route::get('/recipe/recipe{_id}/comments/{comment_id}', 'CommentController@show');
 Route::delete('/recipe/{recipe_id}/comment/{comment_id}', 'CommentController@deleteComment')->name('comment.delete');
