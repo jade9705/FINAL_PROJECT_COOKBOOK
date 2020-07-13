@@ -12,18 +12,27 @@
   }
 
   &__upload {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    border: 2px solid $secondary;
+    border-radius: 1rem;
+    padding: 0 1rem 0 1rem;
+    margin-top: 1rem;
 
-    // border: 2px solid black;
-    margin: 1rem;
+    background-color: $fithcolor;
+    color: $secondary;
+    cursor: pointer;
+
+    &:hover {
+      color: $fourthcolor;
+      background-color: $secondary;
+    }
 
     input {
-      // border: 2px solid black;
-      width: 80%;
-      display: flex;
-      justify-content: space-around;
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
     }
   }
 
@@ -47,6 +56,7 @@
 
     &:hover {
       color: $fourthcolor;
+      background-color: $secondary;
     }
   }
 

@@ -6,6 +6,8 @@
   margin-left: 4vw;
   margin-right: 4vw;
 
+  min-height: 80vh;
+
   display: flex;
   justify-content: space-between;
 
@@ -14,4 +16,9 @@
     margin-right: 4vw;
     // border: 2px solid green;
   }
+}
+
+.follow_style {
+  border: 2px solid #abe9a5;
+  box-shadow: 10px 10px 16px -7px rgba(171, 233, 165, 1);
 }

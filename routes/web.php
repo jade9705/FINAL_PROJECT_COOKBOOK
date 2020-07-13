@@ -35,12 +35,14 @@ Route::get('/create', 'RecipeController@create');
 // Route::post('/recipes', 'RecipeController@store');
 
 
-//go to the profile.blade.php and call profile.jsxx component with the post(users/getprofile)
+//go to the profile.blade.php and call profile.jsx component with the post(users/getprofile)
 Route::get('/profile/{id}', 'UserController@show')->name('show.user')->middleware('auth');
 Route::post('/users/getprofile', 'UserController@getProfile')->name('getProfile.user')->middleware('auth');
 
 // upload img and edit user profile
 Route::post('/profile/update', 'UserController@update')->name('update.user')->middleware('auth');
+Route::post('/profile/update/follow', 'UserController@follow')->name('follow.user')->middleware('auth');
+Route::post('/profile/update/unfollow', 'UserController@unfollow')->name('unfollow.user')->middleware('auth');
 
 //for reviews:
     

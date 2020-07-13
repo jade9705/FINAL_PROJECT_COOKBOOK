@@ -58,7 +58,7 @@ class UserController extends Controller
     public function getProfile(Request $request)
     {
         $logged_user_id = Auth::id();
-        $user = User::findOrFail($request->input('profile_id'));
+        $user = User::with('user_followers')->findOrFail($request->input('profile_id'));
         
         
         return [
@@ -119,6 +119,41 @@ class UserController extends Controller
         // Croppa::render(Croppa::url('/images/uploads/' . $newFileName, 600, 600, ['resize']));
     }
 
+
+    public function follow(Request $request)
+    {
+        // this function to_follow is from USER MODEL
+        // public function to_follow()
+        // {
+        //     //'current_user_id' is 'logged_user_id' and 'user_id' is 'profile_id'
+        //     return $this->belongsToMany('App\User', 'followers', 'current_user_id', 'user_id');
+        // }
+        
+
+        //find users in the game 
+        $profile_id = $request->input('profile_id');
+        $logged_user_id = Auth::user();
+        //attach them
+        $logged_user_id->to_follow()->attach($profile_id);
+        //send to the profile page updatee version of friends
+        $arr_of_friends = User::findOrFail($profile_id)->user_followers;
+        return $arr_of_friends;
+        
+    }
+    
+    public function unfollow(Request $request)
+    {
+        //find users in the game 
+        $profile_id = $request->input('profile_id');
+        $logged_user_id = Auth::user();
+        //attach them
+        $logged_user_id->to_follow()->detach($profile_id);
+        //send to the profile page updatee version of friends
+        $arr_of_friends = User::findOrFail($profile_id)->user_followers;
+        return $arr_of_friends;
+        
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -130,8 +165,4 @@ class UserController extends Controller
         //
     }
 
-    public function current()
-    {
-        return Auth::user();
-    }
 }

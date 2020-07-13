@@ -10346,15 +10346,25 @@ ul {
   align-items: center;
 }
 .userBox__upload {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 1rem;
+  border: 2px solid #353535;
+  border-radius: 1rem;
+  padding: 0 1rem 0 1rem;
+  margin-top: 1rem;
+  background-color: #F8FAFC;
+  color: #353535;
+  cursor: pointer;
+}
+.userBox__upload:hover {
+  color: #abe9a5;
+  background-color: #353535;
 }
 .userBox__upload input {
-  width: 80%;
-  display: flex;
-  justify-content: space-around;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 .userBox__name {
   text-align: center;
@@ -10374,6 +10384,7 @@ ul {
 }
 .userBox__input:hover {
   color: #abe9a5;
+  background-color: #353535;
 }
 .userBox__textarea {
   border: 2px solid #353535;
@@ -10436,6 +10447,7 @@ ul {
 }
 .profileCookBook__buttons a:hover {
   color: #abe9a5;
+  background-color: #353535;
 }
 
 .favouriteMeal__header {
@@ -10464,17 +10476,24 @@ ul {
 }
 .favouriteMeal__buttons a:hover {
   color: #abe9a5;
+  background-color: #353535;
 }
 
 .profilePage {
   margin-left: 4vw;
   margin-right: 4vw;
+  min-height: 80vh;
   display: flex;
   justify-content: space-between;
 }
 .profilePage__leftSide {
   width: 60vw;
   margin-right: 4vw;
+}
+
+.follow_style {
+  border: 2px solid #abe9a5;
+  box-shadow: 10px 10px 16px -7px #abe9a5;
 }
 
 * {
