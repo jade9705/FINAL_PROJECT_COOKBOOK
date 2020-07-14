@@ -33789,10 +33789,10 @@ function Recipe() {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       className: "d-flex justify-content-center"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-      "class": "spinner-border text-success spinner-border m-5",
+      className: "spinner-border text-success spinner-border m-5",
       role: "status"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
-      "class": "sr-only"
+      className: "sr-only"
     }, "Loading..."))));
   }
 

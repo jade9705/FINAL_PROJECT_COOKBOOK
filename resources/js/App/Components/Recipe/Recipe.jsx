@@ -38,8 +38,8 @@ export default function Recipe() {
          return (
            <div className="spinner-position">
             <div className="d-flex justify-content-center">
-                <div class="spinner-border text-success spinner-border m-5"  role="status">
-                  <span class="sr-only">Loading...</span>
+                <div className="spinner-border text-success spinner-border m-5"  role="status">
+                  <span className="sr-only">Loading...</span>
                 </div>
             </div>
           </div>
@@ -57,7 +57,7 @@ export default function Recipe() {
 
             </div>
             <p className="recipe__description">{recipe.description}</p>
-            
+
             <div className="recipe__ingredients-box">
               <label className="recipe__ingredients">Ingredients</label>
               <ul>
