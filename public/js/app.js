@@ -33783,13 +33783,15 @@ function Recipe() {
 
   if (!recipe) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-      classNmae: "d-flex justify-content-center"
+      className: "spinner-position"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-      "class": "spinner-border text-success",
+      className: "d-flex justify-content-center"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      "class": "spinner-border text-success spinner-border m-5",
       role: "status"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
       "class": "sr-only"
-    }, "Loading...")));
+    }, "Loading..."))));
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -35251,8 +35253,8 @@ if (document.getElementById('profile')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Web\codingbootcamp\Projects\FINAL_PROJECT_COOKBOOK\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Web\codingbootcamp\Projects\FINAL_PROJECT_COOKBOOK\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\web\bootcamp\projects\FINAL_PROJECT_COOKBOOK\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\web\bootcamp\projects\FINAL_PROJECT_COOKBOOK\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -10274,6 +10274,11 @@ ul {
   padding: 2em 5em;
 }
 
+#deleteButton {
+  display: flex;
+  align-self: flex-end;
+}
+
 .recipe {
   padding: 2em;
   display: flex;
@@ -10330,6 +10335,12 @@ ul {
 .averageRatingTop .rating__star {
   width: 3rem;
   height: 3rem;
+}
+
+.spinner-position {
+  width: 100%;
+  height: 100%;
+  position: fixed;
 }
 
 .card-logo {
