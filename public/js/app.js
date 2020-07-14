@@ -33570,6 +33570,8 @@ var FavouriteRecipeButton = function FavouriteRecipeButton(_ref) {
     whofavourite();
   }, []);
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    console.log('změna arru', logged_user);
+
     if (arr_of_users_that_favourite.find(function (user) {
       return user.id == logged_user;
     })) {
@@ -33577,7 +33579,7 @@ var FavouriteRecipeButton = function FavouriteRecipeButton(_ref) {
     } else {
       setLiked_style(0);
     }
-  }, [arr_of_users_that_favourite]);
+  });
 
   var whofavourite = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -33607,7 +33609,7 @@ var FavouriteRecipeButton = function FavouriteRecipeButton(_ref) {
 
             case 6:
               data = _context.sent;
-              console.log(data);
+              console.log('data', data);
               setarr_of_users_that_favourite(data.arr_of_users_that_favourite);
               setLogged_user(data.logged_user);
 
@@ -33669,12 +33671,57 @@ var FavouriteRecipeButton = function FavouriteRecipeButton(_ref) {
     };
   }();
 
-  console.log('hi', arr_of_users_that_favourite, logged_user, 'liked', liked_style);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+  var unfavourite = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(event) {
+      var response, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              event.preventDefault();
+              console.log('favourite');
+              _context3.next = 4;
+              return fetch('/recipe/update/unfavourite', {
+                method: 'POST',
+                body: JSON.stringify({
+                  recipe_id: recipe.id
+                }),
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+              });
+
+            case 4:
+              response = _context3.sent;
+              _context3.next = 7;
+              return response.json();
+
+            case 7:
+              data = _context3.sent;
+              console.log(data);
+              setarr_of_users_that_favourite(data.arr_of_users_that_favourite);
+
+            case 10:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function unfavourite(_x2) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+
+  console.log('hi', arr_of_users_that_favourite, logged_user, 'liked', liked_style, 'recipe_id', recipe.id);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, liked_style ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
     className: "fouvourite",
-    onClick: favourite
+    onClick: unfavourite
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("svg", {
-    className: "fouvourite__svg fouvourite__svg--liked ",
+    className: "fouvourite__svg fouvourite__svg--liked",
     enableBackground: "new 0 0 128 128",
     version: "1.1",
     viewBox: "0 0 128 128",
@@ -33682,7 +33729,19 @@ var FavouriteRecipeButton = function FavouriteRecipeButton(_ref) {
     xmlns: "http://www.w3.org/2000/svg"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
     d: "m115.08 22.981c-10.794-10.794-28.279-10.794-39.053 0l-12.027 12.027-12.026-12.027c-5.397-5.397-12.45-8.097-19.526-8.097-7.055 0-14.131 2.7-19.528 8.097-10.794 10.794-10.794 28.28 0 39.054l51.08 51.08 51.08-51.08c5.397-5.397 8.095-12.45 8.095-19.526 0-7.055-2.697-14.131-8.095-19.528z"
-  })));
+  }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+    className: "fouvourite",
+    onClick: favourite
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("svg", {
+    className: "fouvourite__svg",
+    enableBackground: "new 0 0 128 128",
+    version: "1.1",
+    viewBox: "0 0 128 128",
+    xmlSpace: "preserve",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    d: "m115.08 22.981c-10.794-10.794-28.279-10.794-39.053 0l-12.027 12.027-12.026-12.027c-5.397-5.397-12.45-8.097-19.526-8.097-7.055 0-14.131 2.7-19.528 8.097-10.794 10.794-10.794 28.28 0 39.054l51.08 51.08 51.08-51.08c5.397-5.397 8.095-12.45 8.095-19.526 0-7.055-2.697-14.131-8.095-19.528z"
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (FavouriteRecipeButton);

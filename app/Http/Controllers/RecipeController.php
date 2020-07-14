@@ -139,7 +139,7 @@ class RecipeController extends Controller
         // find user and recipes in the game 
         $logged_user = Auth::user();
         $recipe_id = $request->input('recipe_id');
-        $logged_user->recipes()->attach($recipe_id);
+        $logged_user->recipes()->detach($recipe_id);
 
         $arr_of_users_that_favourite = Recipe::findOrFail($recipe_id)->users;
 
