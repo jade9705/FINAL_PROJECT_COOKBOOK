@@ -92,9 +92,9 @@ class UserController extends Controller
 
         if($request->file('file')){
 
-            // dd(public_path() . '/images/uploads/user/' . $user->image_url);
+            // dd($user->image_url);
 
-            if(file_exists(public_path() . '/images/uploads/user/' . $user->image_url)) {
+            if($user->image_url) {
                 $path = public_path() . '/images/uploads/user/' . $user->image_url;
                 unlink($path);
             }
