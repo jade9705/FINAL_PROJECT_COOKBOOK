@@ -75,7 +75,7 @@ class RecipeController extends Controller
         //author
         //next part is making the average star rating
         $recipe = Recipe::findOrFail($recipe_id);
-        $comments = Comment::where('recipe_id', $recipe_id)->get();
+        $comments = Comment::where('recipe_id', $recipe_id)->orderby('created_at','DESC')->get();
         $sumOfRatings = 0;
         if(count($recipe->comments) != 0) {
             foreach($comments as $comment) {
@@ -85,7 +85,15 @@ class RecipeController extends Controller
         } else {
             $average = 0;
         }
-        return view('recipe.recipe', compact('recipe_id', 'user_id', 'recipe', 'average'));
+        
+        if(count($recipe->comments) == 1) {
+            $commentNumber = 'This recipe has only 1 comment';
+        } else if(count($recipe->comments) != 0){
+            $commentNumber = 'This recipe has ' . count($recipe->comments) . ' comments...so far...';
+        } else {
+            $commentNumber = 'This recipe has no comments.....yet.';
+        }
+        return view('recipe.recipe', compact('recipe_id', 'user_id', 'recipe', 'average', 'commentNumber' ));
 
     }
 
@@ -136,7 +144,7 @@ class RecipeController extends Controller
         $comment->save();
 
         // flash success message
-        session()->flash('success_message', 'Review was saved. Thank you!');
+        session()->flash('success_message', 'Comment was saved. Thank you!');
 
         // redirect
         return redirect()->action('RecipeController@show', [$recipe, $first_name]);
@@ -209,10 +217,10 @@ class RecipeController extends Controller
 
     public function deleteRecipe($recipe_id) 
     {
-        
         $recipe = Recipe::findOrFail($recipe_id);
         $user_id = $recipe->user_id;
         $comments = Comment::where('recipe_id', $recipe_id);
+
         $recipe->ingredients()->delete();
         $recipe->steps()->delete();
         $comments->delete();
@@ -221,5 +229,4 @@ class RecipeController extends Controller
         return redirect('/profile/' . $user_id );
         session()->flash('success_message', 'Recipe was deleted. Thank you!');
     }
-
 }

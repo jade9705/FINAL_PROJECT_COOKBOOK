@@ -77,7 +77,7 @@
 
       {{-- javascript for star rating--}}
       <script>
-        const starElms = document.querySelectorAll('.rating__star');
+        const starElms = document.querySelectorAll('.rating .rating__star');
         const turnOnStars = (count) => {
           for (let i = 0; i < starElms.length; i++) {
             if (i < count) {
@@ -110,36 +110,43 @@
 <div class="review">
 
   <h2>Comments...</h2>
-    <ul> 
-      @foreach ($recipe->comments as $comment)
-        <div class="recipe-container">
-          <div class="hideThis"> {{$number = (int)$comment->rating}}</div>
-          <img src="/images/uploads/user/{{$comment->user->image_url}}" class="userImage"/>
-          <div class="nameAndText">
-            <li class="userName"> <a href="/profile/{{$user_id}}"><strong> {{$comment->user->first_name}} {{$comment->user->surname}}</strong></a> </li>
-            <div class="stars">
-              @for($i = 0; $i < $number; $i ++)
-                <div id="starRender" class="rating__star rating__star--on"></div>
-              @endfor
-            </div>
-            </div>
+  {{ $commentNumber }}
+  <ul> 
+    @foreach ($recipe->comments as $comment)
+      <div class="recipe-container">
+        <div class="hideThis"> {{$number = (int)$comment->rating}}</div>
+        <img src="/images/uploads/user/{{$comment->user->image_url}}" class="userImage"/>
+        <div class="nameAndText">
+          <li class="userName"> <a href="/profile/{{$user_id}}"><strong> {{$comment->user->first_name}} {{$comment->user->surname}}</strong></a> </li>
+          <div class="stars">
+            @for($i = 0; $i < $number; $i ++)
+              <div id="starRender" class="rating__star rating__star--on"></div>
+            @endfor
+            {{-- <div class="ratingRender"> {{ $comment->rating }}/5</div>   --}}
           </div>
           <li class="review">
             {{ $comment->text }}
             <br>      
-              @if(auth()->check())
-                @if(auth()->user()->id === $comment->user->id)
-                  <form action="{{route('comment.delete', [$recipe->id, $comment->id])}}" method="post">
-                    @csrf
-                    @method('delete')
-                    <input type="submit" value="delete">
-                  </form>
-                @endif
+       
+      </div>
+     
+       
+            @if(auth()->check())
+              @if(auth()->user()->id === $comment->user->id)
+                <form action="{{route('comment.delete', [$recipe->id, $comment->id])}}" method="post" id="deleteButton">
+                  @csrf
+                  @method('delete')
+                  <input type="submit" value="delete" class="btn btn-danger">
+                </form>
               @endif
-          </li>        
-          <div class="ratingRender"> {{ $comment->rating }}/5</div>          
-        </div>
-      @endforeach
-    </ul> 
+            @endif
+        </li>        
+                
+      </div>
+    @endforeach
+  </ul>
+</div> 
+</div>
+</div>
 </div>
 @endsection
