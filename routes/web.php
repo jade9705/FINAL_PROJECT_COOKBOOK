@@ -35,6 +35,8 @@ Route::get('/recipe/{recipe_id}/edit', 'RecipeController@edit')->name('edit.reci
 Route::post('/recipe/{recipe_id}', 'RecipeController@update')->name('update.recipe');
 //fetch recipe averange rating for AverangeRAting component in RecipeBox
 Route::post('/average', 'RecipeController@average')->name('average.recipe');
+//for deleting recipe
+Route::delete('/recipe/{recipe_id}', 'RecipeController@deleteRecipe')->name('delete.recipe');
 
 //Route::get('/create', 'RecipeController@create');
 // Route::post('/recipes', 'RecipeController@store');

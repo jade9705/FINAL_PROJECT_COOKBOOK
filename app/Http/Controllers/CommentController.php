@@ -15,9 +15,7 @@ class CommentController extends Controller
 
     public function averageRating($recipe_id)
     {
-        $recipe = Recipe::all();
-
-        
+        $recipe = Recipe::all();     
     }
 
     public function deleteComment($recipe_id, $comment_id)
