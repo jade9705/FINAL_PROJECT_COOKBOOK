@@ -14,12 +14,14 @@
 <p class="hideThis">hi</p>
 @else
 @if(auth()->user()->id === $recipe->user_id)
-  <a href="/recipe/{{$recipe->id}}/edit"><button class="btn btn-success">edit</button></a>
-  <form action="{{route('delete.recipe', $recipe->id)}}" method="post">
-    @csrf
-    @method('delete')
-    <input type="submit" value="delete"class="btn btn-danger">
-  </form>
+  <div class="buttonStyles">
+    <a href="/recipe/{{$recipe->id}}/edit"><button class="btn btn-success">edit</button></a>
+    <form action="{{route('delete.recipe', $recipe->id)}}" method="post">
+      @csrf
+      @method('delete')
+      <input type="submit" value="delete"class="btn btn-danger">
+    </form>
+  </div>
 @endif
 @endif
 
@@ -68,7 +70,7 @@
       <div class="form-group">
         <label for="">
           Text:<br>
-          <textarea name="text" cols="30" rows="10">{{ old('text') }}</textarea>
+          <textarea name="text" cols="85" rows="5">{{ old('text') }}</textarea>
         </label>
           @if($errors->has('text'))
             {{ $errors->first('text')}}
@@ -102,7 +104,7 @@
       </script>
 
       <div class="form-group">
-        <input type="submit" value="submit" name="submit" class="addComment" />
+        <input type="submit" value="submit" name="submit" class="btn btn-success"/>
       </div>
   </form>
 @endif 
@@ -141,7 +143,7 @@
               @endif
             @endif
         </li>        
-                
+          <p>{{ $comment->created_at }}</P>
       </div>
     @endforeach
   </ul>

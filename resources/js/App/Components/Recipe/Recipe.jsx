@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Medaillon from '../../../Profile/Components/Medaillon.jsx';
+import RecipeImage from './RecipeImage.jsx';
 
 
 
@@ -37,8 +38,8 @@ export default function Recipe() {
          return (
            <div className="spinner-position">
             <div className="d-flex justify-content-center">
-                <div class="spinner-border text-success spinner-border m-5"  role="status">
-                  <span class="sr-only">Loading...</span>
+                <div className="spinner-border text-success spinner-border m-5"  role="status">
+                  <span className="sr-only">Loading...</span>
                 </div>
             </div>
           </div>
@@ -51,15 +52,22 @@ export default function Recipe() {
         <div className="recipe">
           <div className="recipe__container1">
             <div className="recipe__imagey">
-        <img src={`/images/uploads/${recipe.image_url}`} alt="some picture of food"  />
-        </div>
-        <p className="recipe__description">{recipe.description}</p>
-            <label className="recipe__ingredients">Ingredients</label>
-            <ul>
-              { recipe.ingredients.map((ingredient, index) => {
-                return <li key={index}> {ingredient.pivot.amount}  {ingredient.name} </li>})}
-            </ul>
+
+              <RecipeImage recipe={recipe}/>
+
             </div>
+            <p className="recipe__description">{recipe.description}</p>
+
+            <div className="recipe__ingredients-box">
+              <label className="recipe__ingredients">Ingredients</label>
+              <ul>
+                { recipe.ingredients.map((ingredient, index) => {
+                  return <li key={index}> {ingredient.pivot.amount}  {ingredient.name} </li>})}
+              </ul> 
+            </div>
+
+            </div>
+
             <div className="recipe__container2">
               <div className="recipe__flexbox">
             <div className="recipe__medallion">
