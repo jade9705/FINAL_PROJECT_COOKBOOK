@@ -11,7 +11,6 @@ const FavouriteRecipeButton = ({recipe}) => {
   }, [])
 
   useEffect(() => {
-    console.log('změna arru', logged_user);
     if(arr_of_users_that_favourite.find((user) => (user.id == logged_user))) {
       setLiked_style(1);
     }else {
@@ -20,7 +19,6 @@ const FavouriteRecipeButton = ({recipe}) => {
   })
 
   const whofavourite = async () => {
-    console.log('whofavourite');
     const response = await fetch('/recipe/update/whofavourite', {
       method: 'POST',
       body: JSON.stringify({ recipe_id: recipe.id }),
@@ -31,14 +29,12 @@ const FavouriteRecipeButton = ({recipe}) => {
       }
     });
     const data = await response.json();
-    console.log('data', data);
     setarr_of_users_that_favourite(data.arr_of_users_that_favourite);
     setLogged_user(data.logged_user);
   };
 
   const favourite = async (event) => {
     event.preventDefault();
-    console.log('favourite');
     const response = await fetch('/recipe/update/favourite', {
       method: 'POST',
       body: JSON.stringify({ recipe_id: recipe.id }),
@@ -49,13 +45,11 @@ const FavouriteRecipeButton = ({recipe}) => {
       }
     });
     const data = await response.json();
-    console.log(data);
     setarr_of_users_that_favourite(data.arr_of_users_that_favourite);
   };
 
   const unfavourite = async (event) => {
     event.preventDefault();
-    console.log('favourite');
     const response = await fetch('/recipe/update/unfavourite', {
       method: 'POST',
       body: JSON.stringify({ recipe_id: recipe.id }),
@@ -66,15 +60,10 @@ const FavouriteRecipeButton = ({recipe}) => {
       }
     });
     const data = await response.json();
-    console.log(data);
     setarr_of_users_that_favourite(data.arr_of_users_that_favourite);
   };
 
-
-
-
-
-  console.log('hi', arr_of_users_that_favourite, logged_user, 'liked', liked_style, 'recipe_id', recipe.id )
+  // console.log('hi', arr_of_users_that_favourite, logged_user, 'liked', liked_style, 'recipe_id', recipe.id )
 
   return (
     <>

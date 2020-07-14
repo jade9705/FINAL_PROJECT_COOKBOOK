@@ -2,22 +2,35 @@ import React, {useEffect, useState} from 'react'
 import RecipeBox from "../../App/Components/recipeBox/RecipeBox.jsx";
 
 const FavouriteMeal = ({user}) => {
-  const [newestLiked, setNewestLiked] = useState([]);
+  const [recipe, setRecipe] = useState([]);
+  const [all, seTall] = useState(false);
 
   useEffect(() => {
     fetchNewestLiked()
-  },[user])
+  }, [user])
 
-  const fetchNewestLiked = async () => {
-    const response = await fetch('/api/search/newestliked'); //fake!!!!! in future remake to post method and fetch liked recipe
+  const fetchNewestLiked = async (event) => {
+    event ? event.preventDefault() : null;
+    if(!user.id) return;
+    const response = await fetch(`/api/favourite/newestliked/${user.id}`); 
     const newestLiked = await response.json();
-    setNewestLiked(newestLiked);
+    setRecipe(newestLiked);
+    seTall(false);
+  }
+
+  const fetchAllUserRecipes = async (event) => {
+    event.preventDefault();
+    if(!user.id) return;
+    const response = await fetch(`/api/favourite/allliked/${user.id}`); 
+    const allrecepe = await response.json();
+    setRecipe(allrecepe);
+    seTall(true);
   }
 
   let content = null;
-  if(newestLiked){
+  if(recipe){
     content = (
-      newestLiked.map((recipe, index) => {
+      recipe.map((recipe, index) => {
         return <RecipeBox
                   recipe={recipe}
                   key={index}
@@ -30,7 +43,9 @@ const FavouriteMeal = ({user}) => {
     <div className='favouriteMeal'>
       <h2 className='favouriteMeal__header'>Favourite recipes</h2>
       <div className='favouriteMeal__buttons'>
-        <a href="">view all</a>
+        {
+          all ? <a href="" onClick={ fetchNewestLiked } >view newest</a> : <a href="" onClick={ fetchAllUserRecipes } >view all</a>
+        }
       </div>
       <div className='favouriteMeal__recipeContainer'>
         {content}

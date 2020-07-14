@@ -27,7 +27,8 @@ Route::post('/search/newestrecipes', 'Api\ApiSearchRecipesController@newest');
 // show all users recipe -> users CookBook
 Route::get('/cookbook/{user_id}', 'Api\ApiRecipeController@allUsersRecipes');
 // FAKE! api endpoint for liked recipe (in this moment like smth is not possible for that it is get method) change it to post method and find first two liked recipe
-Route::get('/search/newestliked', 'Api\ApiSearchRecipesController@newestliked');
+Route::get('/favourite/newestliked/{user_id}', 'Api\ApiRecipeController@newestliked');
+Route::get('/favourite/allliked/{user_id}', 'Api\ApiRecipeController@allliked');
 
 
 

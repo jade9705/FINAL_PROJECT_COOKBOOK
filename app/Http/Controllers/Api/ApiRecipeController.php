@@ -28,4 +28,22 @@ class ApiRecipeController extends Controller
         // dd($recipe);
         return $recipes;
     }
+
+    public function newestliked ($user_id)
+    {
+        $user = User::findOrFail($user_id);
+        $liked_recipes = $user->recipes()->orderBy('id', 'desc')->limit(3)->get();
+
+        return $liked_recipes;
+    }
+
+    public function allliked ($user_id)
+    {
+        $user = User::findOrFail($user_id);
+        $liked_recipes = $user->recipes;
+
+        return $liked_recipes;
+    }
+
+
 }

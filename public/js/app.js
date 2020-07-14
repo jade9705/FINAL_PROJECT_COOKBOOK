@@ -33570,8 +33570,6 @@ var FavouriteRecipeButton = function FavouriteRecipeButton(_ref) {
     whofavourite();
   }, []);
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    console.log('změna arru', logged_user);
-
     if (arr_of_users_that_favourite.find(function (user) {
       return user.id == logged_user;
     })) {
@@ -33588,8 +33586,7 @@ var FavouriteRecipeButton = function FavouriteRecipeButton(_ref) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              console.log('whofavourite');
-              _context.next = 3;
+              _context.next = 2;
               return fetch('/recipe/update/whofavourite', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -33602,18 +33599,17 @@ var FavouriteRecipeButton = function FavouriteRecipeButton(_ref) {
                 }
               });
 
-            case 3:
+            case 2:
               response = _context.sent;
-              _context.next = 6;
+              _context.next = 5;
               return response.json();
 
-            case 6:
+            case 5:
               data = _context.sent;
-              console.log('data', data);
               setarr_of_users_that_favourite(data.arr_of_users_that_favourite);
               setLogged_user(data.logged_user);
 
-            case 10:
+            case 8:
             case "end":
               return _context.stop();
           }
@@ -33634,8 +33630,7 @@ var FavouriteRecipeButton = function FavouriteRecipeButton(_ref) {
           switch (_context2.prev = _context2.next) {
             case 0:
               event.preventDefault();
-              console.log('favourite');
-              _context2.next = 4;
+              _context2.next = 3;
               return fetch('/recipe/update/favourite', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -33648,17 +33643,16 @@ var FavouriteRecipeButton = function FavouriteRecipeButton(_ref) {
                 }
               });
 
-            case 4:
+            case 3:
               response = _context2.sent;
-              _context2.next = 7;
+              _context2.next = 6;
               return response.json();
 
-            case 7:
+            case 6:
               data = _context2.sent;
-              console.log(data);
               setarr_of_users_that_favourite(data.arr_of_users_that_favourite);
 
-            case 10:
+            case 8:
             case "end":
               return _context2.stop();
           }
@@ -33679,8 +33673,7 @@ var FavouriteRecipeButton = function FavouriteRecipeButton(_ref) {
           switch (_context3.prev = _context3.next) {
             case 0:
               event.preventDefault();
-              console.log('favourite');
-              _context3.next = 4;
+              _context3.next = 3;
               return fetch('/recipe/update/unfavourite', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -33693,17 +33686,16 @@ var FavouriteRecipeButton = function FavouriteRecipeButton(_ref) {
                 }
               });
 
-            case 4:
+            case 3:
               response = _context3.sent;
-              _context3.next = 7;
+              _context3.next = 6;
               return response.json();
 
-            case 7:
+            case 6:
               data = _context3.sent;
-              console.log(data);
               setarr_of_users_that_favourite(data.arr_of_users_that_favourite);
 
-            case 10:
+            case 8:
             case "end":
               return _context3.stop();
           }
@@ -33714,9 +33706,9 @@ var FavouriteRecipeButton = function FavouriteRecipeButton(_ref) {
     return function unfavourite(_x2) {
       return _ref4.apply(this, arguments);
     };
-  }();
+  }(); // console.log('hi', arr_of_users_that_favourite, logged_user, 'liked', liked_style, 'recipe_id', recipe.id )
 
-  console.log('hi', arr_of_users_that_favourite, logged_user, 'liked', liked_style, 'recipe_id', recipe.id);
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, liked_style ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
     className: "fouvourite",
     onClick: unfavourite
@@ -34556,33 +34548,49 @@ var FavouriteMeal = function FavouriteMeal(_ref) {
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
-      newestLiked = _useState2[0],
-      setNewestLiked = _useState2[1];
+      recipe = _useState2[0],
+      setRecipe = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      all = _useState4[0],
+      seTall = _useState4[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     fetchNewestLiked();
   }, [user]);
 
   var fetchNewestLiked = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(event) {
       var response, newestLiked;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
-              return fetch('/api/search/newestliked');
+              event ? event.preventDefault() : null;
 
-            case 2:
-              response = _context.sent;
+              if (user.id) {
+                _context.next = 3;
+                break;
+              }
+
+              return _context.abrupt("return");
+
+            case 3:
               _context.next = 5;
-              return response.json();
+              return fetch("/api/favourite/newestliked/".concat(user.id));
 
             case 5:
-              newestLiked = _context.sent;
-              setNewestLiked(newestLiked);
+              response = _context.sent;
+              _context.next = 8;
+              return response.json();
 
-            case 7:
+            case 8:
+              newestLiked = _context.sent;
+              setRecipe(newestLiked);
+              seTall(false);
+
+            case 11:
             case "end":
               return _context.stop();
           }
@@ -34590,15 +34598,58 @@ var FavouriteMeal = function FavouriteMeal(_ref) {
       }, _callee);
     }));
 
-    return function fetchNewestLiked() {
+    return function fetchNewestLiked(_x) {
       return _ref2.apply(this, arguments);
+    };
+  }();
+
+  var fetchAllUserRecipes = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(event) {
+      var response, allrecepe;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              event.preventDefault();
+
+              if (user.id) {
+                _context2.next = 3;
+                break;
+              }
+
+              return _context2.abrupt("return");
+
+            case 3:
+              _context2.next = 5;
+              return fetch("/api/favourite/allliked/".concat(user.id));
+
+            case 5:
+              response = _context2.sent;
+              _context2.next = 8;
+              return response.json();
+
+            case 8:
+              allrecepe = _context2.sent;
+              setRecipe(allrecepe);
+              seTall(true);
+
+            case 11:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function fetchAllUserRecipes(_x2) {
+      return _ref3.apply(this, arguments);
     };
   }();
 
   var content = null;
 
-  if (newestLiked) {
-    content = newestLiked.map(function (recipe, index) {
+  if (recipe) {
+    content = recipe.map(function (recipe, index) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_App_Components_recipeBox_RecipeBox_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         recipe: recipe,
         key: index
@@ -34612,8 +34663,12 @@ var FavouriteMeal = function FavouriteMeal(_ref) {
     className: "favouriteMeal__header"
   }, "Favourite recipes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "favouriteMeal__buttons"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-    href: ""
+  }, all ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+    href: "",
+    onClick: fetchNewestLiked
+  }, "view newest") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+    href: "",
+    onClick: fetchAllUserRecipes
   }, "view all")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "favouriteMeal__recipeContainer"
   }, content));
