@@ -33496,8 +33496,8 @@ var AverageRating = function AverageRating(_ref) {
 
     ;
     setLights(arr);
-  }, [averageRating]);
-  console.log(lights);
+  }, [averageRating]); // console.log(lights);
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ratingContainer"
   }, lights.map(function (star, key) {
@@ -33509,22 +33509,7 @@ var AverageRating = function AverageRating(_ref) {
       className: "ratingContainer__star"
     });
   }));
-}; // .rating__stars {
-//   display: flex;
-//   justify-content: space-between;
-// }
-// .rating__star {
-//   width: 2rem;
-//   height: 2rem;
-//   background-image: url('img/star-white.svg');
-//   background-size: contain;
-//   background-repeat: no-repeat;
-//   cursor: pointer;
-// }
-// .rating__star--on {
-//   background-image: url('img/star-yellow.svg');
-// }
-
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (AverageRating);
 
@@ -34021,7 +34006,8 @@ var RecipeBox = function RecipeBox(_ref) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(0),
       _useState2 = _slicedToArray(_useState, 2),
       averageRating = _useState2[0],
-      setAverageRating = _useState2[1]; // let content = null;
+      setAverageRating = _useState2[1]; // const [spinner, setSpinner] = useState(0);
+  // let content = null;
 
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
@@ -34035,8 +34021,7 @@ var RecipeBox = function RecipeBox(_ref) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              console.log('recipe_id:', recipe.id);
-              _context.next = 3;
+              _context.next = 2;
               return fetch('/average', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -34049,17 +34034,17 @@ var RecipeBox = function RecipeBox(_ref) {
                 }
               });
 
-            case 3:
+            case 2:
               response = _context.sent;
-              _context.next = 6;
+              _context.next = 5;
               return response.json();
 
-            case 6:
+            case 5:
               data = _context.sent;
-              console.log('právě jsem chytnul average', data);
+              // console.log('právě jsem chytnul average', data);
               setAverageRating(data);
 
-            case 9:
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -34070,9 +34055,20 @@ var RecipeBox = function RecipeBox(_ref) {
     return function fetchAverageRating() {
       return _ref2.apply(this, arguments);
     };
-  }();
+  }(); // console.log('spinner', spinner)
+  // if (spinner == 0) {
+  //   return (
+  //     <>
+  //       <div classNmae="d-flex justify-content-center">
+  //         <div className="spinner-border text-success"  role="status">
+  //           <span className="sr-only">Loading...</span>
+  //         </div>
+  //       </div>
+  //     </>
+  //   )
+  // }
 
-  console.log('before render', averageRating);
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, recipe ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "recipeBox"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
@@ -34089,7 +34085,14 @@ var RecipeBox = function RecipeBox(_ref) {
     className: "recipeBox__title"
   }, recipe.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "recipeBox__description"
-  }, recipe.description))) : null);
+  }, recipe.description))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    classNmae: "d-flex justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    "class": "spinner-border text-success",
+    role: "status"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+    "class": "sr-only"
+  }, "Loading..."))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (RecipeBox);
@@ -34105,12 +34108,107 @@ var RecipeBox = function RecipeBox(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var ActivityBox = function ActivityBox() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "ActivityBox");
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+var ActivityBox = function ActivityBox(_ref) {
+  var user = _ref.user;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      activities = _useState2[0],
+      setActivities = _useState2[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    fetchData();
+  }, [user]);
+
+  var fetchData = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var response, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (!(Object.keys(user).length == 0)) {
+                _context.next = 4;
+                break;
+              }
+
+              return _context.abrupt("return", null);
+
+            case 4:
+              _context.next = 6;
+              return fetch('/profile/update/activitybox', {
+                method: 'POST',
+                body: JSON.stringify({
+                  profile_id: user.id
+                }),
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+              });
+
+            case 6:
+              response = _context.sent;
+              _context.next = 9;
+              return response.json();
+
+            case 9:
+              data = _context.sent;
+              setActivities(data);
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function fetchData() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "activityBox"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h5", {
+    className: "activityBox__header"
+  }, "Activities"), activities ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+    className: "activityBox__ul"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+    className: "activityBox__li"
+  }, "recipes ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+    className: "activityBox__number"
+  }, activities[0]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+    className: "activityBox__li"
+  }, "comments ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+    className: "activityBox__number"
+  }, activities[1])))) : null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ActivityBox);
@@ -34328,10 +34426,9 @@ var FollowersBox = function FollowersBox(_ref) {
 
             case 5:
               data = _context.sent;
-              console.log('zrovna jsem fetchnul arr to follow', data);
               setTo_follow_arr(data);
 
-            case 8:
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -34344,7 +34441,6 @@ var FollowersBox = function FollowersBox(_ref) {
     };
   }();
 
-  console.log(to_follow_arr);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "followContainer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h5", {
@@ -34504,23 +34600,23 @@ var ProfileCookBook = function ProfileCookBook(_ref) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              event.preventDefault();
-              console.log("/api/cookbook/".concat(user.id));
-              _context2.next = 4;
+              event.preventDefault(); // console.log(`/api/cookbook/${user.id}`);
+
+              _context2.next = 3;
               return fetch("/api/cookbook/".concat(user.id));
 
-            case 4:
+            case 3:
               response = _context2.sent;
-              _context2.next = 7;
+              _context2.next = 6;
               return response.json();
 
-            case 7:
+            case 6:
               allUsersRecipes = _context2.sent;
-              console.log(allUsersRecipes);
+              // console.log(allUsersRecipes);
               setRecipes(allUsersRecipes);
               setClickedAllrecipes(true);
 
-            case 11:
+            case 9:
             case "end":
               return _context2.stop();
           }
@@ -34597,7 +34693,9 @@ var ProfileSideBar = function ProfileSideBar(_ref) {
     logged_user_id: logged_user_id
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FollowersBox__WEBPACK_IMPORTED_MODULE_2__["default"], {
     user: user
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ActivityBox__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ActivityBox__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    user: user
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ProfileSideBar);
@@ -34678,8 +34776,7 @@ var UserBox = function UserBox(_ref) {
 
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    setEditeduser(user);
-    console.log('user_follower', user.user_followers);
+    setEditeduser(user); // console.log('user_follower', user.user_followers )
 
     if (user.user_followers) {
       setArr_of_friends(user.user_followers);
@@ -34702,8 +34799,7 @@ var UserBox = function UserBox(_ref) {
   }, [arr_of_friends]); //to follo someone
 
   var folow = function folow() {
-    console.log('follow');
-
+    // console.log('follow');
     var fetchData = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var response, data;
@@ -34731,10 +34827,10 @@ var UserBox = function UserBox(_ref) {
 
               case 5:
                 data = _context.sent;
-                console.log(data);
+                // console.log(data);  
                 setArr_of_friends(data);
 
-              case 8:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -34751,8 +34847,7 @@ var UserBox = function UserBox(_ref) {
   };
 
   var unfolow = function unfolow() {
-    console.log('unffollow');
-
+    // console.log('unffollow');
     var fetchData = /*#__PURE__*/function () {
       var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var response, data;
@@ -34780,10 +34875,10 @@ var UserBox = function UserBox(_ref) {
 
               case 5:
                 data = _context2.sent;
-                console.log(data);
+                // console.log(data);
                 setArr_of_friends(data);
 
-              case 8:
+              case 7:
               case "end":
                 return _context2.stop();
             }
@@ -35055,14 +35150,14 @@ var Profile = /*#__PURE__*/function (_Component) {
 
             case 5:
               data = _context.sent;
-              console.log('potom co sto chytil', data);
 
+              // console.log('potom co sto chytil', data);
               _this.setState({
                 user: data.user,
                 logged_user_id: data.logged_user_id
               });
 
-            case 8:
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -35156,8 +35251,8 @@ if (document.getElementById('profile')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\web\bootcamp\projects\FINAL_PROJECT_COOKBOOK\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\web\bootcamp\projects\FINAL_PROJECT_COOKBOOK\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Web\codingbootcamp\Projects\FINAL_PROJECT_COOKBOOK\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Web\codingbootcamp\Projects\FINAL_PROJECT_COOKBOOK\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

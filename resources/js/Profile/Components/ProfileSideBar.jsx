@@ -8,7 +8,7 @@ const ProfileSideBar = ({user, logged_user_id}) => {
     <div className="profileSideBar">
       <UserBox user={user} logged_user_id={logged_user_id} />
       <FollowersBox user={user} />
-      <ActivityBox />
+      <ActivityBox user={user}/>
     </div>
   )
 }

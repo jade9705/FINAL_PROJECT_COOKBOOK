@@ -10564,6 +10564,14 @@ ul {
   height: 75px;
 }
 
+.activityBox {
+  color: #353535;
+  margin-top: 3rem;
+}
+.activityBox__number {
+  font-weight: 700;
+}
+
 .profilePage {
   margin-left: 4vw;
   margin-right: 4vw;

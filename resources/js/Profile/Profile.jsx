@@ -26,7 +26,7 @@ export default class Profile extends Component {
       }
     });
     const data = await response.json();
-    console.log('potom co sto chytil', data);
+    // console.log('potom co sto chytil', data);
     this.setState({
       user: data.user,
       logged_user_id: data.logged_user_id

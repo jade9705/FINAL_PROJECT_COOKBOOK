@@ -169,6 +169,18 @@ class UserController extends Controller
         
     }
 
+    public function activitybox(Request $request)
+    {
+        //find profile user
+        $profile_id = $request->input('profile_id');
+
+        $numOfrecipes = count(User::findOrFail($profile_id)->recipes);
+        $numOfcomments = count(User::findOrFail($profile_id)->comments);
+
+        return [$numOfrecipes, $numOfcomments];
+        
+    }
+
     /**
      * Remove the specified resource from storage.
      *
