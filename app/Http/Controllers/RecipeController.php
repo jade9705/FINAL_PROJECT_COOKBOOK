@@ -84,12 +84,14 @@ class RecipeController extends Controller
         $recipe = Recipe::findOrFail($recipe_id);
         $comments = Comment::where('recipe_id', $recipe_id)->get();
         $sumOfRatings = 0;
-        
-        foreach($comments as $comment) {
-            $sumOfRatings += (int)$comment->rating;
+        if(count($recipe->comments) != 0) {
+            foreach($comments as $comment) {
+                $sumOfRatings += (int)$comment->rating;
+            }
+            $average = $sumOfRatings / count($recipe->comments);
+        } else {
+            $average = 0;
         }
-
-        $average = $sumOfRatings / count($recipe->comments);
         return view('recipe.recipe', compact('recipe_id', 'user_id', 'recipe', 'average'));
 
     }
