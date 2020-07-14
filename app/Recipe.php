@@ -25,6 +25,13 @@ class Recipe extends Model
     {
         return $this->belongsToMany('App\User');
     }
+
+    //new just for test
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+    
     public function author()
     {
         return $this->belongsToMany('App\User');

@@ -64,8 +64,8 @@ class RecipeController extends Controller
             $step->save();
         };
 
-        $user = User::findOrFail($user_id);
-        $user->recipes()->attach($recipe->id);
+        // $user = User::findOrFail($user_id);
+        // $user->recipes()->attach($recipe->id);
        // $recipe->users()->attach($user->name);
         return redirect('/recipe/' . $recipe->id );
     }
@@ -119,31 +119,50 @@ class RecipeController extends Controller
             return $average;
         };
     }
+
     public function favourite(Request $request)
     {
-        // //find users in the game 
-        // $profile_id = $request->input('profile_id');
-        // $logged_user_id = Auth::user();
-        // //attach them
-        // $logged_user_id->to_follow()->attach($profile_id);
-        // //send to the profile page updatee version of friends
-        // $arr_of_friends = User::findOrFail($profile_id)->user_followers;
-        // return $arr_of_friends;
-
-        //find user and recipes in the game 
-        // $logged_user = Auth::user();
+        // find user and recipes in the game 
+        $logged_user = Auth::user();
         $recipe_id = $request->input('recipe_id');
+        $logged_user->recipes()->attach($recipe_id);
 
+        $arr_of_users_that_favourite = Recipe::findOrFail($recipe_id)->users;
+
+        return [
+            'arr_of_users_that_favourite' => $arr_of_users_that_favourite
+        ];
+    }
+
+    public function unfavourite(Request $request)
+    {
+        // find user and recipes in the game 
+        $logged_user = Auth::user();
+        $recipe_id = $request->input('recipe_id');
+        $logged_user->recipes()->attach($recipe_id);
+
+        $arr_of_users_that_favourite = Recipe::findOrFail($recipe_id)->users;
+
+        return [
+            'arr_of_users_that_favourite' => $arr_of_users_that_favourite
+        ];
+    }
+
+    public function whofavourite(Request $request)
+    {
+        // find user and recipes in the game 
+        $logged_user = Auth::user();
+        $recipe_id = $request->input('recipe_id');
         // $logged_user->recipes()->attach($recipe_id);
 
-        // $arr_of_users_that_favourite = ;
+        $arr_of_users_that_favourite = Recipe::findOrFail($recipe_id)->users;
 
-        // dd($x);
+        // dd($arr_of_users_that_favourite);
 
-        // return $x;
-        return $recipe_id;
-
-
+        return [
+            'arr_of_users_that_favourite' => $arr_of_users_that_favourite,
+            'logged_user' => $logged_user->id
+        ];
     }
 
     public function comment(Request $request)

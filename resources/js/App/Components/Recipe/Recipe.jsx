@@ -26,8 +26,8 @@ export default function Recipe() {
           }
         })
         const recipe = await response.json();  
-        setRecipe(recipe); 
         console.log(recipe);
+        setRecipe(recipe); 
         
       }
 
@@ -71,12 +71,12 @@ export default function Recipe() {
             <div className="recipe__container2">
               <div className="recipe__flexbox">
             <div className="recipe__medallion">
-            <a href={`/profile/${recipe.user_id}`} className="recipeAuthor"><Medaillon user={recipe.users[0]} /></a>
+            <a href={`/profile/${recipe.user_id}`} className="recipeAuthor"><Medaillon user={recipe.user} /></a>
                 </div>
             <h1 className="recipe__name">  {recipe.title}</h1>
             </div>
                 
-            <p>by <a href={`/profile/${recipe.user_id}`} className="recipeAuthor"><strong>{recipe.users[0].first_name} {recipe.users[0].surname}</strong></a></p>
+            <p>by <a href={`/profile/${recipe.user_id}`} className="recipeAuthor"><strong>{recipe.user.first_name} {recipe.user.surname}</strong></a></p>
                         
             <label className="recipe__method">Method  </label>
             <ol>

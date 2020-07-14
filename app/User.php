@@ -53,6 +53,12 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Recipe');
     }
 
+    //new just for test
+    public function createrecipes()
+    {
+        return $this->hasMany('App\Recipe');
+    }
+
     public function comments()
     {
         return $this->hasMany('App\Comment');

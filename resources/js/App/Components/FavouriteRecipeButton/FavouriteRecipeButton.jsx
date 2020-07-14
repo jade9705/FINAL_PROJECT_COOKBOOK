@@ -1,8 +1,38 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 const FavouriteRecipeButton = ({recipe}) => {
+const [arr_of_users_that_favourite, setarr_of_users_that_favourite] = useState([]);
+const [logged_user, setLogged_user] = useState(null);
+const [liked_style, setLiked_style] = useState(0);
 
+  useEffect(() => {
+    whofavourite();
+  }, [])
 
+  useEffect(() => {
+    if(arr_of_users_that_favourite.find((user) => (user.id == logged_user))) {
+      setLiked_style(1);
+    }else {
+      setLiked_style(0);
+    }
+  }, [arr_of_users_that_favourite])
+
+  const whofavourite = async () => {
+    console.log('whofavourite');
+    const response = await fetch('/recipe/update/whofavourite', {
+      method: 'POST',
+      body: JSON.stringify({ recipe_id: recipe.id }),
+      headers: {
+        'Accept':       'application/json',
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      }
+    });
+    const data = await response.json();
+    console.log(data);
+    setarr_of_users_that_favourite(data.arr_of_users_that_favourite);
+    setLogged_user(data.logged_user);
+  };
 
   const favourite = async (event) => {
     event.preventDefault();
@@ -18,8 +48,10 @@ const FavouriteRecipeButton = ({recipe}) => {
     });
     const data = await response.json();
     console.log(data);
-    // setTo_follow_arr(data);
+    setarr_of_users_that_favourite(data.arr_of_users_that_favourite);
   };
+
+  console.log('hi', arr_of_users_that_favourite, logged_user, 'liked', liked_style )
 
   return (
     <a className="fouvourite" onClick={ favourite }>

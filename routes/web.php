@@ -60,7 +60,11 @@ Route::post('/profile/update/activitybox', 'UserController@activitybox')->name('
 //for reviews:
 Route::post('/recipe/{recipe_id}/comment', 'RecipeController@comment')->name('recipe.comment');
 //to like some recipe from ract component FavouriteREcipeButton
-Route::post('/recipe/update/favourite', 'RecipeController@favourite')->middleware('auth');;
+Route::post('/recipe/update/favourite', 'RecipeController@favourite')->middleware('auth');
+//to unlike some recipe from ract component FavouriteREcipeButton
+Route::post('/recipe/update/unfavourite', 'RecipeController@unfavourite')->middleware('auth');
+//who favouritethis recipe
+Route::post('/recipe/update/whofavourite', 'RecipeController@whofavourite')->middleware('auth');
 // Route::get('/recipe/recipe{_id}/comments/{comment_id}', 'CommentController@show');
 Route::delete('/recipe/{recipe_id}/comment/{comment_id}', 'CommentController@deleteComment')->name('comment.delete');
 

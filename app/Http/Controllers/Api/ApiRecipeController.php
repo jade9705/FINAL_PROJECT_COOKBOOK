@@ -11,7 +11,7 @@ class ApiRecipeController extends Controller
 {
     public function show($id)
     {
-        $recipe = Recipe::with(["ingredients", "steps", "users"])->findOrFail($id);
+        $recipe = Recipe::with(["ingredients", "steps", "user"])->findOrFail($id);
         return $recipe;
     }
 
