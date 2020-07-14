@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Recipe;
 
 // you can use auth model for examlple-> Auth::user()
 use Illuminate\Support\Facades\Auth;
@@ -174,8 +175,13 @@ class UserController extends Controller
         //find profile user
         $profile_id = $request->input('profile_id');
 
-        $numOfrecipes = count(User::findOrFail($profile_id)->recipes);
+        $recipes = Recipe::where('user_id', $profile_id)->get();
+
+
+        $numOfrecipes = count($recipes);
         $numOfcomments = count(User::findOrFail($profile_id)->comments);
+        // $numOfrecipes = count(User::findOrFail($profile_id)->recipes);
+        // $numOfcomments = count(User::findOrFail($profile_id)->comments);
 
         return [$numOfrecipes, $numOfcomments];
         

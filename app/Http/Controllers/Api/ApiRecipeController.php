@@ -17,10 +17,14 @@ class ApiRecipeController extends Controller
 
     public function allUsersRecipes ($user_id)
     {
-        $recipes = User::find($user_id)
-            ->recipes()
+
+        $recipes = Recipe::where('user_id', $user_id)
             ->orderBy('updated_at', 'desc')
             ->get();
+        // $recipes = User::find($user_id)
+        //     ->recipes()
+        //     ->orderBy('updated_at', 'desc')
+        //     ->get();
         // dd($recipe);
         return $recipes;
     }

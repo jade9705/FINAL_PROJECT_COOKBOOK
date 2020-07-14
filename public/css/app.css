@@ -10086,6 +10086,18 @@ h3 {
   background-image: url("http://localhost:3000/images/rating/star-yellow.svg");
 }
 
+.fouvourite {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.fouvourite__svg {
+  fill: #353535;
+}
+.fouvourite__svg--liked {
+  fill: #b80303;
+}
+
 .recipeBox {
   border-radius: 0.7rem;
   box-shadow: 10px 10px 16px -7px rgba(69, 69, 69, 0.5);
@@ -10111,6 +10123,21 @@ h3 {
   border-radius: 0.7rem 0.7rem 0 0;
   width: 100%;
   height: 11rem;
+}
+.recipeBox__avelikeBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.3rem;
+}
+.recipeBox__sizeOfHeart {
+  width: 1.7rem;
+  height: 1.7rem;
+  margin-right: 1rem;
+}
+.recipeBox__sizeOfHeart:hover {
+  width: 1.9rem;
+  height: 1.9rem;
 }
 .recipeBox__title {
   color: #353535;

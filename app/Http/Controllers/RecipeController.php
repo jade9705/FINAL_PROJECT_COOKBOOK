@@ -8,6 +8,8 @@ use App\Ingredient;
 use App\Step;
 use App\Comment;
 use App\User;
+// you can use auth model for examlple-> Auth::user()
+use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
@@ -116,6 +118,32 @@ class RecipeController extends Controller
             $average = round($sumOfRatings / count($recipe->comments));
             return $average;
         };
+    }
+    public function favourite(Request $request)
+    {
+        // //find users in the game 
+        // $profile_id = $request->input('profile_id');
+        // $logged_user_id = Auth::user();
+        // //attach them
+        // $logged_user_id->to_follow()->attach($profile_id);
+        // //send to the profile page updatee version of friends
+        // $arr_of_friends = User::findOrFail($profile_id)->user_followers;
+        // return $arr_of_friends;
+
+        //find user and recipes in the game 
+        // $logged_user = Auth::user();
+        $recipe_id = $request->input('recipe_id');
+
+        // $logged_user->recipes()->attach($recipe_id);
+
+        // $arr_of_users_that_favourite = ;
+
+        // dd($x);
+
+        // return $x;
+        return $recipe_id;
+
+
     }
 
     public function comment(Request $request)

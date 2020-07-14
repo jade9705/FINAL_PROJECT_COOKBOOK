@@ -23,9 +23,12 @@ class ApiSearchRecipesController extends Controller
         $user_id = $request->user_id;
         $user = User::find($user_id);
         if ($user_id) {
-            $newestRecipes = $user->recipes()->orderBy('updated_at', 'desc')->limit(3)->get();
-            // $newestRecipes = $user->recipes;
-            // dd($newestRecipes);
+            $newestRecipes = Recipe::where('user_id', $user_id)
+            ->orderBy('updated_at', 'desc')
+            ->limit(3)
+            ->get();
+
+            // $newestRecipes = $user->recipes()->orderBy('updated_at', 'desc')->limit(3)->get();
             return $newestRecipes;
         }
         return [];

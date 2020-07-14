@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import AverangeRating from "../AverangeRating/AverageRating.jsx";
+import FavouriteRecipeButton from "../FavouriteRecipeButton/FavouriteRecipeButton.jsx";
 
 const RecipeBox = ({recipe}) => {
   const [averageRating, setAverageRating] = useState(0);
@@ -54,10 +55,16 @@ const RecipeBox = ({recipe}) => {
           <a  className="recipeBox__link" href={`/recipe/${recipe.id}`}>
             {/* <img className="recipeBox__img" src={`http://localhost:3000/images/uploads/${recipe.image_url}`} alt={recipe.title} /> */}
             <div className="recipeBox__img" style={{backgroundImage: `url("http://localhost:3000/images/uploads/${recipe.image_url}")`}}></div>
+            <div className="recipeBox__avelikeBox">
             <AverangeRating averageRating={averageRating}/>
+            <div className="recipeBox__sizeOfHeart">
+              <FavouriteRecipeButton recipe={recipe} />
+            </div>
+            </div>
             <p className="recipeBox__title">{recipe.title}</p>
             <div className="recipeBox__description">{recipe.description}</div>
           </a>
+          
         </div>
       )
       :

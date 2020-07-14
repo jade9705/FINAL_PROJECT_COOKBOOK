@@ -33515,6 +33515,93 @@ var AverageRating = function AverageRating(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/App/Components/FavouriteRecipeButton/FavouriteRecipeButton.jsx":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/App/Components/FavouriteRecipeButton/FavouriteRecipeButton.jsx ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var FavouriteRecipeButton = function FavouriteRecipeButton(_ref) {
+  var recipe = _ref.recipe;
+
+  var favourite = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(event) {
+      var response, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              event.preventDefault();
+              console.log('favourite');
+              _context.next = 4;
+              return fetch('/recipe/update/favourite', {
+                method: 'POST',
+                body: JSON.stringify({
+                  recipe_id: recipe.id
+                }),
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+              });
+
+            case 4:
+              response = _context.sent;
+              _context.next = 7;
+              return response.json();
+
+            case 7:
+              data = _context.sent;
+              console.log(data); // setTo_follow_arr(data);
+
+            case 9:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function favourite(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+    className: "fouvourite",
+    onClick: favourite
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("svg", {
+    className: "fouvourite__svg fouvourite__svg--liked ",
+    enableBackground: "new 0 0 128 128",
+    version: "1.1",
+    viewBox: "0 0 128 128",
+    xmlSpace: "preserve",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    d: "m115.08 22.981c-10.794-10.794-28.279-10.794-39.053 0l-12.027 12.027-12.026-12.027c-5.397-5.397-12.45-8.097-19.526-8.097-7.055 0-14.131 2.7-19.528 8.097-10.794 10.794-10.794 28.28 0 39.054l51.08 51.08 51.08-51.08c5.397-5.397 8.095-12.45 8.095-19.526 0-7.055-2.697-14.131-8.095-19.528z"
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (FavouriteRecipeButton);
+
+/***/ }),
+
 /***/ "./resources/js/App/Components/HomeSearch.jsx":
 /*!****************************************************!*\
   !*** ./resources/js/App/Components/HomeSearch.jsx ***!
@@ -33981,6 +34068,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _AverangeRating_AverageRating_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../AverangeRating/AverageRating.jsx */ "./resources/js/App/Components/AverangeRating/AverageRating.jsx");
+/* harmony import */ var _FavouriteRecipeButton_FavouriteRecipeButton_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../FavouriteRecipeButton/FavouriteRecipeButton.jsx */ "./resources/js/App/Components/FavouriteRecipeButton/FavouriteRecipeButton.jsx");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -33998,6 +34086,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -34081,9 +34170,15 @@ var RecipeBox = function RecipeBox(_ref) {
     style: {
       backgroundImage: "url(\"http://localhost:3000/images/uploads/".concat(recipe.image_url, "\")")
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_AverangeRating_AverageRating_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "recipeBox__avelikeBox"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_AverangeRating_AverageRating_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
     averageRating: averageRating
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "recipeBox__sizeOfHeart"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_FavouriteRecipeButton_FavouriteRecipeButton_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    recipe: recipe
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
     className: "recipeBox__title"
   }, recipe.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "recipeBox__description"
@@ -35253,8 +35348,8 @@ if (document.getElementById('profile')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\web\bootcamp\projects\FINAL_PROJECT_COOKBOOK\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\web\bootcamp\projects\FINAL_PROJECT_COOKBOOK\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Web\codingbootcamp\Projects\FINAL_PROJECT_COOKBOOK\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Web\codingbootcamp\Projects\FINAL_PROJECT_COOKBOOK\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
