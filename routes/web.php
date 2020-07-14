@@ -54,6 +54,8 @@ Route::post('/profile/update/follow', 'UserController@follow')->name('follow.use
 Route::post('/profile/update/unfollow', 'UserController@unfollow')->name('unfollow.user')->middleware('auth');
 //request profile_id response arr of useres that this profile is following
 Route::post('/profile/update/tofollow', 'UserController@tofollow')->name('tofollow.user')->middleware('auth');
+//request profile_id response arr of numbers [howmanyrecipes, howmanycomments] for activitybox in profile page
+Route::post('/profile/update/activitybox', 'UserController@activitybox')->name('activitybox.user')->middleware('auth');
 
 //for reviews:
 Route::post('/recipe/{recipe_id}/comment', 'RecipeController@comment')->name('recipe.comment');

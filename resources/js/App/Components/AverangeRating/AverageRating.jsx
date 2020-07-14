@@ -14,7 +14,7 @@ const AverageRating = ({averageRating}) => {
 
 
 
-  console.log(lights);
+  // console.log(lights);
   return (
     <div className="ratingContainer">
       {lights.map((star, key) => {
@@ -29,25 +29,4 @@ const AverageRating = ({averageRating}) => {
     </div>
   )
 }
-
-// .rating__stars {
-//   display: flex;
-//   justify-content: space-between;
-// }
-
-// .rating__star {
-//   width: 2rem;
-//   height: 2rem;
-  
-//   background-image: url('img/star-white.svg');
-//   background-size: contain;
-//   background-repeat: no-repeat;
-  
-//   cursor: pointer;
-// }
-
-// .rating__star--on {
-//   background-image: url('img/star-yellow.svg');
-// }
-
 export default AverageRating

@@ -100,8 +100,6 @@ class RecipeController extends Controller
 
     public function average(Request $request)
     {
-
-        // dd($request);
         $recipe_id = $request->input('recipe_id');
         $recipe = Recipe::findOrFail($recipe_id);
         $comments = Comment::where('recipe_id', $recipe_id)->get();

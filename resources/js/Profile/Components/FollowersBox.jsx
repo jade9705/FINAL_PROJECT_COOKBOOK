@@ -22,13 +22,9 @@ const FollowersBox = ({user}) => {
       }
     })
     const data = await response.json();
-
-    console.log('zrovna jsem fetchnul arr to follow', data);
-
     setTo_follow_arr(data);
   }
 
-  console.log(to_follow_arr);
   return (
     <div className="followContainer">
       <h5 className="followContainer__header">YOU WATCH</h5>

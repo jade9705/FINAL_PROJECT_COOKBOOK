@@ -15,7 +15,7 @@ const UserBox = ({user, logged_user_id}) => {
   useEffect(() => {
     setEditeduser(user);
     
-    console.log('user_follower', user.user_followers )
+    // console.log('user_follower', user.user_followers )
     if (user.user_followers) {
       setArr_of_friends(user.user_followers);
     }
@@ -40,7 +40,7 @@ const UserBox = ({user, logged_user_id}) => {
 
     //to follo someone
     const folow = () => {
-      console.log('follow');
+      // console.log('follow');
 
       const fetchData = async () => {
         const response = await fetch('/profile/update/follow', {
@@ -53,9 +53,7 @@ const UserBox = ({user, logged_user_id}) => {
           }
         })
         const data = await response.json();
-  
-        console.log(data);
-  
+        // console.log(data);  
         setArr_of_friends(data);
       }
   
@@ -63,7 +61,7 @@ const UserBox = ({user, logged_user_id}) => {
     }
 
     const unfolow = () => {
-      console.log('unffollow');
+      // console.log('unffollow');
 
       const fetchData = async () => {
         const response = await fetch('/profile/update/unfollow', {
@@ -77,7 +75,7 @@ const UserBox = ({user, logged_user_id}) => {
         })
         const data = await response.json();
   
-        console.log(data);
+        // console.log(data);
   
         setArr_of_friends(data);
       }

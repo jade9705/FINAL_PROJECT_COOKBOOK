@@ -3,6 +3,7 @@ import AverangeRating from "../AverangeRating/AverageRating.jsx";
 
 const RecipeBox = ({recipe}) => {
   const [averageRating, setAverageRating] = useState(0);
+  // const [spinner, setSpinner] = useState(0);
   // let content = null;
 
   useEffect(() => {
@@ -11,7 +12,7 @@ const RecipeBox = ({recipe}) => {
   
 
   const fetchAverageRating = async () => {
-    console.log('recipe_id:', recipe.id);
+    // console.log('recipe_id:', recipe.id);
     const response = await fetch('/average', {
       method: 'POST',
       body: JSON.stringify({ recipe_id: recipe.id }),
@@ -23,12 +24,26 @@ const RecipeBox = ({recipe}) => {
     })
     const data = await response.json();
 
-    console.log('právě jsem chytnul average', data);
-
+    // console.log('právě jsem chytnul average', data);
+    
     setAverageRating(data);
   }
 
-  console.log('before render', averageRating);
+
+
+  // console.log('spinner', spinner)
+  // if (spinner == 0) {
+  //   return (
+  //     <>
+  //       <div classNmae="d-flex justify-content-center">
+  //         <div className="spinner-border text-success"  role="status">
+  //           <span className="sr-only">Loading...</span>
+  //         </div>
+  //       </div>
+  //     </>
+  //   )
+  // }
+  
   return (
     <>
     {
@@ -46,7 +61,13 @@ const RecipeBox = ({recipe}) => {
         </div>
       )
       :
-      null
+      (
+        <div classNmae="d-flex justify-content-center">
+          <div class="spinner-border text-success"  role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      )
     }
     </>
   )

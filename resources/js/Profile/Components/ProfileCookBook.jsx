@@ -26,10 +26,10 @@ const ProfileCookBook = ({user, logged_user_id}) => {
 
   const fetchAllUserRecipes = async (event) => {
     event.preventDefault();
-    console.log(`/api/cookbook/${user.id}`);
+    // console.log(`/api/cookbook/${user.id}`);
     const response = await fetch(`/api/cookbook/${user.id}`);
     const allUsersRecipes = await response.json();
-    console.log(allUsersRecipes);
+    // console.log(allUsersRecipes);
 
     setRecipes(allUsersRecipes);
     setClickedAllrecipes(true);
