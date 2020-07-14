@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Medaillon from '../../../Profile/Components/Medaillon.jsx';
+import RecipeImage from './RecipeImage.jsx';
 
 
 
@@ -51,9 +52,11 @@ export default function Recipe() {
         <div className="recipe">
           <div className="recipe__container1">
             <div className="recipe__imagey">
-        <img src={`/images/uploads/${recipe.image_url}`} alt="some picture of food"  />
-        </div>
-        <p className="recipe__description">{recipe.description}</p>
+
+              <RecipeImage recipe={recipe}/>
+
+            </div>
+            <p className="recipe__description">{recipe.description}</p>
             <label className="recipe__ingredients">Ingredients</label>
             <ul>
               { recipe.ingredients.map((ingredient, index) => {

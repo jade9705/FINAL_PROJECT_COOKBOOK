@@ -33702,6 +33702,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Profile_Components_Medaillon_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Profile/Components/Medaillon.jsx */ "./resources/js/Profile/Components/Medaillon.jsx");
+/* harmony import */ var _RecipeImage_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RecipeImage.jsx */ "./resources/js/App/Components/Recipe/RecipeImage.jsx");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -33719,6 +33720,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -33800,9 +33802,8 @@ function Recipe() {
     className: "recipe__container1"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "recipe__imagey"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-    src: "/images/uploads/".concat(recipe.image_url),
-    alt: "some picture of food"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_RecipeImage_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    recipe: recipe
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
     className: "recipe__description"
   }, recipe.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
@@ -33836,6 +33837,33 @@ function Recipe() {
     }, step.instruction);
   })))));
 }
+
+/***/ }),
+
+/***/ "./resources/js/App/Components/Recipe/RecipeImage.jsx":
+/*!************************************************************!*\
+  !*** ./resources/js/App/Components/Recipe/RecipeImage.jsx ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var RecipeImage = function RecipeImage(_ref) {
+  var recipe = _ref.recipe;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, recipe ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recipe__imagey",
+    style: {
+      backgroundImage: "url(\"http://localhost:3000/images/uploads/".concat(recipe.image_url, "\")")
+    }
+  }) : null);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RecipeImage);
 
 /***/ }),
 

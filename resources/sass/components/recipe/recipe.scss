@@ -1,7 +1,7 @@
 .recipe {
     padding: 2em;
     display:flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     &__name {
         font-size: 4em;
     }
@@ -16,9 +16,13 @@
         flex-direction: column;
         
     }
-    img {
-           
-        max-height: 50vh;
+    &__imagey {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: 10px 10px 16px -7px rgba(69,69,69,0.5);        
+        width: 600px; 
+        height: 500px;
     }
     &__description {
         padding: 1rem;
