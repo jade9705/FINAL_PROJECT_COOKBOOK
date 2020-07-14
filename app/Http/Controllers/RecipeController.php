@@ -88,12 +88,35 @@ class RecipeController extends Controller
             foreach($comments as $comment) {
                 $sumOfRatings += (int)$comment->rating;
             }
-            $average = $sumOfRatings / count($recipe->comments);
+            $average = round($sumOfRatings) / count($recipe->comments);
         } else {
             $average = 0;
         }
         return view('recipe.recipe', compact('recipe_id', 'user_id', 'recipe', 'average'));
 
+    }
+
+
+    public function average(Request $request)
+    {
+
+        // dd($request);
+        $recipe_id = $request->input('recipe_id');
+        $recipe = Recipe::findOrFail($recipe_id);
+        $comments = Comment::where('recipe_id', $recipe_id)->get();
+        $sumOfRatings = 0;
+        
+        foreach($comments as $comment) {
+            $sumOfRatings += (int)$comment->rating;
+        };
+
+        if (count($recipe->comments) == 0) {
+            $average = 0;
+            return $average;
+        } else {
+            $average = round($sumOfRatings / count($recipe->comments));
+            return $average;
+        };
     }
 
     public function comment(Request $request)
@@ -184,8 +207,8 @@ class RecipeController extends Controller
             }
         };
 
-        $user = User::findOrFail($user_id);
-        $user->recipes()->attach($recipe->id);
+        // $user = User::findOrFail($user_id);
+        // $user->recipes()->attach($recipe->id);
        // $recipe->users()->attach($user->name);
 
         return redirect('/recipe/' . $recipe->id );
