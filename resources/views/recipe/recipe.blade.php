@@ -10,9 +10,12 @@
 </div>
 
 <div id="recipe"></div>
-
+@if(!auth()->check())
+<p class="hideThis">hi</p>
+@else
 @if(auth()->user()->id === $recipe->user_id)
   <a href="/recipe/{{$recipe->id}}/edit"><button class="btn btn-success">edit</button></a>
+@endif
 @endif
 
 <script src="{{ mix('js/app.js') }}"></script>
