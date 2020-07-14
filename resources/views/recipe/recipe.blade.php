@@ -15,6 +15,11 @@
 @else
 @if(auth()->user()->id === $recipe->user_id)
   <a href="/recipe/{{$recipe->id}}/edit"><button class="btn btn-success">edit</button></a>
+  <form action="{{route('delete.recipe', $recipe->id)}}" method="post">
+    @csrf
+    @method('delete')
+    <input type="submit" value="delete"class="btn btn-danger">
+  </form>
 @endif
 @endif
 

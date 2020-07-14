@@ -11,13 +11,6 @@ use App\User;
 
 class RecipeController extends Controller
 {
-   
-    public function index()
-    {
-        //
-    }
-
-  
     public function create()
     {
         $user_id = auth()->id();
@@ -212,6 +205,21 @@ class RecipeController extends Controller
        // $recipe->users()->attach($user->name);
 
         return redirect('/recipe/' . $recipe->id );
+    }
+
+    public function deleteRecipe($recipe_id) 
+    {
+        
+        $recipe = Recipe::findOrFail($recipe_id);
+        $user_id = $recipe->user_id;
+        $comments = Comment::where('recipe_id', $recipe_id);
+        $recipe->ingredients()->delete();
+        $recipe->steps()->delete();
+        $comments->delete();
+        $recipe->delete();
+
+        return redirect('/profile/' . $user_id );
+        session()->flash('success_message', 'Recipe was deleted. Thank you!');
     }
 
 }
