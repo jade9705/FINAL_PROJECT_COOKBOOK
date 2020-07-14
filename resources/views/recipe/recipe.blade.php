@@ -68,7 +68,7 @@
       <div class="form-group">
         <label for="">
           Text:<br>
-          <textarea name="text" cols="30" rows="10">{{ old('text') }}</textarea>
+          <textarea name="text" cols="85" rows="5">{{ old('text') }}</textarea>
         </label>
           @if($errors->has('text'))
             {{ $errors->first('text')}}
@@ -102,7 +102,7 @@
       </script>
 
       <div class="form-group">
-        <input type="submit" value="submit" name="submit" class="addComment" />
+        <input type="submit" value="submit" name="submit" class="btn btn-success"/>
       </div>
   </form>
 @endif 

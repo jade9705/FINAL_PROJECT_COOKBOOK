@@ -57,12 +57,17 @@ export default function Recipe() {
 
             </div>
             <p className="recipe__description">{recipe.description}</p>
-            <label className="recipe__ingredients">Ingredients</label>
-            <ul>
-              { recipe.ingredients.map((ingredient, index) => {
-                return <li key={index}> {ingredient.pivot.amount}  {ingredient.name} </li>})}
-            </ul>
+            
+            <div className="recipe__ingredients-box">
+              <label className="recipe__ingredients">Ingredients</label>
+              <ul>
+                { recipe.ingredients.map((ingredient, index) => {
+                  return <li key={index}> {ingredient.pivot.amount}  {ingredient.name} </li>})}
+              </ul> 
             </div>
+
+            </div>
+
             <div className="recipe__container2">
               <div className="recipe__flexbox">
             <div className="recipe__medallion">

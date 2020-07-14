@@ -8,12 +8,16 @@
     &__container1 {
         display: flex;
         flex-direction: column;
+        //padding-left: 7em;
         
        
     }
     &__container2 {
         display: flex;
         flex-direction: column;
+        width:600px;
+       // padding-left: 5em;
+        box-shadow: 10px 10px 16px -7px rgba(69,69,69,0.5);  
         
     }
     &__imagey {
@@ -22,7 +26,7 @@
         background-size: cover;
         box-shadow: 10px 10px 16px -7px rgba(69,69,69,0.5);        
         width: 600px; 
-        height: 500px;
+        height: 400px;
     }
     &__description {
         padding: 1rem;
@@ -35,6 +39,9 @@
         li {
             font-weight: normal;
         }
+    }
+    &__ingredients-box {
+        box-shadow: 10px 10px 16px -7px rgba(69,69,69,0.5);  
     }
     &__method {
         font-size: 1.5em;

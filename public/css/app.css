@@ -10223,7 +10223,7 @@ h3 {
   padding: 1rem;
   display: flex;
   width: 50%;
-  border-bottom: 1px solid black;
+  box-shadow: 10px 10px 16px -7px rgba(69, 69, 69, 0.5);
 }
 
 .hideThis {
@@ -10294,6 +10294,8 @@ ul {
 .recipe__container2 {
   display: flex;
   flex-direction: column;
+  width: 600px;
+  box-shadow: 10px 10px 16px -7px rgba(69, 69, 69, 0.5);
 }
 .recipe__imagey {
   background-position: center;
@@ -10301,7 +10303,7 @@ ul {
   background-size: cover;
   box-shadow: 10px 10px 16px -7px rgba(69, 69, 69, 0.5);
   width: 600px;
-  height: 500px;
+  height: 400px;
 }
 .recipe__description {
   padding: 1rem;
@@ -10314,6 +10316,9 @@ ul {
 }
 .recipe__ingredients li {
   font-weight: normal;
+}
+.recipe__ingredients-box {
+  box-shadow: 10px 10px 16px -7px rgba(69, 69, 69, 0.5);
 }
 .recipe__method {
   font-size: 1.5em;
