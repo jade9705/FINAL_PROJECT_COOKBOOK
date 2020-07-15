@@ -35659,8 +35659,8 @@ if (document.getElementById('profile')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Web\codingbootcamp\Projects\FINAL_PROJECT_COOKBOOK\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Web\codingbootcamp\Projects\FINAL_PROJECT_COOKBOOK\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\web\bootcamp\projects\FINAL_PROJECT_COOKBOOK\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\web\bootcamp\projects\FINAL_PROJECT_COOKBOOK\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

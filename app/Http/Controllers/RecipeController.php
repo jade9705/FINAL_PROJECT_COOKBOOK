@@ -87,7 +87,7 @@ class RecipeController extends Controller
         } else {
             $average = 0;
         }
-        
+        //the next part is about showing how many comments each recipe has 
         if(count($recipe->comments) == 1) {
             $commentNumber = 'This recipe has only 1 comment';
         } else if(count($recipe->comments) != 0){
@@ -95,10 +95,27 @@ class RecipeController extends Controller
         } else {
             $commentNumber = 'This recipe has no comments.....yet.';
         }
-        return view('recipe.recipe', compact('recipe_id', 'user_id', 'recipe', 'average', 'commentNumber' ));
+
+        ///next logic is about whether user can comment or not 
+        $userComment = 'you cannot rate your own recipe, sorry!';
+        // dd(auth()->user()->id);
+        //dd( $recipe->user_id);
+        // dd(auth()->user()->id == $recipe->user_id);
+        foreach($recipe->comments as $comment) {
+            if(!auth()->check()){
+                $userComment = 'Please create an account to leave comments';
+            }else if($comment->user_id === auth()->user()->id) {
+                $userComment = 'You have already rated this recipe. Thankyou.';
+            } else if (auth()->user()->id !== $recipe->user_id) {
+                $userComment = 'What do you think, ' . auth()->user()->first_name . ' ?';
+            } else if(auth()->user()->id == $recipe->user_id) {
+                $userComment = 'you cannot rate your own recipe, sorry!';
+            } 
+            
+        }
+        return view('recipe.recipe', compact('recipe_id', 'user_id', 'recipe', 'average', 'commentNumber', 'userComment' ));
 
     }
-
 
     public function average(Request $request)
     {
