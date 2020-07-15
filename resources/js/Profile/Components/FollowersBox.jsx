@@ -31,17 +31,14 @@ const FollowersBox = ({user}) => {
       <div className="followContainer__medaillonContainer">
         {to_follow_arr.map((user, key) => {
           return (
-            <>
-              <div key={key} className="followContainer__medaillonBox">
-              <a key={key} href={`/profile/${user.id}`}>
+            <div key={key} className="followContainer__medaillonBox">
+              <a href={`/profile/${user.id}`}>
                 <Medaillon 
-                key={key}
                 user={user}
                 follow_style="to_follow"
                 />
               </a>
-              </div>
-            </>
+            </div>
           )
         })}
         <div className="followContainer__medaillonBox followContainer__medaillonBox--all">ALL</div>
