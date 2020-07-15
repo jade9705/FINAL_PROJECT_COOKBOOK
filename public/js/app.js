@@ -33714,7 +33714,7 @@ var FavouriteRecipeButton = function FavouriteRecipeButton(_ref) {
   }(); // console.log('hi', arr_of_users_that_favourite, logged_user, 'liked', liked_style, 'recipe_id', recipe.id )
 
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, liked_style ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, liked_style ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "fouvourite",
     onClick: unfavourite
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("svg", {
@@ -33726,7 +33726,7 @@ var FavouriteRecipeButton = function FavouriteRecipeButton(_ref) {
     xmlns: "http://www.w3.org/2000/svg"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
     d: "m115.08 22.981c-10.794-10.794-28.279-10.794-39.053 0l-12.027 12.027-12.026-12.027c-5.397-5.397-12.45-8.097-19.526-8.097-7.055 0-14.131 2.7-19.528 8.097-10.794 10.794-10.794 28.28 0 39.054l51.08 51.08 51.08-51.08c5.397-5.397 8.095-12.45 8.095-19.526 0-7.055-2.697-14.131-8.095-19.528z"
-  }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+  }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "fouvourite",
     onClick: favourite
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("svg", {
@@ -34781,17 +34781,15 @@ var FollowersBox = function FollowersBox(_ref) {
   }, "YOU WATCH"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "followContainer__medaillonContainer"
   }, to_follow_arr.map(function (user, key) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       key: key,
       className: "followContainer__medaillonBox"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-      key: key,
       href: "/profile/".concat(user.id)
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Medaillon_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      key: key,
       user: user,
       follow_style: "to_follow"
-    }))));
+    })));
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "followContainer__medaillonBox followContainer__medaillonBox--all"
   }, "ALL")));
