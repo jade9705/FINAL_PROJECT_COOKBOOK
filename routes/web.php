@@ -58,6 +58,8 @@ Route::post('/profile/update/tofollow', 'UserController@tofollow')->name('tofoll
 Route::post('/profile/update/allfollow', 'UserController@allfollow')->name('allfollow.user')->middleware('auth');
 //request profile_id response arr of numbers [howmanyrecipes, howmanycomments] for activitybox in profile page
 Route::post('/profile/update/activitybox', 'UserController@activitybox')->name('activitybox.user')->middleware('auth');
+//to search users in profile page
+Route::post('/search/all', 'UserController@searchAll')->name('searchAll.user')->middleware('auth');
 
 //for reviews:
 Route::post('/recipe/{recipe_id}/comment', 'RecipeController@comment')->name('recipe.comment');
