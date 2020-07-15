@@ -54,7 +54,7 @@
 
    
     <div id="ingredients-amount">
-    <label for="formGroupIngredients">INGREDIENTS <button id="btn" type="button" class="btn btn-success">+</button></label>
+    <label for="formGroupIngredients">INGREDIENTS </label>
 
     <div class="row">
         <div class="col">
@@ -65,8 +65,10 @@
 </div>
 </div>
 
+
     
     </div>
+    <button id="btn" type="button" class="btn btn-success">+</button>
     @if($errors->has('ingredient'))
     <div class="alert">
     {{ $errors->first('ingredient')}}
@@ -82,12 +84,12 @@
 
     <div class="form-group">
     <div id="add-step">
-    <label for="formGroupSteps">STEPS <button id="stepbtn" type="button" class="btn btn-success">+</button></label>
+    <label for="formGroupSteps">STEPS </label>
     
     <textarea class="form-control" id="step[]" name="step[]" rows="2" cols="50"></textarea>
     </div>
 </div>
-
+<button id="stepbtn" type="button" class="btn btn-success">+</button>
     @if($errors->has('step'))
     <div class="alert">
     {{ $errors->first('step')}}

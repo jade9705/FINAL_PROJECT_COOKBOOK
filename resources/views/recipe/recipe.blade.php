@@ -11,7 +11,7 @@
 
 <div id="recipe"></div>
 @if(!auth()->check())
-<p class="hideThis">hi</p>
+  <p class="hideThis">hi</p>
 @else
 @if(auth()->user()->id === $recipe->user_id)
   <div class="buttonStyles">
@@ -27,14 +27,20 @@
 
 <script src="{{ mix('js/app.js') }}"></script>
 
-@if(!auth()->check())
-  <div>Please create an account to leave comments</div>
-@else
-@if(auth()->user()->id !== $recipe->user_id)
   <div class="allComments">
+
+    <h2> {{ $userComment }} </h2>
+
+      @if(!auth()->check())
+    <div>Please create an account to leave comments</div>
+    @else
+  
+    {{-- @foreach($recipe->comments as $comment) --}}
+    {{-- if logge in user is not equal to recipe athour ANND user comment isnnot = to string OR logged in user is not equal                           --}}
+    @if(auth()->user()->id !== $recipe->user_id && $userComment !== 'You have already rated this recipe. Thankyou.')
+
     <form action='/recipe/{recipe_id}/comment' method="post" class="comment-form">
       @csrf
-      <h2>What do you think, {{ auth()->user()->first_name}}?</h2>
       {{-- success message --}}
       @if (Session::has('success_message'))
         <div class="alert alert-success">
@@ -76,7 +82,7 @@
             {{ $errors->first('text')}}
           @endif
       </div>
-
+{{-- {{ dd($recipe->comments[0]->user_id) }} --}}
       {{-- javascript for star rating--}}
       <script>
         const starElms = document.querySelectorAll('.rating .rating__star');
@@ -108,7 +114,9 @@
       </div>
   </form>
 @endif 
-@endif 
+{{-- @endforeach --}}
+@endif
+
 <div class="review">
 
   <h2>Comments...</h2>
@@ -119,7 +127,7 @@
         <div class="hideThis"> {{$number = (int)$comment->rating}}</div>
         <img src="/images/uploads/user/{{$comment->user->image_url}}" class="userImage"/>
         <div class="nameAndText">
-          <li class="userName"> <a href="/profile/{{$user_id}}"><strong> {{$comment->user->first_name}} {{$comment->user->surname}}</strong></a> </li>
+          <li class="userName"> <a href="/profile/{{$comment->user_id}}"><strong> {{$comment->user->first_name}} {{$comment->user->surname}}</strong></a> </li>
           <div class="stars">
             @for($i = 0; $i < $number; $i ++)
               <div id="starRender" class="rating__star rating__star--on"></div>
