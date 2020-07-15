@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 
 const FavouriteRecipeButton = ({recipe}) => {
 
@@ -11,6 +12,7 @@ const FavouriteRecipeButton = ({recipe}) => {
   }, [])
 
   useEffect(() => {
+    if(!arr_of_users_that_favourite) return;
     if(arr_of_users_that_favourite.find((user) => (user.id == logged_user))) {
       setLiked_style(1);
     }else {
