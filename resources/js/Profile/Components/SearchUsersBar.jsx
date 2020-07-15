@@ -33,7 +33,7 @@ const SearchUsersBar = () => {
     setSearchResult(recipes);
   }
 
-  console.log(searchValue);
+  // console.log(searchValue);
   return (
     <div className="searchUserBar" >
       <h5 className="searchUserBar__header">FIND OTHERS</h5>

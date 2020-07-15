@@ -10040,6 +10040,26 @@ h3 {
   color: #F8FAFC;
 }
 
+@media only screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    justify-content: center;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .header__logoContainer {
+    height: 3rem;
+    width: 3rem;
+    margin-top: 1rem;
+  }
+  .header__nav {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
 .homeSearch {
   width: 70%;
   min-height: 100vh;
@@ -10060,6 +10080,21 @@ h3 {
   color: #353535;
 }
 
+@media only screen and (max-width: 768px) {
+  .homeSearch {
+    width: 90%;
+  }
+  .homeSearch__header1 {
+    margin: 4vh;
+    font-size: 3rem;
+    font-weight: 800;
+  }
+  .homeSearch__header2 {
+    margin: 1rem 0 0 0;
+    color: #353535;
+    font-size: 1.4rem;
+  }
+}
 .topRecipesContainer {
   display: flex;
   flex-wrap: wrap;
@@ -10186,6 +10221,13 @@ h3 {
   background-color: #353535;
 }
 
+@media only screen and (max-width: 768px) {
+  .searchBar__input {
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+  }
+}
 .resultContainer {
   display: flex;
   flex-direction: column;
@@ -10204,6 +10246,13 @@ h3 {
   width: 100%;
 }
 
+@media only screen and (max-width: 768px) {
+  .resultContainer__header {
+    margin: 0 0 2rem 0;
+    font-size: 1.4rem;
+    color: #353535;
+  }
+}
 .entire-form {
   color: #0f6429;
   margin: 10vh 15vw;

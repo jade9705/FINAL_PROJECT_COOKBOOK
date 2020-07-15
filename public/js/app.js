@@ -34164,7 +34164,7 @@ function SearchedRecipesResult(_ref) {
       className: "resultContainer"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
       className: "resultContainer__header"
-    }, "This is the best results for you"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, "Best results for you"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "resultContainer__recipeBoxContainer"
     }, searchResult.map(function (recipe, index) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recipeBox_RecipeBox_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -35217,9 +35217,9 @@ var SearchUsersBar = function SearchUsersBar() {
     return function takeUsers() {
       return _ref.apply(this, arguments);
     };
-  }();
+  }(); // console.log(searchValue);
 
-  console.log(searchValue);
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "searchUserBar"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h5", {
