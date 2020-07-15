@@ -13,43 +13,6 @@ use Croppa;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $profile_id = $id;
@@ -69,32 +32,11 @@ class UserController extends Controller
         ];
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request)
     {
         $user = User::findOrFail($request->input('user_id'));
 
         if($request->file('file')){
-
-            // dd($user->image_url);
-
             if($user->image_url) {
                 $path = public_path() . '/images/uploads/user/' . $user->image_url;
                 unlink($path);
@@ -107,16 +49,10 @@ class UserController extends Controller
 
         if ($request->input('bio')) {
             $user->bio = $request->input('bio');
-        }
-        
+        }        
         $user->save();
-
         
         return ['user' => $user];
-
-
-
-
         // try with the croppa but not successful
         // Croppa::render(Croppa::url('/images/uploads/' . $newFileName, 600, 600, ['resize']));
     }
@@ -131,7 +67,6 @@ class UserController extends Controller
         //     return $this->belongsToMany('App\User', 'followers', 'current_user_id', 'user_id');
         // }
         
-
         //find users in the game 
         $profile_id = $request->input('profile_id');
         $logged_user_id = Auth::user();
@@ -167,8 +102,22 @@ class UserController extends Controller
             ->limit(2)
             ->get();
         return $to_follow_arr;
-        
     }
+
+    public function allfollow(Request $request)
+    {
+        //find users in the game 
+        $profile_id = $request->input('profile_id');
+        //send to the profile page updatee version of friends
+        $to_follow_arr = User::findOrFail($profile_id)
+            ->to_follow()
+            ->orderBy('first_name')
+            ->get();
+        return $to_follow_arr;
+    }
+
+
+
 
     public function activitybox(Request $request)
     {
@@ -187,12 +136,6 @@ class UserController extends Controller
         
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

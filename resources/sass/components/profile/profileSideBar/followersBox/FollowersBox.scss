@@ -12,6 +12,7 @@
     text-align: center;
     margin: 0.5rem;
     width: 100%;
+    text-transform: uppercase;
   }
 
   &__medaillonContainer {
@@ -26,6 +27,7 @@
   &__medaillonBox {
     width: 70px;
     height: 70px;
+    text-align: center;
 
     &--all {
       display: flex;
@@ -40,6 +42,49 @@
     &:hover {
       width: 75px;
       height: 75px;
+      cursor:pointer;
     }
   }
+
+  &__medaillonAllContainer {
+    border: 2px solid #e6edf4;
+    border-radius: 0.6rem;
+    margin: 0.5rem;
+    padding: 0.3rem;
+
+  }
+
+  &__allBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    // border: 2px solid green;
+
+    overflow: auto;
+    max-height: 20rem;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &__hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+  &__hidefire {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+  &__medaillonwithname {
+    // border: 2px solid #e6edf4;
+    & p{
+      margin: 0;
+      padding: 0;
+      text-align: center;
+
+    }
+  }
+
+
 }

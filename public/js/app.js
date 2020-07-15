@@ -34726,6 +34726,11 @@ var FollowersBox = function FollowersBox(_ref) {
       to_follow_arr = _useState2[0],
       setTo_follow_arr = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      all_follow_arr = _useState4[0],
+      setAll_follow_arr = _useState4[1];
+
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     if (user.id) {
       fetchToFollow();
@@ -34774,11 +34779,61 @@ var FollowersBox = function FollowersBox(_ref) {
     };
   }();
 
+  var allfollow = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(event) {
+      var response, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              event.preventDefault();
+              _context2.next = 3;
+              return fetch('/profile/update/allfollow', {
+                method: 'POST',
+                body: JSON.stringify({
+                  profile_id: user.id
+                }),
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+              });
+
+            case 3:
+              response = _context2.sent;
+              _context2.next = 6;
+              return response.json();
+
+            case 6:
+              data = _context2.sent;
+              console.log(data);
+              setAll_follow_arr(data);
+
+            case 9:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function allfollow(_x) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  var back = function back(event) {
+    event.preventDefault();
+    setAll_follow_arr([]);
+  };
+
+  console.log(all_follow_arr.length == 0);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "followContainer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h5", {
     className: "followContainer__header"
-  }, "YOU WATCH"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+  }, user.first_name, " WATCH"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "followContainer__medaillonContainer"
   }, to_follow_arr.map(function (user, key) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -34790,9 +34845,31 @@ var FollowersBox = function FollowersBox(_ref) {
       user: user,
       follow_style: "to_follow"
     })));
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    className: "followContainer__medaillonBox followContainer__medaillonBox--all"
-  }, "ALL")));
+  }), all_follow_arr.length == 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "followContainer__medaillonBox followContainer__medaillonBox--all",
+    onClick: allfollow
+  }, "ALL") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "followContainer__medaillonBox followContainer__medaillonBox--all",
+    onClick: back
+  }, "BACK")), all_follow_arr.length != 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "followContainer__medaillonAllContainer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h5", {
+    className: "followContainer__header"
+  }, "ALL GOOD CHEFS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "followContainer__allBox followContainer__hide followContainer__hidefire"
+  }, to_follow_arr.map(function (user, key) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      key: key,
+      className: "followContainer__medaillonwithname"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      className: "followContainer__medaillonBox"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+      href: "/profile/".concat(user.id)
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Medaillon_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      user: user,
+      follow_style: "to_follow"
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, user.first_name));
+  }))) : null);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (FollowersBox);

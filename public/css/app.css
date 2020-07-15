@@ -10591,11 +10591,14 @@ ul {
   background-color: #353535;
   color: #F8FAFC;
   opacity: 0.9;
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  /* Hide scrollbar for IE, Edge and Firefox */
 }
 .followContainer__header {
   text-align: center;
   margin: 0.5rem;
   width: 100%;
+  text-transform: uppercase;
 }
 .followContainer__medaillonContainer {
   display: flex;
@@ -10606,6 +10609,7 @@ ul {
 .followContainer__medaillonBox {
   width: 70px;
   height: 70px;
+  text-align: center;
 }
 .followContainer__medaillonBox--all {
   display: flex;
@@ -10619,6 +10623,34 @@ ul {
 .followContainer__medaillonBox:hover {
   width: 75px;
   height: 75px;
+  cursor: pointer;
+}
+.followContainer__medaillonAllContainer {
+  border: 2px solid #e6edf4;
+  border-radius: 0.6rem;
+  margin: 0.5rem;
+  padding: 0.3rem;
+}
+.followContainer__allBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: auto;
+  max-height: 20rem;
+}
+.followContainer__hide::-webkit-scrollbar {
+  display: none;
+}
+.followContainer__hidefire {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+.followContainer__medaillonwithname p {
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 .activityBox {
