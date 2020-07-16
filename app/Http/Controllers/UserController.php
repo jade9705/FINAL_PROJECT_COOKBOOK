@@ -37,7 +37,7 @@ class UserController extends Controller
         $user = User::findOrFail($request->input('user_id'));
 
         if($request->file('file')){
-            if(public_path() . '/images/uploads/user/' . $user->image_url) {
+            if($user->image_url) {
                 $path = public_path() . '/images/uploads/user/' . $user->image_url;
                 unlink($path);
             }
@@ -49,7 +49,8 @@ class UserController extends Controller
 
         if ($request->input('bio')) {
             $user->bio = $request->input('bio');
-        }        
+        }
+
         $user->save();
         
         return ['user' => $user];
