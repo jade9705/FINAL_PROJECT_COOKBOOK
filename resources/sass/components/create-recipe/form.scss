@@ -3,8 +3,11 @@
     //background-color: $thirdcolor;
     margin: 10vh 15vw;
     padding: 2em;
-    button {
-    .btn {
-        border-radius: 50%;
-    }}
+   
 }
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+

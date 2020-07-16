@@ -75,6 +75,9 @@
         padding: 1rem;
         font-size: 1.2em;
         max-width: 40vw;
+        @media screen and (max-width: 800px) {
+            max-width:100vw;
+        }
     }
     &__ingredients {
         font-size: 1.2em;
