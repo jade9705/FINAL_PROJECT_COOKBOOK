@@ -39,7 +39,11 @@ class UserController extends Controller
         if($request->file('file')){
             if($user->image_url) {
                 $path = public_path() . '/images/uploads/user/' . $user->image_url;
-                unlink($path);
+                if($path){
+                    unlink($path);
+                }else {
+                    $user->image_url =null;
+                }
             }
 
             $newFileName = md5(time()) . '.' . $request->file('file')->extension();
