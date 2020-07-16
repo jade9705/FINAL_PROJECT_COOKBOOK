@@ -71,6 +71,16 @@
     outline: none;
   }
 
+  &__hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+    &__hidefire {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
   &__save-container {
     margin-top: 1rem;
     width: 15rem;

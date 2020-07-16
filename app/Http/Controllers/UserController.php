@@ -136,6 +136,17 @@ class UserController extends Controller
         
     }
 
+    public function searchAll(Request $request)
+    {
+        // dd($request);
+        $search = $request->searchValue;
+        $users = User::where('first_name', 'LIKE', '%'. $search .'%')
+            ->orWhere('surname', 'LIKE', '%'. $search .'%')
+            ->get();
+            
+        return $users;
+    }
+
     public function destroy($id)
     {
         //

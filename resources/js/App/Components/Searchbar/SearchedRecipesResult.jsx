@@ -12,7 +12,7 @@ export default function SearchedRecipesResult({searchResult}) {
     //   {content}
     // </div>
       <div className="resultContainer">
-        <h3 className="resultContainer__header">This is the best results for you</h3>
+        <h3 className="resultContainer__header">Best results for you</h3>
         <div className="resultContainer__recipeBoxContainer">  
           {
             searchResult.map((recipe, index) => {

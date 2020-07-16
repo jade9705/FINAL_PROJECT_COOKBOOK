@@ -65,9 +65,9 @@
 
         @auth
         <a class="header__link" href={{route('index.homeSearch')}} >HOME</a>
-        <a class="header__link" href="" >FEED</a>
+        <a class="header__link" href={{route('create.recipe')}} >CREATE</a>
         <a class="header__link" href={{'/profile/' . Auth::id()}} >PROFILE</a>
-        <a class="header__link" href="" >SEARCH</a>
+        {{-- <a class="header__link" href="" >SEARCH</a> --}}
         <a
             class="header__link"
             href="{{ route('logout') }}"

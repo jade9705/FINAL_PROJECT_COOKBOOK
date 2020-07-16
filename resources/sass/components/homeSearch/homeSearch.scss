@@ -22,3 +22,22 @@
     color: $secondary;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .homeSearch{  
+    width: 90%;
+
+  
+    &__header1{
+      margin: 4vh;
+      font-size: 3rem;
+      font-weight: 800;
+    }
+    
+    &__header2{
+      margin: 1rem 0 0 0;
+      color: $secondary;
+      font-size: 1.4rem;
+    }
+  }
+}

@@ -51,7 +51,7 @@ const FollowersBox = ({user}) => {
 
 
 
-  console.log(all_follow_arr.length == 0);
+  // console.log(all_follow_arr.length == 0);
   return (
     <div className="followContainer">
       <h5 className="followContainer__header">{user.first_name} WATCH</h5>

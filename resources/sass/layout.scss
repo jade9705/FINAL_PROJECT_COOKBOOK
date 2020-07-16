@@ -5,6 +5,7 @@
     
     height: 10vh;
     background-color: $secondary;
+
     
     &__logoContainer {
         height: 3.5rem;
@@ -37,6 +38,8 @@
     }
 }
 
+
+
 .footer {
     display: flex;
     align-items: center;
@@ -58,5 +61,27 @@
 
     &__copyright-container {
         color: $fithcolor;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        justify-content: center;
+        height: fit-content;
+
+
+        &__logoContainer {
+            height: 3rem;
+            width: 3rem;
+            margin-top: 1rem;
+        }
+
+        &__nav {
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     }
 }

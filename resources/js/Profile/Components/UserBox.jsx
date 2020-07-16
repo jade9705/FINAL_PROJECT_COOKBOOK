@@ -159,7 +159,7 @@ const UserBox = ({user, logged_user_id}) => {
       }
 
       <Bio user={editeduser}/>
-      <textarea className="userBox__textarea" style={{ display: `${hidden}` }} onChange= { handleBioChange } id="bio" rows="3" cols="50" value={bio}></textarea>
+      <textarea className="userBox__textarea userBox__hide userBox__hidefire" style={{ display: `${hidden}` }} onChange= { handleBioChange } id="bio" rows="3" cols="50" value={bio}></textarea>
 
       {
         ((hidden === 'none') && (logged_user_id == user.id))
