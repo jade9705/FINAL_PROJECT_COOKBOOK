@@ -10258,8 +10258,10 @@ h3 {
   margin: 10vh 15vw;
   padding: 2em;
 }
-.entire-form button .btn {
-  border-radius: 50%;
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .rating {
@@ -10344,7 +10346,6 @@ ul {
 
 .userImage {
   width: 7.5vw;
-  height: 15vh;
   border-radius: 50%;
   margin-right: 2em;
 }
@@ -10398,6 +10399,17 @@ ul {
 #deleteButton {
   display: flex;
   align-self: flex-end;
+}
+
+#commentText {
+  max-width: 90vw;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 400px) {
+  .rating {
+    padding-left: 5em;
+  }
 }
 
 .recipe {
@@ -10487,6 +10499,11 @@ ul {
   padding: 1rem;
   font-size: 1.2em;
   max-width: 40vw;
+}
+@media screen and (max-width: 800px) {
+  .recipe__description {
+    max-width: 100vw;
+  }
 }
 .recipe__ingredients {
   font-size: 1.2em;

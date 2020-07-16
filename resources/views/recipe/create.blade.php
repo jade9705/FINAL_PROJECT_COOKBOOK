@@ -68,7 +68,10 @@
 
     
     </div>
+    <div class="buttonContainer">
+
     <button id="btn" type="button" class="btn btn-success">+</button>
+    </div>
     @if($errors->has('ingredient'))
     <div class="alert">
     {{ $errors->first('ingredient')}}
@@ -89,7 +92,9 @@
     <textarea class="form-control" id="step[]" name="step[]" rows="2" cols="50"></textarea>
     </div>
 </div>
+<div class="buttonContainer">
 <button id="stepbtn" type="button" class="btn btn-success">+</button>
+</div>
     @if($errors->has('step'))
     <div class="alert">
     {{ $errors->first('step')}}
@@ -100,8 +105,10 @@
     <br>
 
     
+    <div class="buttonContainer">
 
     <button type="submit" value="1" name="published" type="button" class="btn btn-success">Save</button>
+    </div>
     </div>
 </form>
 </div>

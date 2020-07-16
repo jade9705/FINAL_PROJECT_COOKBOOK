@@ -36,7 +36,7 @@ ul {
 }}
 .userImage {
   width:7.5vw;
-  height:15vh;
+ // height:15vh;
   border-radius: 50%;
   margin-right: 2em;
   @media screen and (max-width: 400px) {
@@ -85,4 +85,16 @@ ul {
   #deleteButton{
     display: flex;
   align-self: flex-end;
+  }
+
+
+  #commentText {
+    max-width: 90vw;
+    overflow: hidden;
+  }
+
+  .rating {
+    @media screen and (max-width: 400px) {
+      padding-left: 5em;
+    }
   }

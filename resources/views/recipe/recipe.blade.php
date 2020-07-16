@@ -82,7 +82,7 @@
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" id="commentText">
                 <label for="">
                   Text:<br>
                   <textarea name="text" cols="85" rows="5">{{ old('text') }}</textarea>
@@ -124,7 +124,7 @@
           </form>
 @endif 
 @endif
-{{-- @endforeach --}}
+
 @endif
 
 <div class="review">
