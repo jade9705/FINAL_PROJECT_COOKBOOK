@@ -103,7 +103,7 @@ class UserController extends Controller
         //send to the profile page updatee version of friends
         $to_follow_arr = User::findOrFail($profile_id)
             ->to_follow()
-            ->orderBy('id')
+            ->orderBy('id', 'desc')
             ->limit(2)
             ->get();
         return $to_follow_arr;
