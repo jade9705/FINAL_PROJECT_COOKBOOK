@@ -49,7 +49,8 @@ class UserController extends Controller
 
         if ($request->input('bio')) {
             $user->bio = $request->input('bio');
-        }        
+        }
+
         $user->save();
         
         return ['user' => $user];

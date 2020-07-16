@@ -8,7 +8,7 @@
     <title>Cookbook</title>
     <link rel="stylesheet" href="/css/app.css">
 
-    //favicon links
+    {{-- favicon links --}}
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/cookbookfavicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/cookbookfavicon/favicon-16x16.png">
