@@ -26,17 +26,17 @@ Route::get('/', 'HomeSearchController@index')->name('index.homeSearch');
 
 
 // creating new recipe
-Route::get('/create', 'RecipeController@create')->name('create.recipe');
-Route::post('/recipes', 'RecipeController@store')->name('store.recipe');
+Route::get('/create', 'RecipeController@create')->name('create.recipe')->middleware('auth');
+Route::post('/recipes', 'RecipeController@store')->name('store.recipe')->middleware('auth');
 //rendering the single recipe, will render some view
 Route::get('/recipe/{id}', 'RecipeController@show')->name('show.recipe');
 //for updating the already existing recipe
-Route::get('/recipe/{recipe_id}/edit', 'RecipeController@edit')->name('edit.recipe');
-Route::post('/recipe/{recipe_id}', 'RecipeController@update')->name('update.recipe');
+Route::get('/recipe/{recipe_id}/edit', 'RecipeController@edit')->name('edit.recipe')->middleware('auth');
+Route::post('/recipe/{recipe_id}', 'RecipeController@update')->name('update.recipe')->middleware('auth');
 //fetch recipe averange rating for AverangeRAting component in RecipeBox
 Route::post('/average', 'RecipeController@average')->name('average.recipe');
 //for deleting recipe
-Route::delete('/recipe/{recipe_id}', 'RecipeController@deleteRecipe')->name('delete.recipe');
+Route::delete('/recipe/{recipe_id}', 'RecipeController@deleteRecipe')->name('delete.recipe')->middleware('auth');
 
 //Route::get('/create', 'RecipeController@create');
 // Route::post('/recipes', 'RecipeController@store');
@@ -62,13 +62,13 @@ Route::post('/profile/update/activitybox', 'UserController@activitybox')->name('
 Route::post('/search/all', 'UserController@searchAll')->name('searchAll.user')->middleware('auth');
 
 //for reviews:
-Route::post('/recipe/{recipe_id}/comment', 'RecipeController@comment')->name('recipe.comment');
+Route::post('/recipe/{recipe_id}/comment', 'RecipeController@comment')->name('recipe.comment')->middleware('auth');
 //to like some recipe from ract component FavouriteREcipeButton
-Route::post('/recipe/update/favourite', 'RecipeController@favourite')->middleware('auth');
+Route::post('/recipe/update/favourite', 'RecipeController@favourite')->middleware('auth')->middleware('auth');
 //to unlike some recipe from ract component FavouriteREcipeButton
-Route::post('/recipe/update/unfavourite', 'RecipeController@unfavourite')->middleware('auth');
+Route::post('/recipe/update/unfavourite', 'RecipeController@unfavourite')->middleware('auth')->middleware('auth');
 //who favouritethis recipe
 Route::post('/recipe/update/whofavourite', 'RecipeController@whofavourite')->middleware('auth');
 // Route::get('/recipe/recipe{_id}/comments/{comment_id}', 'CommentController@show');
-Route::delete('/recipe/{recipe_id}/comment/{comment_id}', 'CommentController@deleteComment')->name('comment.delete');
+Route::delete('/recipe/{recipe_id}/comment/{comment_id}', 'CommentController@deleteComment')->name('comment.delete')->middleware('auth');
 

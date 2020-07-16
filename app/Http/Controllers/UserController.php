@@ -37,7 +37,7 @@ class UserController extends Controller
         $user = User::findOrFail($request->input('user_id'));
 
         if($request->file('file')){
-            if($user->image_url) {
+            if(public_path() . '/images/uploads/user/' . $user->image_url) {
                 $path = public_path() . '/images/uploads/user/' . $user->image_url;
                 unlink($path);
             }

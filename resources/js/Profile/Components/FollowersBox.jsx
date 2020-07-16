@@ -54,7 +54,7 @@ const FollowersBox = ({user}) => {
   // console.log(all_follow_arr.length == 0);
   return (
     <div className="followContainer">
-      <h5 className="followContainer__header">{user.first_name} WATCH</h5>
+      <h5 className="followContainer__header">{user.first_name} FOLLOWS</h5>
       <div className="followContainer__medaillonContainer">
         {
           to_follow_arr.map((user, key) => {
