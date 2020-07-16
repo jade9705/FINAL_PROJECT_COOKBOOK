@@ -12,3 +12,18 @@
 
   background-color: $sixth;
 }
+
+@media only screen and (max-width: 768px) {
+  .profileSideBar {
+    width: 90vw;
+    margin-right: 0rem;
+    border-left: 5px dotted $secondary;
+    border-right: 5px dotted $secondary;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    background-color: $sixth;
+  }
+}
