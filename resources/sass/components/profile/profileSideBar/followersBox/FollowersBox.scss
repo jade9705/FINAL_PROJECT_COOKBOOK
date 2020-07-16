@@ -19,12 +19,14 @@
     // border: 2px solid green;
 
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
-    height: 80px;
+    min-height: 80px;
     margin: 0.5rem;
   }
 
   &__medaillonBox {
+    margin: 0.3rem;
     width: 70px;
     height: 70px;
     text-align: center;
