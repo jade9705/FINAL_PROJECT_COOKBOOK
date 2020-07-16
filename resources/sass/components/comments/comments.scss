@@ -5,9 +5,9 @@
   //justify-content: space-around;
   width:50%;
   box-shadow: 10px 10px 16px -7px rgba(69,69,69,0.5);  
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 800px) {
     font-size: small;
-    width: 95vw;
+    width: 80vw;
 }
 }
 .hideThis {
@@ -31,7 +31,9 @@ ul {
 }
 .userName {
   font-size: 1.5em;
-}
+  @media screen and (max-width: 400px) {
+    font-size: 1em;
+}}
 .userImage {
   width:7.5vw;
   height:15vh;
@@ -42,6 +44,12 @@ ul {
     height: 50px;
     width: 50px;
     
+}
+@media screen and (max-width: 800px) {
+  margin-right: 1em;
+  height: 100px;
+  width: 100px;
+  
 }
 }
 .usercomment {
@@ -55,15 +63,22 @@ ul {
   flex-direction: column;
 }
 .review {
-  font-size: 1.2em;
   padding: 0.8em;
+  @media screen and (max-width: 400px) {
+    //
 }
-
+}
+.commentTime {
+  font-size: 0.6em;
+}
 .allComments {
   padding: 2em 5em;
   @media screen and (max-width: 400px) {
     padding: 0em;
-}
+    .usercomment{
+    font-size: 1.5em;
+    }
+  }
 }
 
   

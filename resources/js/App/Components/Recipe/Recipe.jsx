@@ -50,6 +50,11 @@ export default function Recipe() {
 
       <>
         <div className="recipe">
+          <div className="recipe__hiddenName">
+            <h1 className="recipe__hiddenTitle">{recipe.title}</h1>
+            <p className="recipe__hiddenAuthor">by <a href={`/profile/${recipe.user_id}`} className="recipeAuthor"><strong>{recipe.user.first_name} {recipe.user.surname}</strong></a></p>
+
+            </div>
           <div className="recipe__container1">
             <div className="recipe__imagey">
 
@@ -66,9 +71,9 @@ export default function Recipe() {
               </ul> 
             </div>
 
-            </div>
+          </div>
 
-            <div className="recipe__container2">
+          <div className="recipe__container2">
               <div className="recipe__flexbox">
             <div className="recipe__medallion">
             <a href={`/profile/${recipe.user_id}`} className="recipeAuthor"><Medaillon user={recipe.user} /></a>
@@ -79,6 +84,14 @@ export default function Recipe() {
             <p>by <a href={`/profile/${recipe.user_id}`} className="recipeAuthor"><strong>{recipe.user.first_name} {recipe.user.surname}</strong></a></p>
                         
             <label className="recipe__method">Method  </label>
+            <ol>
+              { recipe.steps.map((step, index) => {
+                 return <li className="recipe__methodlist"key={index}>{step.instruction}</li>})}
+                    
+            </ol> 
+         </div>
+         <div className="recipe__hiddenName">
+         <label className="recipe__method">Method  </label>
             <ol>
               { recipe.steps.map((step, index) => {
                  return <li className="recipe__methodlist"key={index}>{step.instruction}</li>})}

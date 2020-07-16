@@ -2,18 +2,42 @@
     padding: 2em;
     display:flex;
     justify-content: space-around;
-    @media screen and (max-width: 400px) {
-        display: inline;
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+        align-items: center;
+        max-width: 100vw;
+        padding: 0em;
+        &__hiddenTitle {
+            text-align: center;
+        }
+        &__hiddenAuthor {
+            text-align: center;
+        }
     }
     &__name {
         font-size: 4em;
+        @media screen and (max-width: 400px) {
+            font-size: 1em;
+        }
+    }
+    &__hiddenName {
+        display:none;
+        @media screen and (max-width: 800px) {
+            display: contents;
+        }
     }
     &__container1 {
         display: flex;
         flex-direction: column;
-        //padding-left: 7em;
+        padding-left: 7em;
         @media screen and (max-width: 400px) {
             padding:1em;
+        }
+        @media screen and (max-width: 800px) {
+            width:80vw;
+            margin: 0em;
+            padding: 0em;
+            display: inline;
         }
         
        
@@ -24,9 +48,11 @@
         width:600px;
        // padding-left: 5em;
         box-shadow: 10px 10px 16px -7px rgba(69,69,69,0.5);  
-        @media screen and (max-width: 400px) {
-    
-            padding-left: 30px;
+        @media screen and (max-width: 800px) {
+            // width: 80vw;
+            // padding: 2em 5em;
+            // margin:auto;
+            display: none;
         }
         
     }
@@ -40,7 +66,9 @@
         @media screen and (max-width: 400px) {
             width:300px;
             height:200px;
-            padding-left: 30px;
+        }
+        @media screen and (max-width: 800px) {
+            padding: 0em;
         }
     }
     &__description {
@@ -57,14 +85,24 @@
     }
     &__ingredients-box {
         box-shadow: 10px 10px 16px -7px rgba(69,69,69,0.5);  
+        @media screen and (max-width: 800px) {
+            width:80vw;
+        }
+      
     }
     &__method {
         font-size: 1.5em;
         font-weight: bold;
+        @media screen and (max-width: 800px) {
+            width:80vw;
+        }
     }
     &__methodlist  {
         font-size: 1.2em;
         padding: 0.5em;
+        @media screen and (max-width: 800px) {
+            width:80vw;
+        }
     }
     &__medallion {
         width: 50px;
@@ -100,7 +138,11 @@
 
 .buttonStyles{
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
     align-items: flex-end;
     padding-right: 5.5em;
+    #delete {
+        margin-left: 1rem;
+    }
 }
+
