@@ -31,7 +31,9 @@ ul {
 }
 .userName {
   font-size: 1.5em;
-}
+  @media screen and (max-width: 400px) {
+    font-size: 1em;
+}}
 .userImage {
   width:7.5vw;
   height:15vh;
@@ -61,15 +63,22 @@ ul {
   flex-direction: column;
 }
 .review {
-  font-size: 1.2em;
   padding: 0.8em;
+  @media screen and (max-width: 400px) {
+    //
 }
-
+}
+.commentTime {
+  font-size: 0.6em;
+}
 .allComments {
   padding: 2em 5em;
   @media screen and (max-width: 400px) {
     padding: 0em;
-}
+    .usercomment{
+    font-size: 1.5em;
+    }
+  }
 }
 
   

@@ -15,12 +15,14 @@
 @else
 @if(auth()->user()->id === $recipe->user_id)
   <div class="buttonStyles">
-    <a href="/recipe/{{$recipe->id}}/edit"><button class="btn btn-success">edit</button></a>
+   
     <form action="{{route('delete.recipe', $recipe->id)}}" method="post">
       @csrf
       @method('delete')
-      <input type="submit" value="delete"class="btn btn-danger">
+      <input type="submit" value="delete"class="btn btn-danger" id="delete">
     </form>
+
+    <a href="/recipe/{{$recipe->id}}/edit"><button class="btn btn-success">edit</button></a>
   </div>
 @endif
 @endif
@@ -39,13 +41,13 @@
       @endif
     @endforeach
       @if(!auth()->check())
-        <h2>Please create an account to leave comments</h2>
+        <h2 class="usercomment">Please create an account to leave comments</h2>
         @else
         @if(auth()->user()->id == $recipe->user_id)
-          <h2 >you cannot rate your own recipe, sorry!</h2>
+          <h2 class="usercomment" >you cannot rate your own recipe, sorry!</h2>
         @else
         @if(auth()->user()->id !== $recipe->user_id && $userComment !== 'You have already rated this recipe. Thankyou.' )
-         <h2>What do you think,  {{ auth()->user()->first_name }}?</h2>
+         <h2 class="usercomment">What do you think,  {{ auth()->user()->first_name }}?</h2>
             <form action='/recipe/{recipe_id}/comment' method="post" class="comment-form">
               @csrf
               {{-- success message --}}
@@ -159,7 +161,7 @@
               @endif
             @endif
         </li>        
-          <p>{{ $comment->created_at }}</P>
+          <p class="commentTime">{{ $comment->created_at }}</P>
       </div>
     @endforeach
   </ul>

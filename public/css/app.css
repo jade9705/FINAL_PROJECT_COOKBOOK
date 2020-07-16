@@ -10336,6 +10336,11 @@ ul {
 .userName {
   font-size: 1.5em;
 }
+@media screen and (max-width: 400px) {
+  .userName {
+    font-size: 1em;
+  }
+}
 
 .userImage {
   width: 7.5vw;
@@ -10372,8 +10377,10 @@ ul {
 }
 
 .review {
-  font-size: 1.2em;
   padding: 0.8em;
+}
+.commentTime {
+  font-size: 0.6em;
 }
 
 .allComments {
@@ -10382,6 +10389,9 @@ ul {
 @media screen and (max-width: 400px) {
   .allComments {
     padding: 0em;
+  }
+  .allComments .usercomment {
+    font-size: 1.5em;
   }
 }
 
@@ -10543,9 +10553,12 @@ ul {
 
 .buttonStyles {
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   align-items: flex-end;
   padding-right: 5.5em;
+}
+.buttonStyles #delete {
+  margin-left: 1rem;
 }
 
 .card-logo {

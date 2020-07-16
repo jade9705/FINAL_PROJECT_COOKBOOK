@@ -138,8 +138,11 @@
 
 .buttonStyles{
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
     align-items: flex-end;
     padding-right: 5.5em;
+    #delete {
+        margin-left: 1rem;
+    }
 }
 
