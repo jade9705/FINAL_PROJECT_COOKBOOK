@@ -4,7 +4,7 @@ const Medaillon = ({user, follow_style}) => {
   // console.log(user);
   return (
     <>
-      {user ? <div className={`medaillon__img ${follow_style}`} style={{backgroundImage: `url("http://localhost:3000/images/uploads/user/${user.image_url}")`}}></div> : null}
+      {user ? <div className={`medaillon__img ${follow_style}`} style={{backgroundImage: `url("/images/uploads/user/${user.image_url}")`}}></div> : null}
     </>
   )
 }
