@@ -6,6 +6,7 @@
 }
 
 .card-header {
+  // margin-top: 4rem;
   display: flex;
   justify-content: start;
   align-items: baseline;
@@ -17,12 +18,25 @@
 
 .container {
   height: 30vh;
-  margin-top: 15vh;
-  margin-bottom: 35vh;
+  min-height: 80vh;
+  // margin-top: 15vh;
+  // margin-bottom: 35vh;
 
 }
 
+@media only screen and (max-width: 768px) {
+  .container {
+    height: 30vh;
+    min-height: 100vh;
+    // margin-top: 15vh;
+    // margin-bottom: 35vh;
+  
+  }
+}
+
 .shado {
+  margin-top: 4rem;
+
   box-shadow: 10px 10px 16px -7px rgba(69,69,69,0.5);
 
 }
