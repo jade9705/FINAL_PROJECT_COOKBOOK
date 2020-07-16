@@ -186,8 +186,8 @@ const UserBox = ({user, logged_user_id}) => {
           (
             //save or return from editing mode
             <div className="userBox__save-container">
-              <input className="userBox__input" type="submit" value="SAVE" />
               <input className="userBox__input" type="button" value="RETURN" onClick={setToEditMode} />
+              <input className="userBox__input" type="submit" value="SAVE" />
             </div>
           )
       }

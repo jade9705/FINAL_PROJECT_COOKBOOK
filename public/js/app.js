@@ -35613,13 +35613,13 @@ var UserBox = function UserBox(_ref) {
     className: "userBox__save-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
     className: "userBox__input",
-    type: "submit",
-    value: "SAVE"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
-    className: "userBox__input",
     type: "button",
     value: "RETURN",
     onClick: setToEditMode
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+    className: "userBox__input",
+    type: "submit",
+    value: "SAVE"
   }))));
 };
 
