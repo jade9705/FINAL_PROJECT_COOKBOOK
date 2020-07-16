@@ -58,7 +58,7 @@ const ProfileCookBook = ({user, logged_user_id}) => {
           clickedAllrecipes ? <a href="" onClick={ fetchNewestRecipes } >view newest</a> : <a href="" onClick={ fetchAllUserRecipes } >view all</a>
         }
         {
-          logged_user_id == user.id ? <a href="http://localhost:3000/create">add new</a> : null
+          logged_user_id == user.id ? <a href="/create">add new</a> : null
         }
       </div>
       <div className='profileCookBook__recipeContainer'>

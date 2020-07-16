@@ -34108,7 +34108,7 @@ var RecipeImage = function RecipeImage(_ref) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, recipe ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "recipe__imagey",
     style: {
-      backgroundImage: "url(\"http://localhost:3000/images/uploads/".concat(recipe.image_url, "\")")
+      backgroundImage: "url(\"/images/uploads/".concat(recipe.image_url, "\")")
     }
   }) : null);
 };
@@ -34359,7 +34359,7 @@ var RecipeBox = function RecipeBox(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "recipeBox__img",
     style: {
-      backgroundImage: "url(\"http://localhost:3000/images/uploads/".concat(recipe.image_url, "\")")
+      backgroundImage: "url(\"/images/uploads/".concat(recipe.image_url, "\")")
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "recipeBox__avelikeBox"
@@ -34914,7 +34914,7 @@ var Medaillon = function Medaillon(_ref) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "medaillon__img ".concat(follow_style),
     style: {
-      backgroundImage: "url(\"http://localhost:3000/images/uploads/user/".concat(user.image_url, "\")")
+      backgroundImage: "url(\"/images/uploads/user/".concat(user.image_url, "\")")
     }
   }) : null);
 };
@@ -35080,7 +35080,7 @@ var ProfileCookBook = function ProfileCookBook(_ref) {
     href: "",
     onClick: fetchAllUserRecipes
   }, "view all"), logged_user_id == user.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-    href: "http://localhost:3000/create"
+    href: "/create"
   }, "add new") : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "profileCookBook__recipeContainer"
   }, content));

@@ -10113,12 +10113,12 @@ h3 {
 .ratingContainer__star {
   width: 1.5rem;
   height: 1.5rem;
-  background-image: url("http://localhost:3000/images/rating/star-white.svg");
+  background-image: url("/images/rating/star-white.svg");
   background-size: contain;
   background-repeat: no-repeat;
 }
 .ratingContainer__star--on {
-  background-image: url("http://localhost:3000/images/rating/star-yellow.svg");
+  background-image: url("/images/rating/star-yellow.svg");
 }
 
 .fouvourite {

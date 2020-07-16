@@ -54,7 +54,8 @@ const RecipeBox = ({recipe}) => {
         <div className="recipeBox" >
           <a  className="recipeBox__link" href={`/recipe/${recipe.id}`}>
             {/* <img className="recipeBox__img" src={`http://localhost:3000/images/uploads/${recipe.image_url}`} alt={recipe.title} /> */}
-            <div className="recipeBox__img" style={{backgroundImage: `url("http://localhost:3000/images/uploads/${recipe.image_url}")`}}></div>
+            {/* <div className="recipeBox__img" style={{backgroundImage: `url("http://localhost:3000/images/uploads/${recipe.image_url}")`}}></div> */}
+            <div className="recipeBox__img" style={{backgroundImage: `url("/images/uploads/${recipe.image_url}")`}}></div>
             <div className="recipeBox__avelikeBox">
             <AverangeRating averageRating={averageRating}/>
             <div className="recipeBox__sizeOfHeart">

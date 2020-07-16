@@ -13,7 +13,7 @@ phploy.ini
 yarn-error.log
 /public/css
 /public/js
-public/mix-manifest.json
-public/js/app.js.map
-public/css/app.css.map
+# public/mix-manifest.json
+# public/js/app.js.map
+# public/css/app.css.map
 phploy.ini
