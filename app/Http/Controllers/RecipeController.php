@@ -97,7 +97,7 @@ class RecipeController extends Controller
         }
 
         ///next logic is about whether user can comment or not 
-        $userComment = 'you cannot rate your own recipe, sorry!';
+        $userComment = 'why doesnt it work :(';
         // dd(auth()->user()->id);
         //dd( $recipe->user_id);
         // dd(auth()->user()->id == $recipe->user_id);

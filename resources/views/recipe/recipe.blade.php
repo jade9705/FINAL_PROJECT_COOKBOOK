@@ -28,92 +28,100 @@
 <script src="{{ mix('js/app.js') }}"></script>
 
   <div class="allComments">
-
-    <h2> {{ $userComment }} </h2>
-
-      @if(!auth()->check())
-    <div>Please create an account to leave comments</div>
+    
+    @foreach($recipe->comments as $comment)
+    @if(!auth()->check())
+    <h1 class="hideThis">hi</h1>
     @else
-  
-    {{-- @foreach($recipe->comments as $comment) --}}
-    {{-- if logge in user is not equal to recipe athour ANND user comment isnnot = to string OR logged in user is not equal                           --}}
-    @if(auth()->user()->id !== $recipe->user_id && $userComment !== 'You have already rated this recipe. Thankyou.')
-
-    <form action='/recipe/{recipe_id}/comment' method="post" class="comment-form">
-      @csrf
-      {{-- success message --}}
-      @if (Session::has('success_message'))
-        <div class="alert alert-success">
-          {{ Session::get('success_message') }}
-        </div>
+      @if($comment->user_id  === auth()->user()->id)
+      <h2 class="usercomment"> {{ $userComment }} </h2>
       @endif
-      @if (count($errors) > 0)
-        <div class="alert alert-danger">
-          <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-          </ul>
-        </div>
       @endif
-      <input type="hidden" name='recipe_id' value={{$recipe_id}} />
-      <input type="hidden" name='user_id' value={{$user_id}} />
+    @endforeach
+      @if(!auth()->check())
+        <h2>Please create an account to leave comments</h2>
+        @else
+        @if(auth()->user()->id == $recipe->user_id)
+          <h2 >you cannot rate your own recipe, sorry!</h2>
+        @else
+        @if(auth()->user()->id !== $recipe->user_id && $userComment !== 'You have already rated this recipe. Thankyou.' )
+         <h2>What do you think,  {{ auth()->user()->first_name }}?</h2>
+            <form action='/recipe/{recipe_id}/comment' method="post" class="comment-form">
+              @csrf
+              {{-- success message --}}
+              @if (Session::has('success_message'))
+                <div class="alert alert-success">
+                  {{ Session::get('success_message') }}
+                </div>
+              @endif
+              @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                  <ul>
+                    @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
+                </div>
+              @endif
+              <input type="hidden" name='recipe_id' value={{$recipe_id}} />
+              <input type="hidden" name='user_id' value={{$user_id}} />
 
-      <div class="form-group">
-        <input type="hidden" name="rating" class="ratingNumber" value="" >
-        <div class="rating">
-          <div class="rating__value">1</div>
-          <div class="rating__stars">
-            <div class="rating__star rating__star--on"></div>
-            <div class="rating__star "></div>
-            <div class="rating__star "></div>
-            <div class="rating__star"></div>
-            <div class="rating__star"></div>
-          </div>
-        </div>
-      </div>
+              <div class="form-group">
+                <input type="hidden" name="rating" class="ratingNumber" value="" >
+                <div class="rating">
+                  <div class="rating__value">1</div>
+                  <div class="rating__stars">
+                    <div class="rating__star rating__star--on"></div>
+                    <div class="rating__star "></div>
+                    <div class="rating__star "></div>
+                    <div class="rating__star"></div>
+                    <div class="rating__star"></div>
+                  </div>
+                </div>
+              </div>
 
-      <div class="form-group">
-        <label for="">
-          Text:<br>
-          <textarea name="text" cols="85" rows="5">{{ old('text') }}</textarea>
-        </label>
-          @if($errors->has('text'))
-            {{ $errors->first('text')}}
-          @endif
-      </div>
-{{-- {{ dd($recipe->comments[0]->user_id) }} --}}
-      {{-- javascript for star rating--}}
-      <script>
-        const starElms = document.querySelectorAll('.rating .rating__star');
-        const turnOnStars = (count) => {
-          for (let i = 0; i < starElms.length; i++) {
-            if (i < count) {
-              starElms[i].classList.add('rating__star--on');
-            } else {
-              starElms[i].classList.remove('rating__star--on');
-            }
-          }
-        };
-        starElms.forEach((star, index) => {
-          star.addEventListener('click', () => {
-            const valueELm = document.querySelector('.rating__value');
-            valueELm.textContent = index + 1;
-            turnOnStars(index + 1);
-      // this adds the value of the selected stars to the hidden input for the rating, which updates the database to that value
-            const starsNumber =  document.querySelector('.ratingNumber');
-            starsNumber.value = Number(document.querySelector('.rating__value').textContent)
-          });
-        });
-        const ratingRender = document.querySelector('.ratingRender');
-        const amountStars = Number(document.querySelector('.rating__value').textContent);
-      </script>
+              <div class="form-group">
+                <label for="">
+                  Text:<br>
+                  <textarea name="text" cols="85" rows="5">{{ old('text') }}</textarea>
+                </label>
+                  @if($errors->has('text'))
+                    {{ $errors->first('text')}}
+                  @endif
+              </div>
+   
+              {{-- javascript for star rating--}}
+              <script>
+                const starElms = document.querySelectorAll('.rating .rating__star');
+                const turnOnStars = (count) => {
+                  for (let i = 0; i < starElms.length; i++) {
+                    if (i < count) {
+                      starElms[i].classList.add('rating__star--on');
+                    } else {
+                      starElms[i].classList.remove('rating__star--on');
+                    }
+                  }
+                };
+                starElms.forEach((star, index) => {
+                  star.addEventListener('click', () => {
+                    const valueELm = document.querySelector('.rating__value');
+                    valueELm.textContent = index + 1;
+                    turnOnStars(index + 1);
+              // this adds the value of the selected stars to the hidden input for the rating, which updates the database to that value
+                    const starsNumber =  document.querySelector('.ratingNumber');
+                    starsNumber.value = Number(document.querySelector('.rating__value').textContent)
+                  });
+                });
+                const ratingRender = document.querySelector('.ratingRender');
+                const amountStars = Number(document.querySelector('.rating__value').textContent);
+              </script>
 
-      <div class="form-group">
-        <input type="submit" value="submit" name="submit" class="btn btn-success"/>
-      </div>
-  </form>
+              <div class="form-group">
+                <input type="submit" value="submit" name="submit" class="btn btn-success"/>
+              </div>
+          </form>
 @endif 
+@endif
 {{-- @endforeach --}}
 @endif
 

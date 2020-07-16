@@ -10252,6 +10252,12 @@ h3 {
   width: 50%;
   box-shadow: 10px 10px 16px -7px rgba(69, 69, 69, 0.5);
 }
+@media screen and (max-width: 400px) {
+  .recipe-container {
+    font-size: small;
+    width: 95vw;
+  }
+}
 
 .hideThis {
   display: none;
@@ -10288,6 +10294,22 @@ ul {
   border-radius: 50%;
   margin-right: 2em;
 }
+@media screen and (max-width: 400px) {
+  .userImage {
+    margin-right: 1em;
+    height: 50px;
+    width: 50px;
+  }
+}
+
+.usercomment {
+  padding-left: 1em;
+}
+@media screen and (max-width: 400px) {
+  .usercomment {
+    padding-left: 30px;
+  }
+}
 
 .imageAndStar {
   flex-direction: column;
@@ -10301,6 +10323,11 @@ ul {
 .allComments {
   padding: 2em 5em;
 }
+@media screen and (max-width: 400px) {
+  .allComments {
+    padding: 0em;
+  }
+}
 
 #deleteButton {
   display: flex;
@@ -10312,6 +10339,11 @@ ul {
   display: flex;
   justify-content: space-around;
 }
+@media screen and (max-width: 400px) {
+  .recipe {
+    display: inline;
+  }
+}
 .recipe__name {
   font-size: 4em;
 }
@@ -10319,11 +10351,21 @@ ul {
   display: flex;
   flex-direction: column;
 }
+@media screen and (max-width: 400px) {
+  .recipe__container1 {
+    padding: 1em;
+  }
+}
 .recipe__container2 {
   display: flex;
   flex-direction: column;
   width: 600px;
   box-shadow: 10px 10px 16px -7px rgba(69, 69, 69, 0.5);
+}
+@media screen and (max-width: 400px) {
+  .recipe__container2 {
+    padding-left: 30px;
+  }
 }
 .recipe__imagey {
   background-position: center;
@@ -10332,6 +10374,13 @@ ul {
   box-shadow: 10px 10px 16px -7px rgba(69, 69, 69, 0.5);
   width: 600px;
   height: 400px;
+}
+@media screen and (max-width: 400px) {
+  .recipe__imagey {
+    width: 300px;
+    height: 200px;
+    padding-left: 30px;
+  }
 }
 .recipe__description {
   padding: 1rem;
@@ -10363,6 +10412,11 @@ ul {
 .recipe__flexbox {
   display: flex;
   align-items: center;
+}
+@media screen and (max-width: 400px) {
+  .recipe__flexbox {
+    padding-left: 30px;
+  }
 }
 
 .averageRatingTop {
