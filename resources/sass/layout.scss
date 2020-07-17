@@ -57,6 +57,11 @@
         width: 3rem;
         height: 3rem;
         margin: 1rem;
+        fill: #F8FAFC;
+        
+        &:hover {
+            fill: #abe9a5;
+        }
     }
 
     &__copyright-container {
@@ -83,5 +88,10 @@
             flex-wrap: wrap;
             justify-content: center;
         }
+    }
+
+    .footer {
+        flex-wrap: wrap-reverse;
+        height: fit-content;
     }
 }

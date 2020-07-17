@@ -10035,6 +10035,10 @@ h3 {
   width: 3rem;
   height: 3rem;
   margin: 1rem;
+  fill: #F8FAFC;
+}
+.footer__soclogo:hover {
+  fill: #abe9a5;
 }
 .footer__copyright-container {
   color: #F8FAFC;
@@ -10058,6 +10062,13 @@ h3 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .footer {
+    flex-wrap: wrap-reverse;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
   }
 }
 .homeSearch {
