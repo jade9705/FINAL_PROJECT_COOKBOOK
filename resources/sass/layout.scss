@@ -57,6 +57,11 @@
         width: 3rem;
         height: 3rem;
         margin: 1rem;
+        fill: $fithcolor;
+        
+        &:hover {
+            fill: $fourthcolor;
+        }
     }
 
     &__copyright-container {
@@ -82,6 +87,37 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+        }
+    }
+
+    .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap-reverse;
+    
+    
+        height: fit-content;
+        background-color: $secondary;
+    
+        &__soclogo-container {
+            display: flex;
+            flex-direction: row;
+        }
+    
+        &__soclogo {
+            width: 3rem;
+            height: 3rem;
+            margin: 1rem;
+            fill: $fithcolor;
+            
+            &:hover {
+                fill: $fourthcolor;
+            }
+        }
+    
+        &__copyright-container {
+            color: $fithcolor;
         }
     }
 }
