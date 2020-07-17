@@ -54,10 +54,18 @@
     }
 
     &__soclogo {
-        width: 3rem;
-        height: 3rem;
+        width: 2.5rem;
+        height: 2.5rem;
         margin: 1rem;
         fill: #F8FAFC;
+
+        &--color {
+            fill: #F8FAFC;
+
+            &:hover {
+                fill: #abe9a5;
+            }
+        }
         
         &:hover {
             fill: #abe9a5;
