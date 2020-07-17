@@ -259,6 +259,7 @@ class RecipeController extends Controller
 
                 $recipe->ingredients()->attach($ingredient->id, ['amount' => $request->input('amount')[$k]]);
             }
+            
         };
 
         foreach($request->input('step') as $i => $p)
