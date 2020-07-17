@@ -48,20 +48,26 @@ class RecipeController extends Controller
 
         foreach( $request->input('ingredient') as $k => $i)
         {
-            $ingredient = new Ingredient;
-            $ingredient->name = $i;
-            $ingredient->save();
-
-            $recipe->ingredients()->attach($ingredient->id, ['amount' => $request->input('amount')[$k]]);
-        };
-
+            if($i)
+            {
+                $ingredient = new Ingredient;
+                $ingredient->name = $i;
+                $ingredient->save();
+                
+                $recipe->ingredients()->attach($ingredient->id, ['amount' => $request->input('amount')[$k]]);
+            }  
+        }
+        
         foreach($request->input('step') as $p)
         {
-            $step = new Step;
-            $step->instruction = $p;
-            $step->sequence = 1;
-            $step->recipe_id = $recipe->id;
-            $step->save();
+            if($p)
+            {
+                $step = new Step;
+                $step->instruction = $p;
+                $step->sequence = 1;
+                $step->recipe_id = $recipe->id;
+                $step->save();
+            }
         };
 
         // $user = User::findOrFail($user_id);
