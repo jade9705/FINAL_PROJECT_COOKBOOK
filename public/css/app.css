@@ -10300,7 +10300,6 @@ h3 {
 .recipe-container {
   padding: 1rem;
   display: flex;
-  width: 50%;
   box-shadow: 10px 10px 16px -7px rgba(69, 69, 69, 0.5);
 }
 @media screen and (max-width: 1200px) {
@@ -10335,9 +10334,6 @@ ul {
   display: flex;
 }
 
-.userName {
-  font-size: 1.5em;
-}
 @media screen and (max-width: 400px) {
   .userName {
     font-size: 1em;
@@ -10400,6 +10396,12 @@ ul {
 #deleteButton {
   display: flex;
   align-self: flex-end;
+}
+
+.commentDelete {
+  display: flex;
+  justify-content: flex-end;
+  width: 80%;
 }
 
 #commentText {
@@ -10520,6 +10522,7 @@ ul {
   font-weight: normal;
 }
 .recipe__ingredients-box {
+  padding: 0.2em;
   box-shadow: 10px 10px 16px -7px rgba(69, 69, 69, 0.5);
 }
 @media screen and (max-width: 1200px) {
@@ -10530,6 +10533,8 @@ ul {
 .recipe__method {
   font-size: 1.5em;
   font-weight: bold;
+  padding: 0.2em;
+  margin-top: 1em;
 }
 @media screen and (max-width: 1200px) {
   .recipe__method {

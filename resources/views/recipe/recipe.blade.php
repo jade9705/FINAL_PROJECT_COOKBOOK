@@ -148,6 +148,7 @@
               {{ $comment->text }}
               <br>      
             </div>
+            <div class="commentDelete">
               @if(auth()->check())
                 @if(auth()->user()->id === $comment->user->id)
                     <form action="{{route('comment.delete', [$recipe->id, $comment->id])}}" method="post" id="deleteButton">
@@ -159,6 +160,7 @@
                 @endif
           </li>        
           <p class="commentTime">{{ $comment->created_at }}</P>
+          </div>
         </div>
       @endforeach
     </ul>
